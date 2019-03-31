@@ -47,9 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Mot.cs" />
-    <Compile Include="Classes\Phrase.cs" />
-    <Compile Include="Classes\Utilisateur.cs" />
     <Compile Include="DAL\Queries.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
