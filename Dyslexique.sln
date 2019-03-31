@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28721.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dyslexique", "Dyslexique\Dyslexique.csproj", "{530FB205-20FC-4C28-9C77-629E869528CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{530FB205-20FC-4C28-9C77-629E869528CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{530FB205-20FC-4C28-9C77-629E869528CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{530FB205-20FC-4C28-9C77-629E869528CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{530FB205-20FC-4C28-9C77-629E869528CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30CD9901-73DA-4B2C-A1D4-1A086BD4FF39}
+	EndGlobalSection
+EndGlobal
