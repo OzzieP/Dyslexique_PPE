@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dyslexique.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,18 @@ namespace Dyslexique
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ajoutType btnAjoutType = new ajoutType();
+            btnAjoutType.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ajoutClasse btnAjoutAdjectif = new ajoutClasse();
+            btnAjoutAdjectif.ShowDialog();
         }
     }
 }
