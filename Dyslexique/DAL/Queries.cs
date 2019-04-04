@@ -15,6 +15,48 @@ namespace Dyslexique.DAL
         public static string ConnectionString = ConfigurationManager.ConnectionStrings["DyslexiqueConnectionString"].ConnectionString;
 
         #region Utilisateur
+        public static List<Utilisateur> GetAllUtilisateurs()
+        {
+            try
+            {
+                List<Utilisateur> utilisateurs = new List<Utilisateur>();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * FROM Utilisateur";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Utilisateur utilisateur = new Utilisateur
+                                    {
+                                        IdUtilisateur = Convert.ToInt32(reader["idUtilisateur"].ToString()),
+                                        Pseudo = reader["pseudo"].ToString(),
+                                        IdRole = Convert.ToInt32(reader["idRole"].ToString())
+                                    };
+
+                                    utilisateurs.Add(utilisateur);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return utilisateurs;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Impossible de récupérer tous les utilisateurs.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
         public static Utilisateur GetUtilisateurByPseudo(string pseudo)
         {
             try
@@ -50,6 +92,36 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
+
+        public static void InsertUtilisateur(string pseudo, int idRole)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Utilisateur (pseudo, idRole) VALUES (@Pseudo, @IdRole)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@Pseudo", pseudo));
+                        command.Parameters.Add(new SqlParameter("@IdRole", idRole));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de l'insertion de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Utilisateur créé avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de l'insertion de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
         #endregion
 
         #region Mot

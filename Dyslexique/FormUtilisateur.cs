@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Dyslexique
 {
-    public partial class Form1 : Form
+    public partial class FormUtilisateur : Form
     {
-        public Form1()
+        public FormUtilisateur()
         {
             InitializeComponent();
         }

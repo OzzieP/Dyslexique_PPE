@@ -22,11 +22,22 @@ namespace Dyslexique.Classes
             set { pseudo = value; }
         }
 
+        // Administrateur = 1 / Utilisateur = 2
         private int idRole;
         public int IdRole
         {
             get { return idRole; }
             set { idRole = value; }
+        }
+
+        public Utilisateur()
+        {
+
+        }
+
+        public Utilisateur(string pseudo)
+        {
+            this.pseudo = pseudo;
         }
     }
 }
