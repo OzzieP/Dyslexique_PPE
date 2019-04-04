@@ -46,9 +46,9 @@
             this.idClasse,
             this.libelle,
             this.type});
-            this.dataGridView1.Location = new System.Drawing.Point(90, 81);
+            this.dataGridView1.Location = new System.Drawing.Point(444, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(344, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(344, 426);
             this.dataGridView1.TabIndex = 0;
             // 
             // idClasse
@@ -69,7 +69,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(109, 319);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 1;
@@ -77,14 +77,14 @@
             // 
             // libelleClasse
             // 
-            this.libelleClasse.Location = new System.Drawing.Point(230, 312);
+            this.libelleClasse.Location = new System.Drawing.Point(117, 12);
             this.libelleClasse.Name = "libelleClasse";
             this.libelleClasse.Size = new System.Drawing.Size(100, 20);
             this.libelleClasse.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(463, 310);
+            this.button1.Location = new System.Drawing.Point(350, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -95,7 +95,7 @@
             // comboBox
             // 
             this.comboBox.FormattingEnabled = true;
-            this.comboBox.Location = new System.Drawing.Point(336, 310);
+            this.comboBox.Location = new System.Drawing.Point(223, 12);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(121, 21);
             this.comboBox.TabIndex = 4;

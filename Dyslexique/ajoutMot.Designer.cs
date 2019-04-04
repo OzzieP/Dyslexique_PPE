@@ -37,13 +37,14 @@
             this.texte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.distinctLibelleClasse = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 188);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 0;
@@ -51,7 +52,7 @@
             // 
             // texteMot
             // 
-            this.texteMot.Location = new System.Drawing.Point(145, 188);
+            this.texteMot.Location = new System.Drawing.Point(97, 9);
             this.texteMot.Name = "texteMot";
             this.texteMot.Size = new System.Drawing.Size(100, 20);
             this.texteMot.TabIndex = 1;
@@ -59,14 +60,14 @@
             // comboBoxClasse
             // 
             this.comboBoxClasse.FormattingEnabled = true;
-            this.comboBoxClasse.Location = new System.Drawing.Point(269, 188);
+            this.comboBoxClasse.Location = new System.Drawing.Point(203, 8);
             this.comboBoxClasse.Name = "comboBoxClasse";
             this.comboBoxClasse.Size = new System.Drawing.Size(121, 21);
             this.comboBoxClasse.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(420, 188);
+            this.button1.Location = new System.Drawing.Point(339, 8);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -82,9 +83,9 @@
             this.texte,
             this.Classe,
             this.Type});
-            this.dataGridView1.Location = new System.Drawing.Point(5, 214);
+            this.dataGridView1.Location = new System.Drawing.Point(570, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(440, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(443, 426);
             this.dataGridView1.TabIndex = 4;
             // 
             // idMot
@@ -107,11 +108,21 @@
             this.Type.HeaderText = "Type";
             this.Type.Name = "Type";
             // 
+            // distinctLibelleClasse
+            // 
+            this.distinctLibelleClasse.FormattingEnabled = true;
+            this.distinctLibelleClasse.Location = new System.Drawing.Point(420, 12);
+            this.distinctLibelleClasse.Name = "distinctLibelleClasse";
+            this.distinctLibelleClasse.Size = new System.Drawing.Size(121, 21);
+            this.distinctLibelleClasse.TabIndex = 5;
+            this.distinctLibelleClasse.SelectedIndexChanged += new System.EventHandler(this.distinctLibelleClasse_SelectedIndexChanged);
+            // 
             // ajoutMot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1025, 450);
+            this.Controls.Add(this.distinctLibelleClasse);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxClasse);
@@ -137,5 +148,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn texte;
         private System.Windows.Forms.DataGridViewTextBoxColumn Classe;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.ComboBox distinctLibelleClasse;
     }
 }

@@ -14,6 +14,7 @@ namespace Dyslexique
 {
     public partial class ajoutMot : Form
     {
+
         public ajoutMot()
         {
             InitializeComponent();
@@ -48,6 +49,11 @@ namespace Dyslexique
                 comboBoxClasse.Items.Add(new { Libelle = classe.Libelle + " " + classe.Type.Libelle, idClasse = classe.IdClasse });
             }
             this.refreshDataGridView();
+            List<String> listDistinctLibelle;
+            listDistinctLibelle = Queries.GetDistinctClasse();
+            distinctLibelleClasse.ValueMember = "libelle";
+            foreach (String classe in listDistinctLibelle)
+                distinctLibelleClasse.Items.Add(new { libelle = classe.ToString() });
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -71,6 +77,20 @@ namespace Dyslexique
                 MessageBox.Show("Le champ ne peut pas être vide.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             this.refreshDataGridView();
+        }
+
+        private void distinctLibelleClasse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxClasse.Items.Clear();
+            string libelleClasse = (distinctLibelleClasse.SelectedItem as dynamic).libelle;
+            List<Classe> listClasse = new List<Classe>();
+            listClasse = Queries.GetClasseByLibelleClasse(libelleClasse);
+            comboBoxClasse.DisplayMember = "Libelle";
+            comboBoxClasse.ValueMember = "idClasse";
+            foreach (Classe classe in listClasse)
+            {
+                comboBoxClasse.Items.Add(new { Libelle = classe.Libelle + " " + classe.Type.Libelle, idClasse = classe.IdClasse });
+            }
         }
     }
 }

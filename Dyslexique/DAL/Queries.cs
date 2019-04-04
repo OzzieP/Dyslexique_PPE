@@ -96,7 +96,8 @@ namespace Dyslexique.DAL
                                             Classe.libelle as libelleClasse,
                                             Classe.idType as idType,
                                             Type.libelle as libelleType
-                                            from Mot inner join Classe on Mot.idClasse = Classe.idClasse inner join Type on Classe.idType = Type.idType";
+                                            from Mot inner join Classe on Mot.idClasse = Classe.idClasse inner join Type on Classe.idType = Type.idType
+                                            order by idClasse, idType";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -138,6 +139,7 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
+        
 
         #endregion
 
@@ -248,7 +250,12 @@ namespace Dyslexique.DAL
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"select idClasse, Classe.libelle as libelleClasse, Classe.idType as idType, Type.libelle as libelleType from Classe inner join Type on Classe.idType = Type.idType";
+                    string query = @"select idClasse,
+                                            Classe.libelle as libelleClasse,
+                                            Classe.idType as idType,
+                                            Type.libelle as libelleType
+                                            from Classe inner join Type on Classe.idType = Type.idType
+                                            order by idType";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -270,6 +277,92 @@ namespace Dyslexique.DAL
                                         Type = type
                                     };
                                     listClasse.Add(classe);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return listClasse;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        public static List<String> GetDistinctClasse()
+        {
+            try
+            {
+                List<String> listDistinctLibelle = new List<String>();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"select DISTINCT libelle from Classe";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    String classe = reader["libelle"].ToString();
+                                    listDistinctLibelle.Add(classe);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return listDistinctLibelle;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        public static List<Classe> GetClasseByLibelleClasse(string classe)
+        {
+            try
+            {
+                List<Classe> listClasse = new List<Classe>();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"select idClasse,
+                                            Classe.libelle as libelleClasse,
+                                            Classe.idType as idType,
+                                            Type.libelle as libelleType
+                                            from Classe inner join Type on Classe.idType = Type.idType
+                                            where Classe.libelle = @libelle";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@libelle", classe));
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Types type = new Types
+                                    {
+                                        IdType = Convert.ToInt32(reader["idType"].ToString()),
+                                        Libelle = reader["libelleType"].ToString()
+                                    };
+                                    Classe classes = new Classe
+                                    {
+                                        IdClasse = Convert.ToInt32(reader["idClasse"].ToString()),
+                                        Libelle = reader["libelleClasse"].ToString(),
+                                        Type = type
+                                    };
+                                    listClasse.Add(classes);
                                 }
                             }
                         }

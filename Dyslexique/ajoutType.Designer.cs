@@ -39,7 +39,7 @@
             // 
             // ajouter
             // 
-            this.ajouter.Location = new System.Drawing.Point(368, 182);
+            this.ajouter.Location = new System.Drawing.Point(183, 12);
             this.ajouter.Name = "ajouter";
             this.ajouter.Size = new System.Drawing.Size(75, 23);
             this.ajouter.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             // type
             // 
-            this.type.Location = new System.Drawing.Point(237, 185);
+            this.type.Location = new System.Drawing.Point(77, 12);
             this.type.Name = "type";
             this.type.Size = new System.Drawing.Size(100, 20);
             this.type.TabIndex = 2;
@@ -57,7 +57,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(125, 188);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 3;
@@ -69,9 +69,9 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idType,
             this.libelle});
-            this.dataGridView1.Location = new System.Drawing.Point(548, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(545, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(243, 426);
             this.dataGridView1.TabIndex = 4;
             // 
             // idType
