@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idClasse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.libelleClasse = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox = new System.Windows.Forms.ComboBox();
-            this.idClasse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +50,21 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(344, 150);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // idClasse
+            // 
+            this.idClasse.HeaderText = "idClasse";
+            this.idClasse.Name = "idClasse";
+            // 
+            // libelle
+            // 
+            this.libelle.HeaderText = "libelle";
+            this.libelle.Name = "libelle";
+            // 
+            // type
+            // 
+            this.type.HeaderText = "type";
+            this.type.Name = "type";
             // 
             // label1
             // 
@@ -84,21 +99,6 @@
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(121, 21);
             this.comboBox.TabIndex = 4;
-            // 
-            // idClasse
-            // 
-            this.idClasse.HeaderText = "idClasse";
-            this.idClasse.Name = "idClasse";
-            // 
-            // libelle
-            // 
-            this.libelle.HeaderText = "libelle";
-            this.libelle.Name = "libelle";
-            // 
-            // type
-            // 
-            this.type.HeaderText = "type";
-            this.type.Name = "type";
             // 
             // ajoutClasse
             // 

@@ -53,16 +53,50 @@ namespace Dyslexique.DAL
         #endregion
 
         #region Mot
-        public static List<Mot> GetAllMots()
+        public static void InsertMot(string texte, int idClasse)
         {
             try
             {
-                List<Mot> listMots = new List<Mot>();
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Mot (texte, idClasse) VALUES (@Texte, @idClasse)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@Texte", texte));
+                        command.Parameters.Add(new SqlParameter("@idClasse", idClasse));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de l'insertion du mot.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Mot créé avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de l'insertion du mot.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        public static List<Mot> GetAllMot()
+        {
+            try
+            {
+                List<Mot> listMot = new List<Mot>();
 
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"SELECT * FROM Mot";
+                    string query = @"select idMot,
+                                            texte,
+                                            Mot.idClasse as idClasse,
+                                            Classe.libelle as libelleClasse,
+                                            Classe.idType as idType,
+                                            Type.libelle as libelleType
+                                            from Mot inner join Classe on Mot.idClasse = Classe.idClasse inner join Type on Classe.idType = Type.idType";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -72,22 +106,31 @@ namespace Dyslexique.DAL
                             {
                                 while (reader.Read())
                                 {
+                                    Types type = new Types
+                                    {
+                                        IdType = Convert.ToInt32(reader["idType"].ToString()),
+                                        Libelle = reader["libelleType"].ToString()
+                                    };
+                                    Classe classe = new Classe
+                                    {
+                                        IdClasse = Convert.ToInt32(reader["idClasse"].ToString()),
+                                        Libelle = reader["libelleClasse"].ToString(),
+                                        Type = type
+                                    };
                                     Mot mot = new Mot
                                     {
                                         IdMot = Convert.ToInt32(reader["idMot"].ToString()),
                                         Texte = reader["texte"].ToString(),
-                                        IdClasse = Convert.ToInt32(reader["idClasse"].ToString())
-                                        //mot.IdGenre = Convert.ToInt32(reader["idGenre"].ToString());
+                                        Classe = classe
                                     };
-
-                                    listMots.Add(mot);
+                                    listMot.Add(mot);
                                 }
                             }
                         }
                     }
                 }
 
-                return listMots;
+                return listMot;
             }
             catch (Exception)
             {

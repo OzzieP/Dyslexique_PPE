@@ -18,7 +18,21 @@ namespace Dyslexique
         {
             InitializeComponent();
         }
-
+        public void refreshDataGridView()
+        {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+            List<Classe> listClasse = new List<Classe>();
+            listClasse = Queries.GetAllClasse();
+            foreach (Classe classe in listClasse)
+            {
+                String[] row = new string[]
+           {
+                classe.IdClasse.ToString(), classe.Libelle, classe.Type.Libelle
+           };
+                dataGridView1.Rows.Add(row);
+            }
+        }
         private void ajoutClasse_Load(object sender, EventArgs e)
         {
             List<Types> listTypes = new List<Types>();
@@ -27,23 +41,9 @@ namespace Dyslexique
             comboBox.ValueMember = "idType";
             foreach (Types type in listTypes)
             {
-                String[] row = new string[]
-           {
-                type.IdType.ToString(), type.Libelle
-           };
-                dataGridView1.Rows.Add(row);
                 comboBox.Items.Add(new { Libelle = type.Libelle, idType = type.IdType });
             }
-            List<Classe> listClasse = new List<Classe>();
-            listClasse = Queries.GetAllClasse();
-            foreach (Classe classe in listClasse)
-            {
-                String[] row = new string[]
-           {
-                classe.IdClasse.ToString(), classe.Libelle, classe.Type.ToString()
-           };
-                dataGridView1.Rows.Add(row);
-            }
+            this.refreshDataGridView();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -66,6 +66,7 @@ namespace Dyslexique
 
                 MessageBox.Show("Les champs ne peuvent pas être vide.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            this.refreshDataGridView();
         }
     }
 }

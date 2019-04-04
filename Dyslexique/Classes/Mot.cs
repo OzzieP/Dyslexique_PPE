@@ -8,77 +8,31 @@ namespace Dyslexique.Classes
 {
     public class Mot // Texte, Genre, Classe
     {
-        #region Cours
-        // Attributs
-        private String texte;
-        private String type;
-
-        // Accesseurs de l'attribut Texte
-        public String getTexte()
-        {
-            return this.texte;
-        }
-        public void setTexte(String texte)
-        {
-            this.texte = texte;
-        }
-
-        public String getType()
-        {
-            return this.type;
-        }
-        public void setType(String type)
-        {
-            this.type = type;
-        }
-
-        // Constructeurs
-        public Mot()
-        {
-
-        }
-
-        public Mot(String texte)
-        {
-            this.texte = texte;
-        }
-
-        public Mot(String texte, String type)
-        {
-            this.texte = texte;
-            this.type = type;
-        }
-        #endregion
-
-        #region Nouveau
         private int idMot;
+
         public int IdMot
         {
             get { return idMot; }
             set { idMot = value; }
         }
 
-        private string text;
+        private string texte;
+
         public string Texte
         {
-            get { return text; }
-            set { text = value; }
+            get { return texte; }
+            set { texte = value; }
         }
 
-        private int idClasse;
-        public int IdClasse
+        private Classe classe;
+
+        public Classe Classe
         {
-            get { return idClasse; }
-            set { idClasse = value; }
+            get { return classe; }
+            set { classe = value; }
         }
 
-        private int idGenre;
-        public int IdGenre
-        {
-            get { return idGenre; }
-            set { idGenre = value; }
-        }
-        #endregion
+
 
     }
 }

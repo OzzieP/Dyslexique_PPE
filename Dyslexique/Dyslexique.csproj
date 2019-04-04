@@ -53,6 +53,12 @@
     <Compile Include="ajoutClasse.Designer.cs">
       <DependentUpon>ajoutClasse.cs</DependentUpon>
     </Compile>
+    <Compile Include="ajoutMot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ajoutMot.Designer.cs">
+      <DependentUpon>ajoutMot.cs</DependentUpon>
+    </Compile>
     <Compile Include="ajoutType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ajoutClasse.resx">
       <DependentUpon>ajoutClasse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ajoutMot.resx">
+      <DependentUpon>ajoutMot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ajoutType.resx">
       <DependentUpon>ajoutType.cs</DependentUpon>

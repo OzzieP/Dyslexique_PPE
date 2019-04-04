@@ -1,4 +1,5 @@
-﻿using Dyslexique.DAL;
+﻿using Dyslexique.Classes;
+using Dyslexique.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,21 @@ namespace Dyslexique
         {
             InitializeComponent();
         }
+        public void refreshDataGridView()
+        {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+            List<Types> listTypes = new List<Types>();
+            listTypes = Queries.GetAllType();
+            foreach (Types type in listTypes)
+            {
+                String[] row = new string[]
+           {
+                type.IdType.ToString(), type.Libelle
+           };
+                dataGridView1.Rows.Add(row);
+            }
+        }
         private void ajouter_Click(object sender, EventArgs e)
         {
             string libelle = type.Text;
@@ -28,6 +44,12 @@ namespace Dyslexique
             {
                 Queries.InsertType(libelle.ToString());
             }
+            this.refreshDataGridView();
+        }
+
+        private void ajoutType_Load(object sender, EventArgs e)
+        {
+            this.refreshDataGridView();
         }
     }
 }
