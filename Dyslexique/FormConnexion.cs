@@ -38,9 +38,9 @@ namespace Dyslexique
 
                 if (utilisateur.Pseudo == pseudo)
                 {
-                    FormAccueil accueil = new FormAccueil(utilisateur);
+                    FormAccueil formAccueil = new FormAccueil(utilisateur);
                     this.Hide();
-                    accueil.Show();
+                    formAccueil.Show();
                     //this.Close();
 
                     //this.IsMdiContainer = true;
@@ -57,5 +57,10 @@ namespace Dyslexique
             }
         }
 
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            FormUtilisateur formUtilisateur = new FormUtilisateur();
+            formUtilisateur.Show();
+        }
     }
 }

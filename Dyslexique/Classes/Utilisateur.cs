@@ -8,8 +8,8 @@ namespace Dyslexique.Classes
 {
     public class Utilisateur
     {
-        private int idUtilisateur;
-        public int IdUtilisateur
+        private string idUtilisateur;
+        public string IdUtilisateur
         {
             get { return idUtilisateur; }
             set { idUtilisateur = value; }
@@ -23,12 +23,20 @@ namespace Dyslexique.Classes
         }
 
         // Administrateur = 1 / Utilisateur = 2
-        private int idRole;
-        public int IdRole
+        private string idRole;
+        public string IdRole
         {
             get { return idRole; }
             set { idRole = value; }
         }
+
+        private string role;
+        public string Role
+        {
+            get { return role; }
+            set { role = value; }
+        }
+
 
         public Utilisateur()
         {

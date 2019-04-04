@@ -33,7 +33,7 @@ namespace Dyslexique
             };
             menuStrip1.Items.Add(toolStripLabel1);
 
-            if (this.utilisateur.IdRole == 1)
+            if (this.utilisateur.IdRole == "1")
                 administrationToolStripMenuItem.Visible = true;
             else
                 administrationToolStripMenuItem.Visible = false;
@@ -59,9 +59,9 @@ namespace Dyslexique
                 else
                 {
                     if (radioButton_Administrateur.Checked)
-                        Queries.InsertUtilisateur(pseudo.ToString(), 1);
+                        Queries.InsertUtilisateur(pseudo.ToString(), "1");
                     else if (radioButton_Utilisateur.Checked)
-                        Queries.InsertUtilisateur(pseudo.ToString(), 2);
+                        Queries.InsertUtilisateur(pseudo.ToString(), "2");
 
                     Refresh_DataGridView_Utilisateur();
                 }

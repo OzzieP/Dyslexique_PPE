@@ -24,7 +24,10 @@ namespace Dyslexique.DAL
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"SELECT * FROM Utilisateur";
+                    string query = @"SELECT u.idUtilisateur AS idUtilisateur, u.pseudo AS Pseudo, u.idRole AS idRole, r.libelle AS Rôle
+                                    FROM Utilisateur u
+                                    INNER JOIN Role r ON u.idRole = r.idRole
+                                    ORDER BY Pseudo";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -34,11 +37,13 @@ namespace Dyslexique.DAL
                             {
                                 while (reader.Read())
                                 {
+                                    object abc = reader["idUtilisateur"].GetType();
                                     Utilisateur utilisateur = new Utilisateur
                                     {
-                                        IdUtilisateur = Convert.ToInt32(reader["idUtilisateur"].ToString()),
-                                        Pseudo = reader["pseudo"].ToString(),
-                                        IdRole = Convert.ToInt32(reader["idRole"].ToString())
+                                        IdUtilisateur = reader["idUtilisateur"].ToString(),
+                                        Pseudo = reader["Pseudo"].ToString(),
+                                        IdRole = reader["idRole"].ToString(),
+                                        Role = reader["Rôle"].ToString()
                                     };
 
                                     utilisateurs.Add(utilisateur);
@@ -66,7 +71,10 @@ namespace Dyslexique.DAL
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"SELECT * FROM Utilisateur WHERE pseudo = @Pseudo";
+                    string query = @"SELECT u.idUtilisateur AS idUtilisateur, u.pseudo AS pseudo, u.idRole AS idRole, r.libelle AS role
+                                    FROM Utilisateur u
+                                    INNER JOIN Role r ON u.idRole = r.idRole
+                                    WHERE pseudo = @Pseudo";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -76,9 +84,10 @@ namespace Dyslexique.DAL
                         {
                             if (reader.Read())
                             {
-                                utilisateur.IdUtilisateur = Convert.ToInt32(reader["idUtilisateur"].ToString());
+                                utilisateur.IdUtilisateur = reader["idUtilisateur"].ToString();
                                 utilisateur.Pseudo = reader["pseudo"].ToString();
-                                utilisateur.IdRole = Convert.ToInt32(reader["idRole"].ToString());
+                                utilisateur.IdRole = reader["idRole"].ToString();
+                                utilisateur.Role = reader["role"].ToString();
                             }
                         }
                     }
@@ -93,7 +102,47 @@ namespace Dyslexique.DAL
             }
         }
 
-        public static void InsertUtilisateur(string pseudo, int idRole)
+        public static Utilisateur GetUtilisateurById(string idUtilisateur)
+        {
+            try
+            {
+                Utilisateur utilisateur = new Utilisateur();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT u.idUtilisateur AS idUtilisateur, u.pseudo AS pseudo, u.idRole AS idRole, r.libelle AS role
+                                    FROM Utilisateur u
+                                    INNER JOIN Role r ON u.idRole = r.idRole
+                                    WHERE idUtilisateur = @IdUtilisateur";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(idUtilisateur)));
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                utilisateur.IdUtilisateur = reader["idUtilisateur"].ToString();
+                                utilisateur.Pseudo = reader["pseudo"].ToString();
+                                utilisateur.IdRole = reader["idRole"].ToString();
+                                utilisateur.Role = reader["role"].ToString();
+                            }
+                        }
+                    }
+                }
+
+                return utilisateur;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
+        public static void InsertUtilisateur(string pseudo, string idRole)
         {
             try
             {
@@ -105,7 +154,7 @@ namespace Dyslexique.DAL
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.Add(new SqlParameter("@Pseudo", pseudo));
-                        command.Parameters.Add(new SqlParameter("@IdRole", idRole));
+                        command.Parameters.Add(new SqlParameter("@IdRole", Convert.ToInt32(idRole)));
                         int result = command.ExecuteNonQuery();
 
                         if (result <= 0)
@@ -120,6 +169,65 @@ namespace Dyslexique.DAL
                 MessageBox.Show("Erreur lors de l'insertion de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
+        }
+
+        public static void UpdateUtilisateur(string idUtilisateur, string pseudo, string idRole)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"UPDATE Utilisateur SET pseudo = @Pseudo, idRole = @IdRole WHERE idUtilisateur = @IdUtilisateur";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@Pseudo", pseudo));
+                        command.Parameters.Add(new SqlParameter("@IdRole", Convert.ToInt32(idRole)));
+                        command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(idUtilisateur)));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de la mise à jour de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Utilisateur mis à jour avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de la mise à jour de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
+        public static void DeleteUtilisateur(string idUtilisateur)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"DELETE FROM Utilisateur WHERE idUtilisateur = @IdUtilisateur";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(idUtilisateur)));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de la suppression de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Utilisateur supprimé avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de la suppression de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+
         }
 
         #endregion
@@ -146,10 +254,10 @@ namespace Dyslexique.DAL
                                 {
                                     Mot mot = new Mot
                                     {
-                                        IdMot = Convert.ToInt32(reader["idMot"].ToString()),
+                                        IdMot = reader["idMot"].ToString(),
                                         Texte = reader["texte"].ToString(),
-                                        IdClasse = Convert.ToInt32(reader["idClasse"].ToString())
-                                        //mot.IdGenre = Convert.ToInt32(reader["idGenre"].ToString());
+                                        IdClasse = reader["idClasse"].ToString()
+                                        //mot.IdGenre = reader["idGenre"].ToString());
                                     };
 
                                     listMots.Add(mot);
