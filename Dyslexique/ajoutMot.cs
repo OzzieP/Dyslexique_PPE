@@ -25,7 +25,7 @@ namespace Dyslexique
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
             List<Mot> listMot = new List<Mot>();
-            listMot = Queries.GetAllMot();
+            listMot = Queries.GetAllMotOrderByClasse();
             foreach (Mot mot in listMot)
             {
                 String[] row = new string[]

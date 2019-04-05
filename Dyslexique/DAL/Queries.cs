@@ -81,7 +81,7 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
-        public static List<Mot> GetAllMot()
+        public static List<Mot> GetAllMotOrderByClasse()
         {
             try
             {
@@ -139,7 +139,65 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
-        
+        public static List<Mot> GetAllMotOrderByTexte()
+        {
+            try
+            {
+                List<Mot> listMot = new List<Mot>();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"select idMot,
+                                            texte,
+                                            Mot.idClasse as idClasse,
+                                            Classe.libelle as libelleClasse,
+                                            Classe.idType as idType,
+                                            Type.libelle as libelleType
+                                            from Mot inner join Classe on Mot.idClasse = Classe.idClasse inner join Type on Classe.idType = Type.idType
+                                            order by texte";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Types type = new Types
+                                    {
+                                        IdType = Convert.ToInt32(reader["idType"].ToString()),
+                                        Libelle = reader["libelleType"].ToString()
+                                    };
+                                    Classe classe = new Classe
+                                    {
+                                        IdClasse = Convert.ToInt32(reader["idClasse"].ToString()),
+                                        Libelle = reader["libelleClasse"].ToString(),
+                                        Type = type
+                                    };
+                                    Mot mot = new Mot
+                                    {
+                                        IdMot = Convert.ToInt32(reader["idMot"].ToString()),
+                                        Texte = reader["texte"].ToString(),
+                                        Classe = classe
+                                    };
+                                    listMot.Add(mot);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return listMot;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
 
         #endregion
 

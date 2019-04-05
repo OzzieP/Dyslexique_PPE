@@ -35,5 +35,11 @@ namespace Dyslexique
             ajoutMot btnAjoutMot = new ajoutMot();
             btnAjoutMot.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            PhrasePossederMot btnPhrasePossederMot = new PhrasePossederMot();
+            btnPhrasePossederMot.ShowDialog();
+        }
     }
 }
