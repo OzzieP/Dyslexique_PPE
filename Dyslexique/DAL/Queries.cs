@@ -37,7 +37,6 @@ namespace Dyslexique.DAL
                             {
                                 while (reader.Read())
                                 {
-                                    object abc = reader["idUtilisateur"].GetType();
                                     Utilisateur utilisateur = new Utilisateur
                                     {
                                         IdUtilisateur = reader["idUtilisateur"].ToString(),
@@ -229,7 +228,6 @@ namespace Dyslexique.DAL
             }
 
         }
-
         #endregion
 
         #region Mot
@@ -275,8 +273,72 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
-
         #endregion
 
+        #region Phrase
+        public static void InsertPhrase(Phrase phrase)
+        {
+            string output = string.Empty;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Phrase (texte) OUTPUT inserted.idPhrase VALUES (@Texte)";
+                    string query2 = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, position) VALUES (@IdPhrase, @IdMot, @IdFonction, @Position)";
+
+                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                        {
+                            command.Parameters.Add(new SqlParameter("@Texte", phrase.Texte));
+                            output = command.ExecuteScalar().ToString();
+
+                            if (string.IsNullOrEmpty(output) || string.IsNullOrWhiteSpace(output))
+                            {
+                                transaction.Rollback();
+                                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+
+                        foreach (Mot mot in phrase.Mots)
+                        {
+                            using (SqlCommand command = new SqlCommand(query2, connection, transaction))
+                            {
+                                command.Parameters.Add(new SqlParameter("@IdPhrase", Convert.ToInt32(output)));
+                                command.Parameters.Add(new SqlParameter("@IdMot", Convert.ToInt32(mot.IdMot)));
+                                command.Parameters.Add(new SqlParameter("@IdFonction", Convert.ToInt32(mot.Fonction.IdFonction)));
+                                command.Parameters.Add(new SqlParameter("@Position", Convert.ToInt32(mot.Position)));
+                                int result = command.ExecuteNonQuery();
+
+                                if (result <= 0)
+                                {
+                                    transaction.Rollback();
+                                    MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+
+                        }
+
+                        transaction.Commit();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        #endregion
     }
 }
