@@ -439,5 +439,73 @@ namespace Dyslexique.DAL
 
 
         #endregion
+        #region Fonction
+        public static void InsertFonction(string libelle)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Fonction (libelle) VALUES (@Libelle)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@Libelle", libelle));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de l'insertion de la fonction.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Fonction créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de l'insertion de la fonction.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        public static List<Fonction> GetAllFonction()
+        {
+            try
+            {
+                List<Fonction> listTypes = new List<Fonction>();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * FROM Fonction";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Fonction fonction = new Fonction
+                                    {
+                                        IdFonction = Convert.ToInt32(reader["idFonction"].ToString()),
+                                        Libelle = reader["libelle"].ToString(),
+                                    };
+                                    listTypes.Add(fonction);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return listTypes;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        #endregion
     }
 }
