@@ -38,10 +38,6 @@
             this.gestionDesMotsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesPhrasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView_Utilisateur = new System.Windows.Forms.DataGridView();
-            this.textBox_Pseudo = new System.Windows.Forms.TextBox();
-            this.button_Valider = new System.Windows.Forms.Button();
-            this.radioButton_Administrateur = new System.Windows.Forms.RadioButton();
-            this.radioButton_Utilisateur = new System.Windows.Forms.RadioButton();
             this.utilisateurBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Utilisateur)).BeginInit();
@@ -118,45 +114,6 @@
             this.dataGridView_Utilisateur.Size = new System.Drawing.Size(1364, 587);
             this.dataGridView_Utilisateur.TabIndex = 1;
             // 
-            // textBox_Pseudo
-            // 
-            this.textBox_Pseudo.Location = new System.Drawing.Point(34, 736);
-            this.textBox_Pseudo.Name = "textBox_Pseudo";
-            this.textBox_Pseudo.Size = new System.Drawing.Size(382, 35);
-            this.textBox_Pseudo.TabIndex = 2;
-            // 
-            // button_Valider
-            // 
-            this.button_Valider.Location = new System.Drawing.Point(464, 736);
-            this.button_Valider.Name = "button_Valider";
-            this.button_Valider.Size = new System.Drawing.Size(169, 42);
-            this.button_Valider.TabIndex = 3;
-            this.button_Valider.Text = "Valider";
-            this.button_Valider.UseVisualStyleBackColor = true;
-            this.button_Valider.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // radioButton_Administrateur
-            // 
-            this.radioButton_Administrateur.AutoSize = true;
-            this.radioButton_Administrateur.Location = new System.Drawing.Point(34, 791);
-            this.radioButton_Administrateur.Name = "radioButton_Administrateur";
-            this.radioButton_Administrateur.Size = new System.Drawing.Size(198, 33);
-            this.radioButton_Administrateur.TabIndex = 4;
-            this.radioButton_Administrateur.TabStop = true;
-            this.radioButton_Administrateur.Text = "Administrateur";
-            this.radioButton_Administrateur.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_Utilisateur
-            // 
-            this.radioButton_Utilisateur.AutoSize = true;
-            this.radioButton_Utilisateur.Location = new System.Drawing.Point(265, 791);
-            this.radioButton_Utilisateur.Name = "radioButton_Utilisateur";
-            this.radioButton_Utilisateur.Size = new System.Drawing.Size(151, 33);
-            this.radioButton_Utilisateur.TabIndex = 5;
-            this.radioButton_Utilisateur.TabStop = true;
-            this.radioButton_Utilisateur.Text = "Utilisateur";
-            this.radioButton_Utilisateur.UseVisualStyleBackColor = true;
-            // 
             // utilisateurBindingSource
             // 
             this.utilisateurBindingSource.DataSource = typeof(Dyslexique.Classes.Utilisateur);
@@ -166,10 +123,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1474, 910);
-            this.Controls.Add(this.radioButton_Utilisateur);
-            this.Controls.Add(this.radioButton_Administrateur);
-            this.Controls.Add(this.button_Valider);
-            this.Controls.Add(this.textBox_Pseudo);
             this.Controls.Add(this.dataGridView_Utilisateur);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -197,9 +150,5 @@
         private System.Windows.Forms.ToolStripMenuItem gestionDesPhrasesToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView_Utilisateur;
         private System.Windows.Forms.BindingSource utilisateurBindingSource;
-        private System.Windows.Forms.TextBox textBox_Pseudo;
-        private System.Windows.Forms.Button button_Valider;
-        private System.Windows.Forms.RadioButton radioButton_Administrateur;
-        private System.Windows.Forms.RadioButton radioButton_Utilisateur;
     }
 }

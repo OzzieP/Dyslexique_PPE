@@ -50,9 +50,9 @@
             this.groupBox_InsertUtilisateur = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox_DeleteUtilisateur = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView_AllUtilisateurs = new System.Windows.Forms.DataGridView();
-            this.textBox_DeleteUtilisateur = new System.Windows.Forms.TextBox();
             this.idUtilisateurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pseudoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idRoleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -310,6 +310,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Suppression d\'un utilisateur";
             // 
+            // textBox_DeleteUtilisateur
+            // 
+            this.textBox_DeleteUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_DeleteUtilisateur.Location = new System.Drawing.Point(328, 140);
+            this.textBox_DeleteUtilisateur.Name = "textBox_DeleteUtilisateur";
+            this.textBox_DeleteUtilisateur.ReadOnly = true;
+            this.textBox_DeleteUtilisateur.Size = new System.Drawing.Size(470, 35);
+            this.textBox_DeleteUtilisateur.TabIndex = 5;
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -355,14 +364,6 @@
             this.dataGridView_AllUtilisateurs.Size = new System.Drawing.Size(1092, 1061);
             this.dataGridView_AllUtilisateurs.TabIndex = 0;
             this.dataGridView_AllUtilisateurs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_AllUtilisateurs_CellClick);
-            // 
-            // textBox_DeleteUtilisateur
-            // 
-            this.textBox_DeleteUtilisateur.Location = new System.Drawing.Point(328, 140);
-            this.textBox_DeleteUtilisateur.Name = "textBox_DeleteUtilisateur";
-            this.textBox_DeleteUtilisateur.ReadOnly = true;
-            this.textBox_DeleteUtilisateur.Size = new System.Drawing.Size(470, 41);
-            this.textBox_DeleteUtilisateur.TabIndex = 5;
             // 
             // idUtilisateurDataGridViewTextBoxColumn
             // 
@@ -410,6 +411,7 @@
             this.Name = "FormUtilisateur";
             this.Text = "Gestion des utilisateurs";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormUtilisateur_Load);
             this.groupBox_InsertUtilisateur.ResumeLayout(false);
             this.groupBox_InsertUtilisateur.PerformLayout();
             this.groupBox1.ResumeLayout(false);

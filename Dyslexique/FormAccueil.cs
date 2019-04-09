@@ -41,37 +41,5 @@ namespace Dyslexique
             this.listUtilisateurs = Queries.GetAllUtilisateurs();
             dataGridView_Utilisateur.DataSource = listUtilisateurs;
         }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            string pseudo = textBox_Pseudo.Text;
-
-            if (string.IsNullOrEmpty(pseudo) || string.IsNullOrWhiteSpace(pseudo))
-            {
-                MessageBox.Show("Le champ ne peut pas être vide.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                if (!radioButton_Administrateur.Checked && !radioButton_Utilisateur.Checked)
-                {
-                    MessageBox.Show("Un rôle doit être sélectionné.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    if (radioButton_Administrateur.Checked)
-                        Queries.InsertUtilisateur(pseudo.ToString(), "1");
-                    else if (radioButton_Utilisateur.Checked)
-                        Queries.InsertUtilisateur(pseudo.ToString(), "2");
-
-                    Refresh_DataGridView_Utilisateur();
-                }
-            }
-        }
-
-        private void Refresh_DataGridView_Utilisateur()
-        {
-            this.listUtilisateurs = Queries.GetAllUtilisateurs();
-            dataGridView_Utilisateur.DataSource = listUtilisateurs;
-        }
     }
 }

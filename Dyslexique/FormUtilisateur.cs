@@ -15,18 +15,25 @@ namespace Dyslexique
     public partial class FormUtilisateur : Form
     {
         private List<Utilisateur> listUtilisateurs;
-        private Utilisateur utilisateur = new Utilisateur();
+        private Utilisateur utilisateur;
 
         public FormUtilisateur()
         {
             InitializeComponent();
 
             listUtilisateurs = Queries.GetAllUtilisateurs();
-            dataGridView_AllUtilisateurs.DataSource = listUtilisateurs;
+        }
 
-            textBox_UpdatePseudo.Clear();
+        private void FormUtilisateur_Load(object sender, EventArgs e)
+        {
+            dataGridView_AllUtilisateurs.DataSource = listUtilisateurs;
+            dataGridView_AllUtilisateurs.DefaultCellStyle.Font = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
+
             radioButton_UpdateAdministrateur.Checked = false;
             radioButton_UpdateUtilisateur.Checked = false;
+
+            textBox_DeleteUtilisateur.Enabled = false;
+            button_DeleteUtilisateur.Enabled = false;
         }
 
         private void Refresh_DataGridView_AllUtilisateur()
@@ -37,15 +44,18 @@ namespace Dyslexique
             textBox_InsertPseudo.Clear();
             textBox_UpdatePseudo.Clear();
             textBox_DeleteUtilisateur.Text = string.Empty;
+            textBox_UpdatePseudo.Enabled = false;
+            textBox_DeleteUtilisateur.Enabled = false;
+
             radioButton_InsertAdministrateur.Checked = false;
             radioButton_InsertUtilisateur.Checked = false;
             radioButton_UpdateAdministrateur.Checked = false;
             radioButton_UpdateUtilisateur.Checked = false;
-            textBox_UpdatePseudo.Enabled = false;
             radioButton_UpdateAdministrateur.Enabled = false;
             radioButton_UpdateUtilisateur.Enabled = false;
+
             button_UpdateUtilisateur.Enabled = false;
-            //button_DeleteUtilisateur.Enabled = true;
+            button_DeleteUtilisateur.Enabled = false;
         }
 
         private void Button_InsertUtilisateur_Click(object sender, EventArgs e)
@@ -65,9 +75,9 @@ namespace Dyslexique
                 else
                 {
                     if (radioButton_InsertAdministrateur.Checked)
-                        Queries.InsertUtilisateur(pseudo, "1");
+                        Queries.InsertUtilisateur(pseudo, Consts.Administrateur);
                     else if (radioButton_InsertUtilisateur.Checked)
-                        Queries.InsertUtilisateur(pseudo, "2");
+                        Queries.InsertUtilisateur(pseudo, Consts.Utilisateur);
 
                     Refresh_DataGridView_AllUtilisateur();
                 }
@@ -93,9 +103,9 @@ namespace Dyslexique
                     else
                     {
                         if (radioButton_UpdateAdministrateur.Checked)
-                            Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, "1");
+                            Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, Consts.Administrateur);
                         else if (radioButton_UpdateUtilisateur.Checked)
-                            Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, "2");
+                            Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, Consts.Utilisateur);
 
                         Refresh_DataGridView_AllUtilisateur();
                     }
@@ -110,7 +120,7 @@ namespace Dyslexique
 
         private void Button_DeleteUtilisateur_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Etes-vous sûr de vouloir supprimer l'utilisateur : " + utilisateur.Pseudo + " " + utilisateur.IdUtilisateur +" ?", 
+            DialogResult result = MessageBox.Show("Etes-vous sûr de vouloir supprimer l'utilisateur : " + utilisateur.Pseudo +" ?", 
                 "Attention !", 
                 MessageBoxButtons.YesNo, 
                 MessageBoxIcon.Warning);
@@ -139,23 +149,27 @@ namespace Dyslexique
             else
             {
                 DataGridViewRow selectedRow = dataGridView_AllUtilisateurs.CurrentRow;
-                utilisateur.IdUtilisateur = selectedRow.Cells[0].Value.ToString();
-                utilisateur.Pseudo = selectedRow.Cells[1].Value.ToString();
-                utilisateur.IdRole = selectedRow.Cells[2].Value.ToString();
-                utilisateur.Role = selectedRow.Cells[3].Value.ToString();
+
+                this.utilisateur = new Utilisateur
+                {
+                    IdUtilisateur = selectedRow.Cells[0].Value.ToString(),
+                    Pseudo = selectedRow.Cells[1].Value.ToString(),
+                    IdRole = selectedRow.Cells[2].Value.ToString(),
+                    Role = selectedRow.Cells[3].Value.ToString()
+                };
 
                 textBox_UpdatePseudo.Enabled = true;
                 radioButton_UpdateAdministrateur.Enabled = true;
                 radioButton_UpdateUtilisateur.Enabled = true;
                 button_UpdateUtilisateur.Enabled = true;
-                //button_DeleteUtilisateur.Enabled = true;
+                button_DeleteUtilisateur.Enabled = true;
 
                 textBox_UpdatePseudo.Text = utilisateur.Pseudo;
                 textBox_DeleteUtilisateur.Text = utilisateur.Pseudo;
                 
-                if (utilisateur.IdRole == "1")
+                if (utilisateur.IdRole == Consts.Administrateur)
                     radioButton_UpdateAdministrateur.Checked = true;
-                else if (utilisateur.IdRole == "2")
+                else if (utilisateur.IdRole == Consts.Utilisateur)
                     radioButton_UpdateUtilisateur.Checked = true;
             }
         }

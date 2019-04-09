@@ -14,14 +14,11 @@ namespace Dyslexique
 {
     public partial class FormConnexion : Form
     {
+        Utilisateur utilisateur = new Utilisateur();
+
         public FormConnexion()
         {
             InitializeComponent();
-        }
-
-        private void FormConnexion_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void Button_connexion_Click(object sender, EventArgs e)
@@ -34,7 +31,7 @@ namespace Dyslexique
             }
             else
             {
-                Utilisateur utilisateur = Queries.GetUtilisateurByPseudo(pseudo);
+                this.utilisateur = Queries.GetUtilisateurByPseudo(pseudo);
 
                 if (utilisateur.Pseudo == pseudo)
                 {
@@ -61,6 +58,32 @@ namespace Dyslexique
         {
             FormUtilisateur formUtilisateur = new FormUtilisateur();
             formUtilisateur.Show();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            FormProfil formProfil = new FormProfil();
+            formProfil.Show();
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Mot bonjour = new Mot("Bonjour", "1");
+            Mot je = new Mot("je", "2");
+            Mot mange = new Mot("mange", "3");
+            Mot une = new Mot("une", "4");
+            Mot pomme = new Mot("pomme", "5");
+
+            List<Mot> mots = new List<Mot>();
+            mots.Add(bonjour);
+            mots.Add(je);
+            mots.Add(mange);
+            mots.Add(une);
+            mots.Add(pomme);
+
+            Phrase phrase = new Phrase(mots);
+            FormJeu formJeu = new FormJeu(utilisateur, phrase);
+            formJeu.Show();
         }
     }
 }
