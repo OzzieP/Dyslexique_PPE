@@ -29,13 +29,6 @@ namespace Dyslexique.Classes
             set { idClasse = value; }
         }
 
-        private Types types;
-        public Types Types
-        {
-            get { return types; }
-            set { types = value; }
-        }
-
         private Classe classe;
         public Classe Classe
         {
@@ -66,6 +59,8 @@ namespace Dyslexique.Classes
         {
             this.Texte = texte;
             this.Position = position;
+            this.classe = new Classe();
+            this.fonction = new Fonction();
         }
 
         public Mot(string id, string texte, Fonction fonction, string position)
@@ -74,6 +69,8 @@ namespace Dyslexique.Classes
             this.Texte = texte;
             this.Fonction = fonction;
             this.Position = position;
+            this.classe = new Classe();
+            //this.fonction = new Fonction();
         }
 
     }

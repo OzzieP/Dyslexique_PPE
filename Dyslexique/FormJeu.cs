@@ -28,48 +28,18 @@ namespace Dyslexique
 
             this.utilisateur = utilisateur;
             this.phrase = phrase;
+            //this.phrase = Queries.GetPhraseById(phrase.IdPhrase);
         }
 
         private void FormJeu_Load(object sender, EventArgs e)
         {
             label_Consigne.Text = this.phrase.Consigne;
-
-            Fonction fonction = new Fonction("1", "Sujet");
-
-            Mot mot = new Mot("1", "Bonjour", fonction, "1");
-            Mot mot1 = new Mot("2", "Paris", fonction, "2");
-            //Mot mot2 = new Mot("ça", fonction, "3");
-            //Mot mot3 = new Mot("va", fonction, "4");
-
-            List<Mot> listMots = new List<Mot>();
-            listMots.Add(mot);
-            listMots.Add(mot1);
-            //listMots.Add(mot2);
-            //listMots.Add(mot3);
-
-            Phrase phrase = new Phrase(listMots);
-
-            phrase.Afficher(this);
+            this.phrase.Afficher(this);
         }
 
-        private void CheckType(Mot mot)
-        {
+        //private bool UserHasWon()
+        //{
 
-        }
-
-        private void CheckClasse(Mot mot)
-        {
-
-        }
-
-        private void CheckFonction(Mot mot)
-        {
-
-        }
-
-        private bool UserHasWon()
-        {
-
-        }
+        //}
     }
 }

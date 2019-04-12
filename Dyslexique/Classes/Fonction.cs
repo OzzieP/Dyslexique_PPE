@@ -22,6 +22,11 @@ namespace Dyslexique.Classes
             set { libelle = value; }
         }
 
+        public Fonction()
+        {
+
+        }
+
         public Fonction(string idFonction, string libelle)
         {
             this.IdFonction = idFonction;

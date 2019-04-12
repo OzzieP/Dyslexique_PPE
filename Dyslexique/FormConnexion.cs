@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,6 +67,8 @@ namespace Dyslexique
             formProfil.Show();
         }
 
+
+        // Fonction pour commencer le jeu
         private void Button3_Click(object sender, EventArgs e)
         {
             Mot bonjour = new Mot("Bonjour", "1");
@@ -81,9 +84,46 @@ namespace Dyslexique
             mots.Add(une);
             mots.Add(pomme);
 
-            Phrase phrase = new Phrase(mots);
+            Phrase phrase = new Phrase
+            {
+                IdPhrase = "1",
+                Consigne = "Trouver le mot ayant pour classe : Nom.",
+                Mots = mots,
+                Texte = "Bonjour je mange une pomme"
+            };
+
+            List<Phrase> listPhrases = new List<Phrase>();
+
             FormJeu formJeu = new FormJeu(utilisateur, phrase);
             formJeu.Show();
         }
+
+        //private void Button3_Click(object sender, EventArgs e)
+        //{
+        //    Mot bonjour = new Mot("Bonjour", "1");
+        //    Mot je = new Mot("je", "2");
+        //    Mot mange = new Mot("mange", "3");
+        //    Mot une = new Mot("une", "4");
+        //    Mot pomme = new Mot("pomme", "5");
+
+        //    List<Mot> mots = new List<Mot>();
+        //    mots.Add(bonjour);
+        //    mots.Add(je);
+        //    mots.Add(mange);
+        //    mots.Add(une);
+        //    mots.Add(pomme);
+
+        //    Phrase phrase = new Phrase
+        //    {
+        //        IdPhrase = "1",
+        //        Consigne = "Trouver le mot ayant pour classe : Nom.",
+        //        Mots = mots,
+        //        Texte = "Bonjour je mange une pomme"
+        //    };
+
+        //    FormJeu formJeu = new FormJeu(utilisateur, phrase);
+        //    formJeu.Show();
+        //}
+
     }
 }
