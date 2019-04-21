@@ -14,32 +14,51 @@ namespace Dyslexique
 {
     public partial class FormJeu : Form
     {
-        private Utilisateur utilisateur;
         private Phrase phrase;
+
+        private List<Phrase> phrases = new List<Phrase>();
+        private List<Phrase> phrasesSelectionnees = new List<Phrase>();
 
         public FormJeu()
         {
             InitializeComponent();
+
+            this.phrases = Queries.GetAllPhrasesNonReussies();
         }
 
-        public FormJeu(Utilisateur utilisateur, Phrase phrase)
+        public FormJeu(Phrase phrase)
         {
             InitializeComponent();
 
-            this.utilisateur = utilisateur;
             this.phrase = phrase;
-            //this.phrase = Queries.GetPhraseById(phrase.IdPhrase);
         }
 
         private void FormJeu_Load(object sender, EventArgs e)
         {
-            label_Consigne.Text = this.phrase.Consigne;
-            this.phrase.Afficher(this);
+            Random random = new Random();
+            int[] indexes = new int[5];
+            //int x = 0;
+
+            for (int i = 0; i < indexes.Length; i++)
+            {
+                indexes[i] = random.Next(0, this.phrases.Count);
+            }
+
+            //while (x < 5)
+            //{
+            //    indexes[x] = random.Next(0, this.phrases.Count);
+            //    x++;
+            //}
+
+            for (int i = 0; i < indexes.Length; i++)
+            {
+                phrasesSelectionnees.Add(phrases.ElementAt(i));
+            }
+
+            var abc = phrasesSelectionnees;
+            //label_Consigne.Text = this.phrase.Consigne;
+            //this.phrase.Afficher(this, this.phrase);
         }
-
-        //private bool UserHasWon()
-        //{
-
-        //}
     }
+
 }

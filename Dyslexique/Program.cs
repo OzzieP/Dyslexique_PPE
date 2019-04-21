@@ -17,7 +17,9 @@ namespace Dyslexique
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormConnexion());
+            //Application.Run(new FormConnexion());
+            //Dyslexique.Classes.Phrase phrase = DAL.Queries.GetPhraseById("1");
+            Application.Run(new FormJeu());
             //Application.Run(new MainForm());
         }
     }

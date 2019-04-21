@@ -75,9 +75,9 @@ namespace Dyslexique
                 else
                 {
                     if (radioButton_InsertAdministrateur.Checked)
-                        Queries.InsertUtilisateur(pseudo, Consts.Administrateur);
+                        Queries.InsertUtilisateur(pseudo, Global.ROLE_ADMINISTRATEUR);
                     else if (radioButton_InsertUtilisateur.Checked)
-                        Queries.InsertUtilisateur(pseudo, Consts.Utilisateur);
+                        Queries.InsertUtilisateur(pseudo, Global.ROLE_UTILISATEUR);
 
                     Refresh_DataGridView_AllUtilisateur();
                 }
@@ -103,9 +103,9 @@ namespace Dyslexique
                     else
                     {
                         if (radioButton_UpdateAdministrateur.Checked)
-                            Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, Consts.Administrateur);
+                            Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, Global.ROLE_ADMINISTRATEUR);
                         else if (radioButton_UpdateUtilisateur.Checked)
-                            Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, Consts.Utilisateur);
+                            Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, Global.ROLE_UTILISATEUR);
 
                         Refresh_DataGridView_AllUtilisateur();
                     }
@@ -167,9 +167,9 @@ namespace Dyslexique
                 textBox_UpdatePseudo.Text = utilisateur.Pseudo;
                 textBox_DeleteUtilisateur.Text = utilisateur.Pseudo;
                 
-                if (utilisateur.IdRole == Consts.Administrateur)
+                if (utilisateur.IdRole == Global.ROLE_ADMINISTRATEUR)
                     radioButton_UpdateAdministrateur.Checked = true;
-                else if (utilisateur.IdRole == Consts.Utilisateur)
+                else if (utilisateur.IdRole == Global.ROLE_UTILISATEUR)
                     radioButton_UpdateUtilisateur.Checked = true;
             }
         }

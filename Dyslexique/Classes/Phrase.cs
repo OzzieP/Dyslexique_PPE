@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dyslexique.UI.CustomControls;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -38,17 +39,39 @@ namespace Dyslexique.Classes
             set { consigne = value; }
         }
 
-        private string tentative;
-        public string Tentative
+        private Mot motATrouver;
+        public Mot MotATrouver
+        {
+            get { return motATrouver; }
+            set { motATrouver = value; }
+        }
+
+        private int tentative;
+        public int Tentative
         {
             get { return tentative; }
             set { tentative = value; }
+        }
+
+        private DateTime? dateDerniereTentative;
+        public DateTime? DateDerniereTentative
+        {
+            get { return dateDerniereTentative; }
+            set { dateDerniereTentative = value; }
+        }
+
+        private bool aEteReussie;
+        public bool AEteReussie
+        {
+            get { return aEteReussie; }
+            set { aEteReussie = value; }
         }
 
 
         public Phrase()
         {
             this.mots = new List<Mot>();
+            this.motATrouver = new Mot();
         }
 
         public Phrase(List<Mot> listMots)
@@ -62,13 +85,13 @@ namespace Dyslexique.Classes
         }
 
 
-        public void Afficher(FormJeu formJeu)
+        public void Afficher(FormJeu formJeu, Phrase phrase)
         {
             int x = 0;
 
             foreach (Mot mot in mots)
             {
-                CustomLabel customLabel = new CustomLabel(mot, x);
+                CustomLabel customLabel = new CustomLabel(mot, phrase, x);
 
                 SizeF stringSize = new SizeF();
                 Graphics g = formJeu.CreateGraphics();

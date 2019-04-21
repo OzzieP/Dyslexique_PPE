@@ -54,26 +54,27 @@
             this.administrationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1474, 45);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(632, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // profilToolStripMenuItem
             // 
             this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(113, 41);
+            this.profilToolStripMenuItem.Size = new System.Drawing.Size(58, 22);
             this.profilToolStripMenuItem.Text = "Accueil";
             // 
             // profilToolStripMenuItem1
             // 
             this.profilToolStripMenuItem1.Name = "profilToolStripMenuItem1";
-            this.profilToolStripMenuItem1.Size = new System.Drawing.Size(91, 41);
+            this.profilToolStripMenuItem1.Size = new System.Drawing.Size(47, 22);
             this.profilToolStripMenuItem1.Text = "Profil";
             // 
             // testsToolStripMenuItem
             // 
             this.testsToolStripMenuItem.Name = "testsToolStripMenuItem";
-            this.testsToolStripMenuItem.Size = new System.Drawing.Size(85, 41);
+            this.testsToolStripMenuItem.Size = new System.Drawing.Size(45, 22);
             this.testsToolStripMenuItem.Text = "Tests";
             // 
             // administrationToolStripMenuItem
@@ -83,35 +84,36 @@
             this.gestionDesMotsToolStripMenuItem,
             this.gestionDesPhrasesToolStripMenuItem});
             this.administrationToolStripMenuItem.Name = "administrationToolStripMenuItem";
-            this.administrationToolStripMenuItem.Size = new System.Drawing.Size(204, 41);
+            this.administrationToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.administrationToolStripMenuItem.Text = "Administration";
             // 
             // gestionDesUtilisateursToolStripMenuItem
             // 
             this.gestionDesUtilisateursToolStripMenuItem.Name = "gestionDesUtilisateursToolStripMenuItem";
-            this.gestionDesUtilisateursToolStripMenuItem.Size = new System.Drawing.Size(402, 42);
+            this.gestionDesUtilisateursToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.gestionDesUtilisateursToolStripMenuItem.Text = "Gestion des Utilisateurs";
             // 
             // gestionDesMotsToolStripMenuItem
             // 
             this.gestionDesMotsToolStripMenuItem.Name = "gestionDesMotsToolStripMenuItem";
-            this.gestionDesMotsToolStripMenuItem.Size = new System.Drawing.Size(402, 42);
+            this.gestionDesMotsToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.gestionDesMotsToolStripMenuItem.Text = "Gestion des Mots";
             // 
             // gestionDesPhrasesToolStripMenuItem
             // 
             this.gestionDesPhrasesToolStripMenuItem.Name = "gestionDesPhrasesToolStripMenuItem";
-            this.gestionDesPhrasesToolStripMenuItem.Size = new System.Drawing.Size(402, 42);
+            this.gestionDesPhrasesToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.gestionDesPhrasesToolStripMenuItem.Text = "Gestion des Phrases";
             // 
             // dataGridView_Utilisateur
             // 
             this.dataGridView_Utilisateur.AllowUserToOrderColumns = true;
             this.dataGridView_Utilisateur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Utilisateur.Location = new System.Drawing.Point(34, 91);
+            this.dataGridView_Utilisateur.Location = new System.Drawing.Point(15, 41);
+            this.dataGridView_Utilisateur.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.dataGridView_Utilisateur.Name = "dataGridView_Utilisateur";
             this.dataGridView_Utilisateur.RowTemplate.Height = 37;
-            this.dataGridView_Utilisateur.Size = new System.Drawing.Size(1364, 587);
+            this.dataGridView_Utilisateur.Size = new System.Drawing.Size(585, 263);
             this.dataGridView_Utilisateur.TabIndex = 1;
             // 
             // utilisateurBindingSource
@@ -120,15 +122,17 @@
             // 
             // FormAccueil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1474, 910);
+            this.ClientSize = new System.Drawing.Size(632, 408);
             this.Controls.Add(this.dataGridView_Utilisateur);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "FormAccueil";
             this.Text = "Page d\'accueil";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormAccueil_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Utilisateur)).EndInit();

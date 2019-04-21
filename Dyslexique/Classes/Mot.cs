@@ -50,6 +50,14 @@ namespace Dyslexique.Classes
             set { position = value; }
         }
 
+        private bool estATrouver;
+        public bool EstATrouver
+        {
+            get { return estATrouver; }
+            set { estATrouver = value; }
+        }
+
+
         public Mot()
         {
 
