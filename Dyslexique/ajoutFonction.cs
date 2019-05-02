@@ -1,4 +1,5 @@
-﻿using Dyslexique.DAL;
+﻿using Dyslexique.Classes;
+using Dyslexique.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,21 @@ namespace Dyslexique
         {
             InitializeComponent();
         }
+        public void refreshDataGridView()
+        {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+            List<Fonction> listFonction = new List<Fonction>();
+            listFonction = Queries.GetAllFonction();
+            foreach (Fonction fonction in listFonction)
+            {
+                String[] row = new string[]
+           {
+                fonction.IdFonction.ToString(), fonction.Libelle
+           };
+                dataGridView1.Rows.Add(row);
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -29,6 +45,12 @@ namespace Dyslexique
             {
                 Queries.InsertFonction(libelle.ToString());
             }
+            this.refreshDataGridView();
+        }
+
+        private void ajoutFonction_Load(object sender, EventArgs e)
+        {
+            this.refreshDataGridView();
         }
     }
 }

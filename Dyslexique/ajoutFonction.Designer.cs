@@ -95,6 +95,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ajoutFonction";
             this.Text = "ajoutFonction";
+            this.Load += new System.EventHandler(this.ajoutFonction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

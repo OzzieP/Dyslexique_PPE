@@ -507,5 +507,101 @@ namespace Dyslexique.DAL
             }
         }
         #endregion
+        #region Phrase
+        public static void InsertPhrase(string phrase, string consigne)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Phrase (texte, consigne) VALUES (@Texte, @Consigne)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@Texte", phrase));
+                        command.Parameters.Add(new SqlParameter("@Consigne", consigne));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        public static List<int> GetLastIdPhrase()
+        {
+            try
+            {
+                List<int> id = new List<int>();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"select top 1 idPhrase from Phrase order by idPhrase desc";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                        int idPhrase = Convert.ToInt32(reader["idPhrase"].ToString());
+                                        id.Add(idPhrase);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return id;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        public static void InsertPhrasePossederMot(int idPhrase, int idMot, int idFonction, int position, bool motATrouver)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, Position, motATrouver) VALUES (@idPhrase, @idMot, @idFonction, @Position, @motATrouver)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@idPhrase", idPhrase));
+                        command.Parameters.Add(new SqlParameter("@idMot", idMot));
+                        command.Parameters.Add(new SqlParameter("@idFonction", idFonction));
+                        command.Parameters.Add(new SqlParameter("@Position", position));
+                        command.Parameters.Add(new SqlParameter("@motATrouver", motATrouver));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        #endregion
     }
 }

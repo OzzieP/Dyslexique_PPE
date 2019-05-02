@@ -74,6 +74,7 @@
     <Compile Include="Classes\Classe.cs" />
     <Compile Include="Classes\Fonction.cs" />
     <Compile Include="Classes\Mot.cs" />
+    <Compile Include="Classes\Phrase.cs" />
     <Compile Include="Classes\Types.cs" />
     <Compile Include="Classes\Utilisateur.cs" />
     <Compile Include="DAL\Queries.cs" />
@@ -88,6 +89,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="PhrasePossederMot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +115,13 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\Dyslexique.ajoutClasse.resources" />
+    <EmbeddedResource Include="obj\Debug\Dyslexique.ajoutFonction.resources" />
+    <EmbeddedResource Include="obj\Debug\Dyslexique.ajoutMot.resources" />
+    <EmbeddedResource Include="obj\Debug\Dyslexique.ajoutType.resources" />
+    <EmbeddedResource Include="obj\Debug\Dyslexique.Form1.resources" />
+    <EmbeddedResource Include="obj\Debug\Dyslexique.PhrasePossederMot.resources" />
+    <EmbeddedResource Include="obj\Debug\Dyslexique.Properties.Resources.resources" />
     <EmbeddedResource Include="PhrasePossederMot.resx">
       <DependentUpon>PhrasePossederMot.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +146,12 @@
     <None Include="DyslexiqueDataSet.xss">
       <DependentUpon>DyslexiqueDataSet.xsd</DependentUpon>
     </None>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\Dyslexique.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\Dyslexique.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\Dyslexique.csprojAssemblyReference.cache" />
+    <None Include="obj\Release\Dyslexique.csproj.CoreCompileInputs.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,6 +165,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="obj\Debug\Dyslexique.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Dyslexique.exe" />
+    <Content Include="obj\Debug\Dyslexique.pdb" />
+    <Content Include="obj\Debug\TempPE\DyslexiqueDataSet.Designer.cs.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
