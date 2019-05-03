@@ -14,8 +14,6 @@ namespace Dyslexique.UI
 {
     public partial class MainForm : Form
     {
-        GestionUtilisateur gestionUtilisateur;
-
         /* Attributs/fonctions permettant le déplacement de la Form */
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -29,13 +27,7 @@ namespace Dyslexique.UI
         {
             InitializeComponent();
 
-            this.gestionUtilisateur = new GestionUtilisateur
-            {
-                Dock = DockStyle.Fill,
-                Name = "gestionUtilisateur"
-            };
-            this.Controls.Add(gestionUtilisateur);
-
+            // A SUPPRIMER
             Utilisateur utilisateur = new Utilisateur
             {
                 Pseudo = "Brendan",
@@ -44,15 +36,10 @@ namespace Dyslexique.UI
             Global.Utilisateur = utilisateur;
         }
 
-        private void Button_QuitterApplication_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
+            label_Title.Text = "Accueil";
             label_Pseudo.Text = Global.Utilisateur.Pseudo;
-            label_Title.Text = gestionUtilisateur.Title;
 
             if (Global.Utilisateur.IdRole == Global.ROLE_UTILISATEUR)
             {
@@ -65,13 +52,6 @@ namespace Dyslexique.UI
             }
         }
 
-        private void button_Menu_Accueil_Click(object sender, EventArgs e)
-        {
-            GestionUtilisateur gestionUtilisateur = new GestionUtilisateur();
-            gestionUtilisateur.BringToFront();
-            label_Title.Text = gestionUtilisateur.Title;
-        }
-
         // Fonction permettant de déplacer la Form
         private void PanelHeader_MouseDown(object sender, MouseEventArgs e)
         {
@@ -80,6 +60,40 @@ namespace Dyslexique.UI
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        // Fonction pour quitter et arrêter l'application
+        private void Button_QuitterApplication_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+        // Fonction pour afficher la page de gestion des utilisateurs
+        private void Button_Menu_Accueil_Click(object sender, EventArgs e)
+        {
+            GestionUtilisateur gestionUtilisateur = new GestionUtilisateur()
+            {
+                Dock = DockStyle.Fill,
+                Name = "gestionUtilisateur"
+            };
+            this.Controls.Add(gestionUtilisateur);
+            gestionUtilisateur.BringToFront();
+            label_Title.Text = gestionUtilisateur.Title;
+        }
+
+        // Fonction pour afficher la page de tests
+        private void Button_Menu_Tests_Click(object sender, EventArgs e)
+        {
+            Jeu jeu = new Jeu()
+            {
+                Dock = DockStyle.Fill,
+                Name = "jeu"
+            };
+
+            this.Controls.Add(jeu);
+            jeu.BringToFront();
+            label_Title.Text = jeu.Title;
         }
     }
 }

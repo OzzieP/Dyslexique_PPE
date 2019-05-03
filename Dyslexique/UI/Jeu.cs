@@ -12,34 +12,53 @@ using Dyslexique.DAL;
 
 namespace Dyslexique.UI
 {
-    public partial class Tests : UserControl
+    public partial class Jeu : UserControl
     {
-        private List<Phrase> phrases = new List<Phrase>();
-        private List<Phrase> phrasesSelectionnes = new List<Phrase>();
+        public string Title = "Passer les tests";
+        public bool utilisateurAJouer = false;
+        private Phrase phraseSelectionnee;
 
-        public Tests()
+        public Jeu()
         {
             InitializeComponent();
-
-            this.phrases = Queries.GetAllPhrasesNonReussies();
         }
 
         private void Jeu_Load(object sender, EventArgs e)
         {
-            Random random = new Random();
-            int[] indexes = new int[5];
-            int x = 0;
-
-            while (x < 5)
-            {
-                indexes[x] = random.Next(this.phrases.Count);
-                x++;
-            }
-
-            for (int i = 0; i < indexes.Length; i++)
-            {
-                phrasesSelectionnes.Add(phrases.ElementAt(i));
-            }
+            DisplayPhrase();
         }
+
+        private void Button_PhrasePrecedente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button_PhraseSuivante_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //private void DisplayPhrase()
+        //{
+        //    Random random = new Random();
+        //    int randomIndex = random.Next(Global.phrasesNonReussies.Count);
+        //    Phrase phraseSelectionnee = Global.phrasesNonReussies.ElementAt(randomIndex);
+
+        //    label_Consigne.Text += phraseSelectionnee.Consigne;
+        //    phraseSelectionnee.Afficher(this, phraseSelectionnee);
+        //    label_Tentatives.Text += phraseSelectionnee.Tentative.ToString();
+        //}
+
+        public void DisplayPhrase()
+        {
+            Random random = new Random();
+            int randomIndex = random.Next(Global.phrasesNonReussies.Count);
+            this.phraseSelectionnee = Global.phrasesNonReussies.ElementAt(randomIndex);
+
+            label_Consigne.Text += phraseSelectionnee.Consigne;
+            phraseSelectionnee.Afficher(this, phraseSelectionnee);
+            label_Tentatives.Text += phraseSelectionnee.Tentative.ToString();
+        }
+
     }
 }

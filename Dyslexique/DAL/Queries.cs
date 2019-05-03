@@ -392,8 +392,8 @@ namespace Dyslexique.DAL
                     // Récupération de toutes les phrases non réussies
                     using (SqlCommand command = new SqlCommand(queryPhrasesNonReussies, connection))
                     {
-                        //command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(Global.Utilisateur.IdUtilisateur)));
-                        command.Parameters.Add(new SqlParameter("@IdUtilisateur", 1));
+                        command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(Global.Utilisateur.IdUtilisateur)));
+                        //command.Parameters.Add(new SqlParameter("@IdUtilisateur", 1));
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {

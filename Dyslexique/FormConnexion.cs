@@ -148,17 +148,10 @@ namespace Dyslexique
 
                 if (Global.Utilisateur.Pseudo == pseudo)
                 {
+                    Global.phrasesNonReussies = Queries.GetAllPhrasesNonReussies();
                     FormAccueil formAccueil = new FormAccueil();
                     this.Hide();
                     formAccueil.Show();
-                    //this.Close();
-
-                    //this.IsMdiContainer = true;
-                    //Accueil accueil = new Accueil(utilisateur)
-                    //{
-                    //    MdiParent = this
-                    //};
-                    //accueil.Show();
                 }
                 else
                 {
@@ -183,31 +176,14 @@ namespace Dyslexique
         // Fonction pour commencer le jeu
         private void Button3_Click(object sender, EventArgs e)
         {
-            Mot bonjour = new Mot("Bonjour", "1");
-            Mot je = new Mot("je", "2");
-            Mot mange = new Mot("mange", "3");
-            Mot une = new Mot("une", "4");
-            Mot pomme = new Mot("pomme", "5");
-
-            List<Mot> mots = new List<Mot>();
-            mots.Add(bonjour);
-            mots.Add(je);
-            mots.Add(mange);
-            mots.Add(une);
-            mots.Add(pomme);
-
-            Phrase phrase = new Phrase
+            Utilisateur utilisateur = new Utilisateur
             {
-                IdPhrase = "1",
-                Consigne = "Trouver le mot ayant pour classe : Nom.",
-                Mots = mots,
-                Texte = "Bonjour je mange une pomme"
+                Pseudo = "Brendan",
+                IdRole = "1"
             };
+            Global.Utilisateur = utilisateur;
 
-            List<Phrase> listPhrases = new List<Phrase>();
-
-            //FormJeu formJeu = new FormJeu(Global.utilisateur, phrase);
-            FormJeu formJeu = new FormJeu(phrase);
+            FormJeu formJeu = new FormJeu();
             formJeu.Show();
         }
     }

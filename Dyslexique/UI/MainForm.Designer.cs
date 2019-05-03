@@ -70,9 +70,9 @@
             this.panel_Header.Controls.Add(this.pictureBox1);
             this.panel_Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Header.Location = new System.Drawing.Point(0, 0);
-            this.panel_Header.Margin = new System.Windows.Forms.Padding(1);
+            this.panel_Header.Margin = new System.Windows.Forms.Padding(2);
             this.panel_Header.Name = "panel_Header";
-            this.panel_Header.Size = new System.Drawing.Size(1703, 67);
+            this.panel_Header.Size = new System.Drawing.Size(3872, 149);
             this.panel_Header.TabIndex = 0;
             this.panel_Header.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelHeader_MouseDown);
             // 
@@ -80,9 +80,10 @@
             // 
             this.label_Title.AutoSize = true;
             this.label_Title.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Title.Location = new System.Drawing.Point(470, 11);
+            this.label_Title.Location = new System.Drawing.Point(1692, 25);
+            this.label_Title.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label_Title.Name = "label_Title";
-            this.label_Title.Size = new System.Drawing.Size(217, 39);
+            this.label_Title.Size = new System.Drawing.Size(488, 88);
             this.label_Title.TabIndex = 7;
             this.label_Title.Text = "Titre de la page";
             // 
@@ -90,9 +91,10 @@
             // 
             this.pictureBox_Administrateur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_Administrateur.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Administrateur.Image")));
-            this.pictureBox_Administrateur.Location = new System.Drawing.Point(1340, 0);
+            this.pictureBox_Administrateur.Location = new System.Drawing.Point(3025, 0);
+            this.pictureBox_Administrateur.Margin = new System.Windows.Forms.Padding(7);
             this.pictureBox_Administrateur.Name = "pictureBox_Administrateur";
-            this.pictureBox_Administrateur.Size = new System.Drawing.Size(69, 67);
+            this.pictureBox_Administrateur.Size = new System.Drawing.Size(161, 149);
             this.pictureBox_Administrateur.TabIndex = 6;
             this.pictureBox_Administrateur.TabStop = false;
             this.pictureBox_Administrateur.Visible = false;
@@ -101,9 +103,10 @@
             // 
             this.pictureBox_Utilisateur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_Utilisateur.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Utilisateur.Image")));
-            this.pictureBox_Utilisateur.Location = new System.Drawing.Point(1340, 0);
+            this.pictureBox_Utilisateur.Location = new System.Drawing.Point(3025, 0);
+            this.pictureBox_Utilisateur.Margin = new System.Windows.Forms.Padding(7);
             this.pictureBox_Utilisateur.Name = "pictureBox_Utilisateur";
-            this.pictureBox_Utilisateur.Size = new System.Drawing.Size(69, 67);
+            this.pictureBox_Utilisateur.Size = new System.Drawing.Size(161, 149);
             this.pictureBox_Utilisateur.TabIndex = 5;
             this.pictureBox_Utilisateur.TabStop = false;
             this.pictureBox_Utilisateur.Visible = false;
@@ -114,9 +117,10 @@
             this.label_Pseudo.AutoSize = true;
             this.label_Pseudo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Pseudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label_Pseudo.Location = new System.Drawing.Point(1416, 20);
+            this.label_Pseudo.Location = new System.Drawing.Point(3202, 45);
+            this.label_Pseudo.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label_Pseudo.Name = "label_Pseudo";
-            this.label_Pseudo.Size = new System.Drawing.Size(77, 22);
+            this.label_Pseudo.Size = new System.Drawing.Size(176, 52);
             this.label_Pseudo.TabIndex = 4;
             this.label_Pseudo.Text = "Pseudo";
             // 
@@ -128,10 +132,10 @@
             this.button_QuitterApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_QuitterApplication.ForeColor = System.Drawing.SystemColors.Control;
             this.button_QuitterApplication.Image = ((System.Drawing.Image)(resources.GetObject("button_QuitterApplication.Image")));
-            this.button_QuitterApplication.Location = new System.Drawing.Point(1641, 0);
-            this.button_QuitterApplication.Margin = new System.Windows.Forms.Padding(1);
+            this.button_QuitterApplication.Location = new System.Drawing.Point(3727, 0);
+            this.button_QuitterApplication.Margin = new System.Windows.Forms.Padding(2);
             this.button_QuitterApplication.Name = "button_QuitterApplication";
-            this.button_QuitterApplication.Size = new System.Drawing.Size(61, 66);
+            this.button_QuitterApplication.Size = new System.Drawing.Size(142, 147);
             this.button_QuitterApplication.TabIndex = 3;
             this.button_QuitterApplication.UseVisualStyleBackColor = true;
             this.button_QuitterApplication.Click += new System.EventHandler(this.Button_QuitterApplication_Click);
@@ -141,10 +145,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri Light", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label2.Location = new System.Drawing.Point(88, 37);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label2.Location = new System.Drawing.Point(205, 83);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.Size = new System.Drawing.Size(195, 29);
             this.label2.TabIndex = 2;
             this.label2.Text = "Créé par Simpléduc";
             // 
@@ -153,10 +157,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(84, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label1.Location = new System.Drawing.Point(196, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 36);
+            this.label1.Size = new System.Drawing.Size(439, 82);
             this.label1.TabIndex = 1;
             this.label1.Text = "Dyslexique";
             // 
@@ -164,9 +168,9 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 67);
+            this.pictureBox1.Size = new System.Drawing.Size(191, 149);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -181,10 +185,10 @@
             this.panel2.Controls.Add(this.button_Menu_Tests);
             this.panel2.Controls.Add(this.button_Menu_Accueil);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 67);
-            this.panel2.Margin = new System.Windows.Forms.Padding(1);
+            this.panel2.Location = new System.Drawing.Point(0, 149);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(180, 773);
+            this.panel2.Size = new System.Drawing.Size(420, 1725);
             this.panel2.TabIndex = 1;
             // 
             // panel_Administration
@@ -193,9 +197,10 @@
             this.panel_Administration.Controls.Add(this.panel4);
             this.panel_Administration.Controls.Add(this.label5);
             this.panel_Administration.Controls.Add(this.button_Menu_Utilisateurs);
-            this.panel_Administration.Location = new System.Drawing.Point(0, 345);
+            this.panel_Administration.Location = new System.Drawing.Point(0, 770);
+            this.panel_Administration.Margin = new System.Windows.Forms.Padding(7);
             this.panel_Administration.Name = "panel_Administration";
-            this.panel_Administration.Size = new System.Drawing.Size(180, 232);
+            this.panel_Administration.Size = new System.Drawing.Size(420, 518);
             this.panel_Administration.TabIndex = 2;
             this.panel_Administration.Visible = false;
             // 
@@ -208,10 +213,10 @@
             this.button_Menu_Phrases.ForeColor = System.Drawing.Color.White;
             this.button_Menu_Phrases.Image = ((System.Drawing.Image)(resources.GetObject("button_Menu_Phrases.Image")));
             this.button_Menu_Phrases.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Menu_Phrases.Location = new System.Drawing.Point(0, 91);
-            this.button_Menu_Phrases.Margin = new System.Windows.Forms.Padding(1);
+            this.button_Menu_Phrases.Location = new System.Drawing.Point(0, 203);
+            this.button_Menu_Phrases.Margin = new System.Windows.Forms.Padding(2);
             this.button_Menu_Phrases.Name = "button_Menu_Phrases";
-            this.button_Menu_Phrases.Size = new System.Drawing.Size(180, 50);
+            this.button_Menu_Phrases.Size = new System.Drawing.Size(420, 112);
             this.button_Menu_Phrases.TabIndex = 7;
             this.button_Menu_Phrases.Text = "    Phrases";
             this.button_Menu_Phrases.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -220,20 +225,22 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(0, 34);
+            this.panel4.Location = new System.Drawing.Point(0, 76);
+            this.panel4.Margin = new System.Windows.Forms.Padding(7);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(180, 10);
+            this.panel4.Size = new System.Drawing.Size(420, 22);
             this.panel4.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font = new System.Drawing.Font("Open Sans Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(8, 3);
+            this.label5.Location = new System.Drawing.Point(36, 0);
+            this.label5.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(163, 28);
+            this.label5.Size = new System.Drawing.Size(341, 55);
             this.label5.TabIndex = 5;
             this.label5.Text = "Administration";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -247,10 +254,10 @@
             this.button_Menu_Utilisateurs.ForeColor = System.Drawing.Color.White;
             this.button_Menu_Utilisateurs.Image = ((System.Drawing.Image)(resources.GetObject("button_Menu_Utilisateurs.Image")));
             this.button_Menu_Utilisateurs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Menu_Utilisateurs.Location = new System.Drawing.Point(0, 48);
-            this.button_Menu_Utilisateurs.Margin = new System.Windows.Forms.Padding(1);
+            this.button_Menu_Utilisateurs.Location = new System.Drawing.Point(0, 107);
+            this.button_Menu_Utilisateurs.Margin = new System.Windows.Forms.Padding(2);
             this.button_Menu_Utilisateurs.Name = "button_Menu_Utilisateurs";
-            this.button_Menu_Utilisateurs.Size = new System.Drawing.Size(180, 50);
+            this.button_Menu_Utilisateurs.Size = new System.Drawing.Size(420, 112);
             this.button_Menu_Utilisateurs.TabIndex = 1;
             this.button_Menu_Utilisateurs.Text = "    Utilisateurs";
             this.button_Menu_Utilisateurs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -259,20 +266,22 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(0, 52);
+            this.panel3.Location = new System.Drawing.Point(0, 116);
+            this.panel3.Margin = new System.Windows.Forms.Padding(7);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(180, 10);
+            this.panel3.Size = new System.Drawing.Size(420, 22);
             this.panel3.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Open Sans Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(30, 21);
+            this.label3.Location = new System.Drawing.Point(70, 47);
+            this.label3.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 28);
+            this.label3.Size = new System.Drawing.Size(261, 55);
             this.label3.TabIndex = 4;
             this.label3.Text = "Navigation";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -287,10 +296,10 @@
             this.button_Menu_Apropos.ForeColor = System.Drawing.Color.White;
             this.button_Menu_Apropos.Image = ((System.Drawing.Image)(resources.GetObject("button_Menu_Apropos.Image")));
             this.button_Menu_Apropos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Menu_Apropos.Location = new System.Drawing.Point(1, 723);
-            this.button_Menu_Apropos.Margin = new System.Windows.Forms.Padding(1);
+            this.button_Menu_Apropos.Location = new System.Drawing.Point(2, 1613);
+            this.button_Menu_Apropos.Margin = new System.Windows.Forms.Padding(2);
             this.button_Menu_Apropos.Name = "button_Menu_Apropos";
-            this.button_Menu_Apropos.Size = new System.Drawing.Size(180, 50);
+            this.button_Menu_Apropos.Size = new System.Drawing.Size(420, 112);
             this.button_Menu_Apropos.TabIndex = 3;
             this.button_Menu_Apropos.Text = "    À propos";
             this.button_Menu_Apropos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -305,14 +314,15 @@
             this.button_Menu_Tests.ForeColor = System.Drawing.Color.White;
             this.button_Menu_Tests.Image = ((System.Drawing.Image)(resources.GetObject("button_Menu_Tests.Image")));
             this.button_Menu_Tests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Menu_Tests.Location = new System.Drawing.Point(0, 118);
-            this.button_Menu_Tests.Margin = new System.Windows.Forms.Padding(1);
+            this.button_Menu_Tests.Location = new System.Drawing.Point(0, 263);
+            this.button_Menu_Tests.Margin = new System.Windows.Forms.Padding(2);
             this.button_Menu_Tests.Name = "button_Menu_Tests";
-            this.button_Menu_Tests.Size = new System.Drawing.Size(180, 50);
+            this.button_Menu_Tests.Size = new System.Drawing.Size(420, 112);
             this.button_Menu_Tests.TabIndex = 2;
             this.button_Menu_Tests.Text = "    Tests";
             this.button_Menu_Tests.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_Menu_Tests.UseVisualStyleBackColor = true;
+            this.button_Menu_Tests.Click += new System.EventHandler(this.Button_Menu_Tests_Click);
             // 
             // button_Menu_Accueil
             // 
@@ -323,30 +333,31 @@
             this.button_Menu_Accueil.ForeColor = System.Drawing.Color.White;
             this.button_Menu_Accueil.Image = ((System.Drawing.Image)(resources.GetObject("button_Menu_Accueil.Image")));
             this.button_Menu_Accueil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Menu_Accueil.Location = new System.Drawing.Point(0, 66);
-            this.button_Menu_Accueil.Margin = new System.Windows.Forms.Padding(1);
+            this.button_Menu_Accueil.Location = new System.Drawing.Point(0, 147);
+            this.button_Menu_Accueil.Margin = new System.Windows.Forms.Padding(2);
             this.button_Menu_Accueil.Name = "button_Menu_Accueil";
-            this.button_Menu_Accueil.Size = new System.Drawing.Size(180, 50);
+            this.button_Menu_Accueil.Size = new System.Drawing.Size(420, 112);
             this.button_Menu_Accueil.TabIndex = 0;
             this.button_Menu_Accueil.Text = "    Accueil";
             this.button_Menu_Accueil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_Menu_Accueil.UseVisualStyleBackColor = true;
-            this.button_Menu_Accueil.Click += new System.EventHandler(this.button_Menu_Accueil_Click);
+            this.button_Menu_Accueil.Click += new System.EventHandler(this.Button_Menu_Accueil_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1703, 840);
+            this.ClientSize = new System.Drawing.Size(3872, 1874);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel_Header);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dyslexique";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel_Header.ResumeLayout(false);
             this.panel_Header.PerformLayout();

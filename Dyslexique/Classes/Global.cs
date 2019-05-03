@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dyslexique.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,12 @@ namespace Dyslexique.Classes
 
         // Persistance de l'utilisateur connecté dans toute l'application
         public static Utilisateur Utilisateur = new Utilisateur();
+
+        public static List<Phrase> phrasesNonReussies = new List<Phrase>();
+
+        public static void RefreshListPhrasesNonReussies()
+        {
+            phrasesNonReussies = Queries.GetAllPhrasesNonReussies();
+        }
     }
 }

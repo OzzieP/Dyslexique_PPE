@@ -78,8 +78,6 @@ namespace Dyslexique.Classes
             this.Fonction = fonction;
             this.Position = position;
             this.classe = new Classe();
-            //this.fonction = new Fonction();
         }
-
     }
 }

@@ -3,6 +3,7 @@ using Dyslexique.DAL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,10 @@ namespace Dyslexique.UI.CustomControls
     {
         private Mot mot = new Mot();
         private Phrase phrase = new Phrase();
+        private Jeu jeu;
 
 
+        // Pour les Forms
         public CustomLabel(Mot mot, Phrase phrase, int x)
         {
             this.mot = mot;
@@ -29,25 +32,60 @@ namespace Dyslexique.UI.CustomControls
             this.MouseLeave += new EventHandler(OnMouseLeave);
         }
 
+        // Pour les UserControls
+        public CustomLabel(Mot mot, Phrase phrase, Jeu jeu, int x)
+        {
+            this.mot = mot;
+            this.phrase = phrase;
+            this.jeu = jeu;
+            this.Text = this.mot.Texte;
+            this.Top = 0;
+            this.Left = x;
+
+            this.Click += new EventHandler(OnClick);
+            this.MouseEnter += new EventHandler(OnMouseEnter);
+            this.MouseLeave += new EventHandler(OnMouseLeave);
+        }
+
 
         private void OnClick(object s, EventArgs e)
         {
-            bool UtilisateurAGagne = EstLeMotATrouver();
+            bool utilisateurAGagne = EstLeMotATrouver();
+            DateTime date = DateTime.Now;
+            date.ToUniversalTime();
+            DialogResult result;
 
-            if (UtilisateurAGagne)
+            if (utilisateurAGagne)
             {
-                MessageBox.Show("Bravo ! Le mot à trouver était : " + phrase.MotATrouver.Texte, "OK", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                result = MessageBox.Show("Bravo ! Le mot à trouver était : " + phrase.MotATrouver.Texte, 
+                    "OK", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Exclamation);
+
+                Global.phrasesNonReussies.Remove(this.phrase);
                 this.phrase.Tentative++;
                 this.phrase.AEteReussie = true;
+                this.phrase.DateDerniereTentative = date;
+
                 Queries.InsertOrUpdateTentative(Global.Utilisateur, this.phrase);
             }
             else
             {
-                MessageBox.Show("Dommage ! Rééssayez une prochaine fois !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                result = MessageBox.Show("Dommage ! Rééssayez une prochaine fois !", 
+                    "OK", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Exclamation);
+
                 this.phrase.Tentative++;
                 this.phrase.AEteReussie = false;
+                this.phrase.DateDerniereTentative = date;
+
                 Queries.InsertOrUpdateTentative(Global.Utilisateur, this.phrase);
+                Global.RefreshListPhrasesNonReussies();
             }
+
+            if (result == DialogResult.OK)
+                jeu.DisplayPhrase();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
