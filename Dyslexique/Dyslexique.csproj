@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Classe.cs" />
+    <Compile Include="UI\Forms\ConnexionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\ConnexionForm.Designer.cs">
+      <DependentUpon>ConnexionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CustomControls\CustomLabel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -94,24 +100,33 @@
     <Compile Include="FormUtilisateur.Designer.cs">
       <DependentUpon>FormUtilisateur.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\GestionUtilisateur.cs">
+    <Compile Include="UI\UserControls\Apropos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\GestionUtilisateur.Designer.cs">
+    <Compile Include="UI\UserControls\Apropos.Designer.cs">
+      <DependentUpon>Apropos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\GestionUtilisateur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\GestionUtilisateur.Designer.cs">
       <DependentUpon>GestionUtilisateur.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Jeu.cs">
+    <Compile Include="UI\UserControls\Jeu.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Jeu.Designer.cs">
+    <Compile Include="UI\UserControls\Jeu.Designer.cs">
       <DependentUpon>Jeu.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\MainForm.cs">
+    <Compile Include="UI\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\MainForm.Designer.cs">
+    <Compile Include="UI\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\Forms\ConnexionForm.resx">
+      <DependentUpon>ConnexionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\CustomControls\CustomLabel.resx">
       <DependentUpon>CustomLabel.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,13 +155,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\GestionUtilisateur.resx">
+    <EmbeddedResource Include="UI\UserControls\Apropos.resx">
+      <DependentUpon>Apropos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\GestionUtilisateur.resx">
       <DependentUpon>GestionUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Jeu.resx">
+    <EmbeddedResource Include="UI\UserControls\Jeu.resx">
       <DependentUpon>Jeu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\MainForm.resx">
+    <EmbeddedResource Include="UI\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Dyslexique.Classes.Utilisateur.datasource" />
@@ -167,13 +185,19 @@
     <Content Include="UI\Ressources\Accueil_32.png" />
     <Content Include="UI\Ressources\Administrateur_64.png" />
     <Content Include="UI\Ressources\Apropos_32.png" />
+    <Content Include="UI\Ressources\Close_48.png" />
     <Content Include="UI\Ressources\Exit_64.png" />
+    <None Include="UI\Ressources\Eye_16.png" />
+    <None Include="UI\Ressources\EyeOff_16.png" />
+    <Content Include="UI\Ressources\Gestion_Mots_32.png" />
     <Content Include="UI\Ressources\Gestion_Phrases_32.png" />
     <Content Include="UI\Ressources\Gestion_Utilisateurs_32.png" />
     <Content Include="UI\Ressources\simpleduc-logo-icone.ico" />
     <Content Include="UI\Ressources\simpleduc-logo-small.png" />
+    <Content Include="UI\Ressources\Simpleduc_Logo_Large.PNG.jpg" />
     <Content Include="UI\Ressources\Tests_32.png" />
     <Content Include="UI\Ressources\Utilisateur_64.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

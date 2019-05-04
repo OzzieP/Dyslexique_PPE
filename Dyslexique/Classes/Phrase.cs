@@ -1,4 +1,5 @@
 ﻿using Dyslexique.UI.CustomControls;
+using Dyslexique.UI.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -85,26 +86,7 @@ namespace Dyslexique.Classes
         }
 
 
-        // Pour les Forms
-        public void Afficher(FormJeu formJeu, Phrase phrase)
-        {
-            int x = 0;
-
-            foreach (Mot mot in mots)
-            {
-                CustomLabel customLabel = new CustomLabel(mot, phrase, x);
-
-                SizeF stringSize = new SizeF();
-                Graphics g = formJeu.CreateGraphics();
-                stringSize = g.MeasureString(mot.Texte, customLabel.Font);
-                customLabel.Width = Convert.ToInt32(stringSize.Width) + 5;
-                formJeu.Controls["panel_Phrase"].Controls.Add(customLabel);
-                x = x + Convert.ToInt32(stringSize.Width) + 5;
-            }
-        }
-
-        // Pour les UserControls
-        public void Afficher(UI.Jeu jeu, Phrase phrase)
+        public void Afficher(Jeu jeu, Phrase phrase)
         {
             int x = 0;
 
@@ -120,6 +102,5 @@ namespace Dyslexique.Classes
                 x = x + Convert.ToInt32(stringSize.Width) + 5;
             }
         }
-
     }
 }

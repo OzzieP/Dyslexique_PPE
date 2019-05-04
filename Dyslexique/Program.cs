@@ -1,4 +1,4 @@
-﻿using Dyslexique.UI;
+﻿using Dyslexique.UI.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +17,9 @@ namespace Dyslexique
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormConnexion());
+            //Application.Run(new FormConnexion());
             //Application.Run(new MainForm());
+            Application.Run(new ConnexionForm());
         }
     }
 }

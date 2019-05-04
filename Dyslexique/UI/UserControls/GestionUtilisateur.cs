@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Dyslexique.Classes;
 using Dyslexique.DAL;
 
-namespace Dyslexique.UI
+namespace Dyslexique.UI.UserControls
 {
     public partial class GestionUtilisateur : UserControl
     {

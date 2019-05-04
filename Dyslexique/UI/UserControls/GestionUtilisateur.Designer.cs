@@ -1,4 +1,4 @@
-﻿namespace Dyslexique.UI
+﻿namespace Dyslexique.UI.UserControls
 {
     partial class GestionUtilisateur
     {

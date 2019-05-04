@@ -1,5 +1,6 @@
 ﻿using Dyslexique.Classes;
 using Dyslexique.DAL;
+using Dyslexique.UI.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,21 +19,6 @@ namespace Dyslexique.UI.CustomControls
         private Jeu jeu;
 
 
-        // Pour les Forms
-        public CustomLabel(Mot mot, Phrase phrase, int x)
-        {
-            this.mot = mot;
-            this.phrase = phrase;
-            this.Text = this.mot.Texte;
-            this.Top = 0;
-            this.Left = x;
-
-            this.Click += new EventHandler(OnClick);
-            this.MouseEnter += new EventHandler(OnMouseEnter);
-            this.MouseLeave += new EventHandler(OnMouseLeave);
-        }
-
-        // Pour les UserControls
         public CustomLabel(Mot mot, Phrase phrase, Jeu jeu, int x)
         {
             this.mot = mot;
