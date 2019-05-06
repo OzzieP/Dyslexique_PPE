@@ -25,7 +25,8 @@ namespace Dyslexique.DAL
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"SELECT u.idUtilisateur AS idUtilisateur, u.pseudo AS Pseudo, u.idRole AS idRole, r.libelle AS Rôle
+                    string query = @"SELECT u.idUtilisateur AS idUtilisateur, u.pseudo AS Pseudo, u.nom AS Nom, u.prenom AS Prenom, u.email AS Email, u.motDePasse AS MDP, 
+                                    u.idRole AS idRole, r.libelle AS Role
                                     FROM Utilisateur u
                                     INNER JOIN Role r ON u.idRole = r.idRole
                                     ORDER BY Pseudo";
@@ -42,8 +43,12 @@ namespace Dyslexique.DAL
                                     {
                                         IdUtilisateur = reader["idUtilisateur"].ToString(),
                                         Pseudo = reader["Pseudo"].ToString(),
+                                        Nom = reader["Nom"].ToString(),
+                                        Prenom = reader["Prenom"].ToString(),
+                                        Email = reader["Email"].ToString(),
+                                        MotDePasse = reader["MDP"].ToString(),
                                         IdRole = reader["idRole"].ToString(),
-                                        Role = reader["Rôle"].ToString()
+                                        Role = reader["Role"].ToString()
                                     };
 
                                     utilisateurs.Add(utilisateur);
@@ -73,7 +78,8 @@ namespace Dyslexique.DAL
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"SELECT u.idUtilisateur AS idUtilisateur, u.pseudo AS pseudo, u.idRole AS idRole, r.libelle AS role
+                    string query = @"SELECT u.idUtilisateur AS idUtilisateur, u.pseudo AS Pseudo, u.nom AS Nom, u.prenom AS Prenom, u.email AS Email, u.motDePasse AS MDP, 
+                                    u.idRole AS idRole, r.libelle AS Role
                                     FROM Utilisateur u
                                     INNER JOIN Role r ON u.idRole = r.idRole
                                     WHERE pseudo = @Pseudo";
@@ -87,9 +93,13 @@ namespace Dyslexique.DAL
                             if (reader.Read())
                             {
                                 utilisateur.IdUtilisateur = reader["idUtilisateur"].ToString();
-                                utilisateur.Pseudo = reader["pseudo"].ToString();
+                                utilisateur.Pseudo = reader["Pseudo"].ToString();
+                                utilisateur.Nom = reader["Nom"].ToString();
+                                utilisateur.Prenom = reader["Prenom"].ToString();
+                                utilisateur.Email = reader["Email"].ToString();
+                                utilisateur.MotDePasse = reader["MDP"].ToString();
                                 utilisateur.IdRole = reader["idRole"].ToString();
-                                utilisateur.Role = reader["role"].ToString();
+                                utilisateur.Role = reader["Role"].ToString();
                             }
                         }
                     }
@@ -115,7 +125,8 @@ namespace Dyslexique.DAL
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"SELECT u.idUtilisateur AS idUtilisateur, u.pseudo AS pseudo, u.idRole AS idRole, r.libelle AS role
+                    string query = @"SELECT u.idUtilisateur AS idUtilisateur, u.pseudo AS Pseudo, u.nom AS Nom, u.prenom AS Prenom, u.email AS Email, u.motDePasse AS MDP, 
+                                    u.idRole AS idRole, r.libelle AS Role
                                     FROM Utilisateur u
                                     INNER JOIN Role r ON u.idRole = r.idRole
                                     WHERE idUtilisateur = @IdUtilisateur";
@@ -129,9 +140,13 @@ namespace Dyslexique.DAL
                             if (reader.Read())
                             {
                                 utilisateur.IdUtilisateur = reader["idUtilisateur"].ToString();
-                                utilisateur.Pseudo = reader["pseudo"].ToString();
+                                utilisateur.Pseudo = reader["Pseudo"].ToString();
+                                utilisateur.Nom = reader["Nom"].ToString();
+                                utilisateur.Prenom = reader["Prenom"].ToString();
+                                utilisateur.Email = reader["Email"].ToString();
+                                utilisateur.MotDePasse = reader["MDP"].ToString();
                                 utilisateur.IdRole = reader["idRole"].ToString();
-                                utilisateur.Role = reader["role"].ToString();
+                                utilisateur.Role = reader["Role"].ToString();
                             }
                         }
                     }
@@ -148,25 +163,28 @@ namespace Dyslexique.DAL
             }
         }
 
-        public static void InsertUtilisateur(string pseudo, string idRole)
+        public static void InsertUtilisateur(string pseudo, string nom, string prenom, string email, string mdp, string idRole)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO Utilisateur (pseudo, idRole) VALUES (@Pseudo, @IdRole)";
+                    string query = @"INSERT INTO Utilisateur (pseudo, nom, prenom, email, motDePasse, idRole) 
+                                    VALUES (@Pseudo, @Nom, @Prenom, @Email, @MDP, @IdRole)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.Add(new SqlParameter("@Pseudo", pseudo));
+                        command.Parameters.Add(new SqlParameter("@Nom", nom));
+                        command.Parameters.Add(new SqlParameter("@Prenom", prenom));
+                        command.Parameters.Add(new SqlParameter("@Email", email));
+                        command.Parameters.Add(new SqlParameter("@MDP", Global.Hash256(mdp)));
                         command.Parameters.Add(new SqlParameter("@IdRole", Convert.ToInt32(idRole)));
                         int result = command.ExecuteNonQuery();
 
                         if (result <= 0)
                             MessageBox.Show("Erreur lors de l'insertion de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        else
-                            MessageBox.Show("Utilisateur créé avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -179,18 +197,23 @@ namespace Dyslexique.DAL
             }
         }
 
-        public static void UpdateUtilisateur(string idUtilisateur, string pseudo, string idRole)
+        public static void UpdateUtilisateur(string idUtilisateur, string pseudo, string nom, string prenom, string email, string idRole)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"UPDATE Utilisateur SET pseudo = @Pseudo, idRole = @IdRole WHERE idUtilisateur = @IdUtilisateur";
+                    string query = @"UPDATE Utilisateur 
+                                    SET pseudo = @Pseudo, nom = @Nom, prenom = @Prenom, email = @Email, idRole = @IdRole
+                                    WHERE idUtilisateur = @IdUtilisateur";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.Add(new SqlParameter("@Pseudo", pseudo));
+                        command.Parameters.Add(new SqlParameter("@Nom", nom));
+                        command.Parameters.Add(new SqlParameter("@Prenom", prenom));
+                        command.Parameters.Add(new SqlParameter("@Email", email));
                         command.Parameters.Add(new SqlParameter("@IdRole", Convert.ToInt32(idRole)));
                         command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(idUtilisateur)));
                         int result = command.ExecuteNonQuery();
@@ -309,8 +332,6 @@ namespace Dyslexique.DAL
 
                             if (result <= 0)
                                 MessageBox.Show("Erreur lors de la mise à jour de Utilisateur_Essayer_Phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            else
-                                MessageBox.Show("Tentatives de : " + utilisateur.Pseudo + "pour la phrase : " + phrase.Texte + " mis à jour avec succès dans la table Utilisateur_Essayer_Phrase.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -346,8 +367,6 @@ namespace Dyslexique.DAL
 
                             if (result <= 0)
                                 MessageBox.Show("Erreur lors de l'insertion de la tentative.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            else
-                                MessageBox.Show("Tentative créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }

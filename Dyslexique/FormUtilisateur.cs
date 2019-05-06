@@ -74,10 +74,10 @@ namespace Dyslexique
                 }
                 else
                 {
-                    if (radioButton_InsertAdministrateur.Checked)
-                        Queries.InsertUtilisateur(pseudo, Global.ROLE_ADMINISTRATEUR);
-                    else if (radioButton_InsertUtilisateur.Checked)
-                        Queries.InsertUtilisateur(pseudo, Global.ROLE_UTILISATEUR);
+                    //if (radioButton_InsertAdministrateur.Checked)
+                    //    Queries.InsertUtilisateur(pseudo, Global.ROLE_ADMINISTRATEUR);
+                    //else if (radioButton_InsertUtilisateur.Checked)
+                    //    Queries.InsertUtilisateur(pseudo, Global.ROLE_UTILISATEUR);
 
                     Refresh_DataGridView_AllUtilisateur();
                 }
@@ -102,10 +102,10 @@ namespace Dyslexique
                     }
                     else
                     {
-                        if (radioButton_UpdateAdministrateur.Checked)
-                            Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, Global.ROLE_ADMINISTRATEUR);
-                        else if (radioButton_UpdateUtilisateur.Checked)
-                            Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, Global.ROLE_UTILISATEUR);
+                        //if (radioButton_UpdateAdministrateur.Checked)
+                        //    Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, Global.ROLE_ADMINISTRATEUR);
+                        //else if (radioButton_UpdateUtilisateur.Checked)
+                        //    Queries.UpdateUtilisateur(utilisateur.IdUtilisateur, pseudo, Global.ROLE_UTILISATEUR);
 
                         Refresh_DataGridView_AllUtilisateur();
                     }

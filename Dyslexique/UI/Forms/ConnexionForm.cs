@@ -29,10 +29,6 @@ namespace Dyslexique.UI.Forms
             InitializeComponent();
         }
 
-        private void ConnexionForm_Load(object sender, EventArgs e)
-        {
-
-        }
 
         // Fonction permettant de déplacer la Form
         private void PanelHeader_MouseDown(object sender, MouseEventArgs e)
@@ -51,65 +47,99 @@ namespace Dyslexique.UI.Forms
 
         private void Button_Connexion_Click(object sender, EventArgs e)
         {
-            string pseudo = textBox_Connexion_Pseudo.Text.ToString();
-            string mdp = textBox_Connexion_Mdp.Text.ToString();
+            string pseudo = textBox_Connexion_Pseudo.Text;
+            string mdp = Global.Hash256(textBox_Connexion_Mdp.Text);
 
-            bool isNullOrEmptyOrWhitespace = true;
-
-            foreach (TextBox textBox in panel_Connexion.Controls.OfType<TextBox>())
+            try
             {
-                //if (string.IsNullOrEmpty(textBox.Text) || string.IsNullOrWhiteSpace(textBox.Text))
-                //{
-                //    isNullOrEmptyOrWhitespace = true;
-                //    MessageBox.Show("Le champ \"" + textBox.Tag + "\" ne peut pas être vide.", "Attention !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
+                List<TextBox> textBoxes = new List<TextBox>();
 
-                if (string.IsNullOrEmpty(textBox.Text) || string.IsNullOrWhiteSpace(textBox.Text))
+                foreach (TextBox textBox in panel_Connexion.Controls.OfType<TextBox>())
                 {
-                    isNullOrEmptyOrWhitespace = true;
-                    errorProvider_Textbox.SetError(textBox, "Le champ \"" + textBox.Tag + "\" ne peut pas être vide.");
-                    errorProvider_Textbox.SetIconAlignment(textBox, ErrorIconAlignment.TopLeft);
+                    textBoxes.Add(textBox);
                 }
-                else
-                    isNullOrEmptyOrWhitespace = false;
+
+                bool isNullOrEmptyOrWhitespace = CheckIfTextBoxesAreValid(textBoxes);
+
+                if (!isNullOrEmptyOrWhitespace)
+                {
+                    Utilisateur tempUtilisateur = Queries.GetUtilisateurByPseudo(pseudo);
+
+                    if (tempUtilisateur.Pseudo == pseudo && tempUtilisateur.MotDePasse == mdp)
+                    {
+                        Global.Utilisateur = tempUtilisateur;
+                        Global.phrasesNonReussies = Queries.GetAllPhrasesNonReussies();
+                        MainForm mainForm = new MainForm();
+                        this.Hide();
+                        mainForm.Show();
+                    }
+                    else if (tempUtilisateur.Pseudo != pseudo)
+                        MessageBox.Show("Veuillez entrer un pseudo valide.", "Attention !", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    else if (tempUtilisateur.MotDePasse != mdp)
+                        MessageBox.Show("Veuillez entrer un mot de passe valide.", "Attention !", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
-
-            if (!isNullOrEmptyOrWhitespace)
+            catch (Exception)
             {
-                Global.Utilisateur = Queries.GetUtilisateurByPseudo(pseudo);
-
-                if (Global.Utilisateur.Pseudo == pseudo && Global.Utilisateur.MotDePasse == mdp)
-                {
-                    Global.phrasesNonReussies = Queries.GetAllPhrasesNonReussies();
-                    MainForm mainForm = new MainForm();
-                    this.Hide();
-                    this.Dispose();
-                    mainForm.Show();
-                }
-                else if (Global.Utilisateur.Pseudo != pseudo)
-                    MessageBox.Show("Veuillez entrer un pseudo valide.", "Attention !", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                else if (Global.Utilisateur.MotDePasse != mdp)
-                    MessageBox.Show("Veuillez entrer un mot de passe valide.", "Attention !", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Impossible de se connecter.", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
         }
 
         private void Button_Inscription_Click(object sender, EventArgs e)
         {
-            foreach (TextBox textBox in panel_Inscription.Controls.OfType<TextBox>())
+            string pseudo = textBox_Inscription_Pseudo.Text;
+            string nom = textBox_Inscription_Nom.Text;
+            string prenom = textBox_Inscription_Prenom.Text;
+            string email = textBox_Inscription_Email.Text;
+            string mdp = textBox_Inscription_Mdp.Text;
+            string confMdp = textBox_Inscription_ConfMdp.Text;
+
+            try
             {
-                if (string.IsNullOrEmpty(textBox.Text) || string.IsNullOrWhiteSpace(textBox.Text))
+                List<TextBox> textBoxes = new List<TextBox>();
+
+                foreach (TextBox textBox in panel_Inscription.Controls.OfType<TextBox>())
                 {
-                    errorProvider_Textbox.SetError(textBox, "Le champ \"" + textBox.Tag + "\" ne peut pas être vide.");
-                    errorProvider_Textbox.SetIconAlignment(textBox, ErrorIconAlignment.TopLeft);
+                    textBoxes.Add(textBox);
                 }
+
+                bool isNullOrEmptyOrWhitespace = CheckIfTextBoxesAreValid(textBoxes);
+
+                if (!isNullOrEmptyOrWhitespace)
+                {
+                    if (mdp == confMdp)
+                    {
+                        Utilisateur tempUtilisateur = new Utilisateur()
+                        {
+                            Pseudo = pseudo,
+                            Nom = nom,
+                            Prenom = prenom,
+                            Email = email,
+                            MotDePasse = Global.Hash256(mdp),
+                            IdRole = Global.ROLE_UTILISATEUR,
+                            Role = "Utilisateur"
+                        };
+
+                        Queries.InsertUtilisateur(pseudo, nom, prenom, email, mdp, Global.ROLE_UTILISATEUR);
+                        Global.Utilisateur = tempUtilisateur;
+                        Global.phrasesNonReussies = Queries.GetAllPhrasesNonReussies();
+                        MessageBox.Show("Inscription terminée.\nBienvenue sur Dyslexique !", "Bienvenue !", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MainForm mainForm = new MainForm();
+                        this.Hide();
+                        mainForm.Show();
+                    }
+                    else
+                        MessageBox.Show("Les deux mots de passe entrés ne correspondent pas.", "Attention !", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                    MessageBox.Show("Veuillez remplir tous les champs.", "Attention !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
-            //foreach (TextBox textBox in panel_Inscription.Controls.OfType<TextBox>())
-            //{
-            //    if (string.IsNullOrEmpty(textBox.Text) || string.IsNullOrWhiteSpace(textBox.Text))
-            //        MessageBox.Show("Le champ \"" + textBox.Tag + "\" ne peut pas être vide.", "Attention !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
+            catch (Exception)
+            {
+                MessageBox.Show("Impossible de s'inscrire.", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
         }
 
         private void Buttons_MouseHover_ShowMdp(object sender, EventArgs e)
@@ -131,7 +161,7 @@ namespace Dyslexique.UI.Forms
             }
         }
 
-        private void Buttons_MouseLeave_ShowMdp(object sender, EventArgs e)
+        private void Buttons_MouseLeave_HideMdp(object sender, EventArgs e)
         {
             if (sender == button_Connexion_ShowMdp)
             {
@@ -153,30 +183,41 @@ namespace Dyslexique.UI.Forms
         private void TextBoxes_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            errorProvider_Textbox.SetError(textBox, string.Empty);
+            errorProvider_TextBox.SetError(textBox, string.Empty);
         }
 
+        private bool CheckIfTextBoxesAreValid(List<TextBox> textBoxes)
+        {
+            List<bool> listBool = new List<bool>();
+            bool isNullOrEmptyOrWhitespace = false;
 
-        //public static string Hash256(string rawData)
-        //{
-        //    try
-        //    {
-        //        using (SHA256 sha256Hash = SHA256.Create())
-        //        {
-        //            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+            foreach (TextBox textBox in textBoxes)
+            {
+                bool isTextBoxValide = false;
+                if (string.IsNullOrEmpty(textBox.Text) || string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    isTextBoxValide = false;
+                    listBool.Add(isTextBoxValide);
+                    errorProvider_TextBox.SetError(textBox, "Le champ \"" + textBox.Tag + "\" ne peut pas être vide.");
+                    errorProvider_TextBox.SetIconAlignment(textBox, ErrorIconAlignment.MiddleLeft);
+                }
+                else
+                {
+                    isTextBoxValide = true;
+                    listBool.Add(isTextBoxValide);
+                }
+            }
 
-        //            StringBuilder builder = new StringBuilder();
-        //            for (int i = 0; i < bytes.Length; i++)
-        //            {
-        //                builder.Append(bytes[i].ToString("x2"));
-        //            }
-        //            return builder.ToString();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
+            foreach (bool boolean in listBool)
+            {
+                if (boolean == false)
+                {
+                    isNullOrEmptyOrWhitespace = true;
+                    break;
+                }
+            }
+
+            return isNullOrEmptyOrWhitespace;
+        }
     }
 }

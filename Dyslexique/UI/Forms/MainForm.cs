@@ -29,7 +29,7 @@ namespace Dyslexique.UI.Forms
             InitializeComponent();
 
             // A SUPPRIMER --> TEST
-            Global.Utilisateur = DAL.Queries.GetUtilisateurById("2");
+            //Global.Utilisateur = DAL.Queries.GetUtilisateurById("2");
         }
 
         private void MainForm_Load(object sender, EventArgs e)

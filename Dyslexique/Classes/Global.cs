@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,17 +13,6 @@ namespace Dyslexique.Classes
         // Rôles des utilisateurs
         public const string ROLE_ADMINISTRATEUR = "1";
         public const string ROLE_UTILISATEUR = "2";
-
-        // Classes des mots
-        public const string ADJECTIF = "Adjectif";
-        public const string ADVERBE = "Adverbe";
-        public const string CONJONCTION = "Conjonction";
-        public const string DETERMINANT = "Déterminant";
-        public const string INTERJECTION = "Interjection";
-        public const string NOM = "Nom";
-        public const string PREPOSITION = "Préposition";
-        public const string PRONOM = "Pronom";
-        public const string VERBE = "Verbe";
 
         // Persistance dans toute l'application de l'utilisateur connecté
         public static Utilisateur Utilisateur = new Utilisateur();
@@ -35,18 +25,27 @@ namespace Dyslexique.Classes
         {
             phrasesNonReussies = Queries.GetAllPhrasesNonReussies();
         }
-    }
 
-    public enum EnumClassesMot
-    {
-        Adjectif,
-        Adverbe,
-        Conjonction,
-        Determinant,
-        Interjection,
-        Nom,
-        Preposition,
-        Pronom,
-        Verbe
+        public static string Hash256(string mdp)
+        {
+            try
+            {
+                using (SHA256 sha256Hash = SHA256.Create())
+                {
+                    byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(mdp));
+
+                    StringBuilder builder = new StringBuilder();
+                    for (int i = 0; i < bytes.Length; i++)
+                    {
+                        builder.Append(bytes[i].ToString("x2"));
+                    }
+                    return builder.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
