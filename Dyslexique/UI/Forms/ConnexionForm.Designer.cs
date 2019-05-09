@@ -233,6 +233,7 @@
             this.textBox_Connexion_Mdp.Tag = "Mot de passe";
             this.textBox_Connexion_Mdp.UseSystemPasswordChar = true;
             this.textBox_Connexion_Mdp.TextChanged += new System.EventHandler(this.TextBoxes_TextChanged);
+            this.textBox_Connexion_Mdp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_Connexion_KeyDown);
             // 
             // textBox_Connexion_Pseudo
             // 
@@ -245,6 +246,7 @@
             this.textBox_Connexion_Pseudo.TabIndex = 13;
             this.textBox_Connexion_Pseudo.Tag = "Pseudo";
             this.textBox_Connexion_Pseudo.TextChanged += new System.EventHandler(this.TextBoxes_TextChanged);
+            this.textBox_Connexion_Pseudo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_Connexion_KeyDown);
             // 
             // label15
             // 
@@ -352,6 +354,7 @@
             this.textBox_Inscription_ConfMdp.Tag = "Confirmation du mot de passe";
             this.textBox_Inscription_ConfMdp.UseSystemPasswordChar = true;
             this.textBox_Inscription_ConfMdp.TextChanged += new System.EventHandler(this.TextBoxes_TextChanged);
+            this.textBox_Inscription_ConfMdp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_Inscription_KeyDown);
             // 
             // label13
             // 
@@ -378,6 +381,7 @@
             this.textBox_Inscription_Mdp.Tag = "Mot de passe";
             this.textBox_Inscription_Mdp.UseSystemPasswordChar = true;
             this.textBox_Inscription_Mdp.TextChanged += new System.EventHandler(this.TextBoxes_TextChanged);
+            this.textBox_Inscription_Mdp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_Inscription_KeyDown);
             // 
             // label12
             // 
@@ -403,6 +407,7 @@
             this.textBox_Inscription_Email.TabIndex = 14;
             this.textBox_Inscription_Email.Tag = "Email";
             this.textBox_Inscription_Email.TextChanged += new System.EventHandler(this.TextBoxes_TextChanged);
+            this.textBox_Inscription_Email.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_Inscription_KeyDown);
             // 
             // label11
             // 
@@ -428,6 +433,7 @@
             this.textBox_Inscription_Prenom.TabIndex = 12;
             this.textBox_Inscription_Prenom.Tag = "Prénom";
             this.textBox_Inscription_Prenom.TextChanged += new System.EventHandler(this.TextBoxes_TextChanged);
+            this.textBox_Inscription_Prenom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_Inscription_KeyDown);
             // 
             // label10
             // 
@@ -453,6 +459,7 @@
             this.textBox_Inscription_Nom.TabIndex = 10;
             this.textBox_Inscription_Nom.Tag = "Nom";
             this.textBox_Inscription_Nom.TextChanged += new System.EventHandler(this.TextBoxes_TextChanged);
+            this.textBox_Inscription_Nom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_Inscription_KeyDown);
             // 
             // textBox_Inscription_Pseudo
             // 
@@ -466,6 +473,7 @@
             this.textBox_Inscription_Pseudo.TabIndex = 5;
             this.textBox_Inscription_Pseudo.Tag = "Pseudo";
             this.textBox_Inscription_Pseudo.TextChanged += new System.EventHandler(this.TextBoxes_TextChanged);
+            this.textBox_Inscription_Pseudo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_Inscription_KeyDown);
             // 
             // label2
             // 

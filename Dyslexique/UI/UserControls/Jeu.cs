@@ -15,7 +15,6 @@ namespace Dyslexique.UI.UserControls
     public partial class Jeu : UserControl
     {
         public string Title = "Passer les tests";
-        public bool utilisateurAJouer = false;
         private Phrase phraseSelectionnee;
 
         public Jeu()
@@ -26,6 +25,8 @@ namespace Dyslexique.UI.UserControls
         private void Jeu_Load(object sender, EventArgs e)
         {
             DisplayPhrase();
+
+            //progressBar.Value = 
         }
 
 
@@ -57,7 +58,6 @@ namespace Dyslexique.UI.UserControls
                     //    /* Reset la progression de l'utilisateur
                     //    Global.Utilisateur.ResetProgression(); */
                     //else
-                        // 
                 }
                 else
                 {
@@ -68,7 +68,7 @@ namespace Dyslexique.UI.UserControls
             {
                 this.phraseSelectionnee = Global.phrasesNonReussies.ElementAt(randomIndex);
                 label_Consigne.Text += phraseSelectionnee.Consigne;
-                phraseSelectionnee.Afficher(this, phraseSelectionnee);
+                phraseSelectionnee.DisplayMots(this, phraseSelectionnee);
                 label_Tentatives.Text += phraseSelectionnee.Tentative.ToString();
             }
         }

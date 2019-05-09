@@ -71,9 +71,16 @@ namespace Dyslexique.Classes
 
         }
 
-        public Utilisateur(string pseudo)
+        /* TEMP : A supprimer */
+        public Utilisateur(string pseudo, string nom, string prenom, string email, string mdp, string idRole)
         {
             this.pseudo = pseudo;
+            this.nom = nom;
+            this.prenom = prenom;
+            this.email = email;
+            this.motDePasse = mdp;
+            this.idRole = idRole;
         }
+        /* ------------------------------------------------------------ */
     }
 }

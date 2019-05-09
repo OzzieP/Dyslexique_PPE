@@ -14,10 +14,23 @@ namespace Dyslexique.Classes
         public const string ROLE_ADMINISTRATEUR = "1";
         public const string ROLE_UTILISATEUR = "2";
 
+        // Classes des mots
+        public const string ADJECTIF = "Adjectif";
+        public const string ADVERBE = "Adverbe";
+        public const string CONJONCTION = "Conjonction";
+        public const string DETERMINANT = "Déterminant";
+        public const string INTERJECTION = "Interjection";
+        public const string NOM = "Nom";
+        public const string PREPOSITION = "Préposition";
+        public const string PRONOM = "Pronom";
+        public const string VERBE = "Verbe";
+
         // Persistance dans toute l'application de l'utilisateur connecté
         public static Utilisateur Utilisateur = new Utilisateur();
         // Persistance dans toute l'application des phrases non réussies par l'utilisateur connecté
         public static List<Phrase> phrasesNonReussies = new List<Phrase>();
+        // Persistance dans toute l'application de toutes les phrases stockées dans la DB
+        public static List<Phrase> allPhrases = Queries.GetAllPhrases();
 
 
         // Fonction utilisée pour mettre à jour la liste des phrases non réussies par l'utilisateur

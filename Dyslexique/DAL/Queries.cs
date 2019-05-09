@@ -241,17 +241,38 @@ namespace Dyslexique.DAL
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"DELETE FROM Utilisateur WHERE idUtilisateur = @IdUtilisateur";
+                    string query = @"DELETE FROM Utilisateur_Essayer_Phrase WHERE idUtilisateur = @IdUtilisateur";
+                    string query2 = @"DELETE FROM Utilisateur WHERE idUtilisateur = @IdUtilisateur";
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlTransaction transaction = connection.BeginTransaction())
                     {
-                        command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(idUtilisateur)));
-                        int result = command.ExecuteNonQuery();
+                        using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                        {
+                            command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(idUtilisateur)));
+                            int result = command.ExecuteNonQuery();
 
-                        if (result <= 0)
-                            MessageBox.Show("Erreur lors de la suppression de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        else
-                            MessageBox.Show("Utilisateur supprimé avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (result <= 0)
+                            {
+                                transaction.Rollback();
+                                MessageBox.Show("Erreur lors de la suppression de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                                MessageBox.Show("Utilisateur supprimé avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                        using (SqlCommand command = new SqlCommand(query2, connection, transaction))
+                        {
+                            command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(idUtilisateur)));
+                            int result = command.ExecuteNonQuery();
+
+                            if (result <= 0)
+                            {
+                                transaction.Rollback();
+                                MessageBox.Show("Erreur lors de la suppression de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                                MessageBox.Show("Utilisateur supprimé avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
@@ -379,6 +400,121 @@ namespace Dyslexique.DAL
                 }
             }
         }
+        #endregion
+
+        #region Mot
+        public static List<Mot> GetAllMots()
+        {
+            try
+            {
+                List<Mot> listMots = new List<Mot>();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * FROM Mot";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Mot mot = new Mot
+                                    {
+                                        IdMot = reader["idMot"].ToString(),
+                                        Texte = reader["texte"].ToString(),
+                                        IdClasse = reader["idClasse"].ToString()
+                                        //mot.IdGenre = reader["idGenre"].ToString());
+                                    };
+
+                                    listMots.Add(mot);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return listMots;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la récupération de tous les mots. \n" +
+                                "Message : " + ex.Message + "\n" +
+                                "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        #endregion
+
+        #region Phrase
+        public static void InsertPhrase(Phrase phrase)
+        {
+            string output = string.Empty;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Phrase (texte) OUTPUT inserted.idPhrase VALUES (@Texte)";
+                    string query2 = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, position) VALUES (@IdPhrase, @IdMot, @IdFonction, @Position)";
+
+                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                        {
+                            command.Parameters.Add(new SqlParameter("@Texte", phrase.Texte));
+                            output = command.ExecuteScalar().ToString();
+
+                            if (string.IsNullOrEmpty(output) || string.IsNullOrWhiteSpace(output))
+                            {
+                                transaction.Rollback();
+                                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+
+                        foreach (Mot mot in phrase.Mots)
+                        {
+                            using (SqlCommand command = new SqlCommand(query2, connection, transaction))
+                            {
+                                command.Parameters.Add(new SqlParameter("@IdPhrase", Convert.ToInt32(output)));
+                                command.Parameters.Add(new SqlParameter("@IdMot", Convert.ToInt32(mot.IdMot)));
+                                command.Parameters.Add(new SqlParameter("@IdFonction", Convert.ToInt32(mot.Fonction.IdFonction)));
+                                command.Parameters.Add(new SqlParameter("@Position", Convert.ToInt32(mot.Position)));
+                                int result = command.ExecuteNonQuery();
+
+                                if (result <= 0)
+                                {
+                                    transaction.Rollback();
+                                    MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+
+                        }
+
+                        transaction.Commit();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'insertion de la phrase. \n" +
+                                "Message : " + ex.Message + "\n" +
+                                "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
 
         public static List<Phrase> GetAllPhrasesNonReussies()
         {
@@ -497,21 +633,29 @@ namespace Dyslexique.DAL
             }
         }
 
-        #endregion
-
-        #region Mot
-        public static List<Mot> GetAllMots()
+        public static List<Phrase> GetAllPhrases()
         {
             try
             {
-                List<Mot> listMots = new List<Mot>();
+                List<Phrase> phrases = new List<Phrase>();
 
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"SELECT * FROM Mot";
+                    string queryAllPhrases = @"SELECT p.idPhrase AS idPhrase, p.texte AS textePhrase, p.consigne AS consigne FROM Phrase p";
+                    string queryInfosDesPhrases = @"SELECT t.idType AS idType, t.libelle AS typeLibelle, 
+                                                c.idClasse AS idClasse, c.libelle AS classeLibelle, 
+                                                f.idFonction AS idFonction, f.libelle AS fonctionLibelle, 
+                                                m.idMot AS idMot, m.texte AS texteMot, 
+                                                ppm.position AS positionMot, ppm.motATrouver AS estLeMotATrouver
+                                                FROM Phrase_Posseder_Mot ppm
+                                                INNER JOIN Mot m ON ppm.idMot = m.idMot
+                                                INNER JOIN Classe c ON m.idClasse = c.idClasse
+                                                INNER JOIN Type t ON c.idType = t.idType
+                                                INNER JOIN Fonction f ON ppm.idFonction = f.idFonction
+                                                WHERE ppm.idPhrase = @IdPhrase";
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand(queryAllPhrases, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -519,188 +663,79 @@ namespace Dyslexique.DAL
                             {
                                 while (reader.Read())
                                 {
-                                    Mot mot = new Mot
+                                    Phrase phrase = new Phrase
                                     {
-                                        IdMot = reader["idMot"].ToString(),
-                                        Texte = reader["texte"].ToString(),
-                                        IdClasse = reader["idClasse"].ToString()
-                                        //mot.IdGenre = reader["idGenre"].ToString());
+                                        IdPhrase = reader["idPhrase"].ToString(),
+                                        Texte = reader["textePhrase"].ToString(),
+                                        Consigne = reader["consigne"].ToString()
                                     };
 
-                                    listMots.Add(mot);
+                                    phrases.Add(phrase);
                                 }
                             }
                         }
                     }
-                }
 
-                return listMots;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erreur lors de la récupération de tous les mots. \n" +
-                                "Message : " + ex.Message + "\n" +
-                                "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
-            }
-        }
-        #endregion
-
-        #region Phrase
-        public static void InsertPhrase(Phrase phrase)
-        {
-            string output = string.Empty;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    connection.Open();
-                    string query = @"INSERT INTO Phrase (texte) OUTPUT inserted.idPhrase VALUES (@Texte)";
-                    string query2 = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, position) VALUES (@IdPhrase, @IdMot, @IdFonction, @Position)";
-
-                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    // Récupération de toutes les infos des phrases récupérées juste avant
+                    foreach (Phrase phrase in phrases)
                     {
-                        using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                        using (SqlCommand command = new SqlCommand(queryInfosDesPhrases, connection))
                         {
-                            command.Parameters.Add(new SqlParameter("@Texte", phrase.Texte));
-                            output = command.ExecuteScalar().ToString();
+                            command.Parameters.Add(new SqlParameter("@IdPhrase", Convert.ToInt32(phrase.IdPhrase)));
 
-                            if (string.IsNullOrEmpty(output) || string.IsNullOrWhiteSpace(output))
+                            using (SqlDataReader reader = command.ExecuteReader())
                             {
-                                transaction.Rollback();
-                                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        Fonction fonction = new Fonction
+                                        {
+                                            IdFonction = reader["idFonction"].ToString(),
+                                            Libelle = reader["fonctionLibelle"].ToString()
+                                        };
+                                        Types types = new Types
+                                        {
+                                            IdTypes = reader["idType"].ToString(),
+                                            Libelle = reader["typeLibelle"].ToString()
+                                        };
+                                        Classe classe = new Classe
+                                        {
+                                            IdClasse = reader["idClasse"].ToString(),
+                                            Libelle = reader["classeLibelle"].ToString(),
+                                            Types = types
+                                        };
+                                        Mot mot = new Mot
+                                        {
+                                            IdMot = reader["idMot"].ToString(),
+                                            Texte = reader["texteMot"].ToString(),
+                                            Classe = classe,
+                                            Fonction = fonction,
+                                            Position = reader["positionMot"].ToString(),
+                                            EstATrouver = Convert.ToBoolean(reader["estLeMotATrouver"])
+                                        };
+
+                                        if (mot.EstATrouver)
+                                            phrase.MotATrouver = mot;
+
+                                        phrase.Mots.Add(mot);
+                                    }
+                                }
                             }
                         }
-
-                        foreach (Mot mot in phrase.Mots)
-                        {
-                            using (SqlCommand command = new SqlCommand(query2, connection, transaction))
-                            {
-                                command.Parameters.Add(new SqlParameter("@IdPhrase", Convert.ToInt32(output)));
-                                command.Parameters.Add(new SqlParameter("@IdMot", Convert.ToInt32(mot.IdMot)));
-                                command.Parameters.Add(new SqlParameter("@IdFonction", Convert.ToInt32(mot.Fonction.IdFonction)));
-                                command.Parameters.Add(new SqlParameter("@Position", Convert.ToInt32(mot.Position)));
-                                int result = command.ExecuteNonQuery();
-
-                                if (result <= 0)
-                                {
-                                    transaction.Rollback();
-                                    MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-
-                        }
-
-                        transaction.Commit();
                     }
                 }
+
+                return phrases;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur lors de l'insertion de la phrase. \n" +
+                MessageBox.Show("Impossible de récupérer toutes les phrases. \n" +
                                 "Message : " + ex.Message + "\n" +
                                 "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
-
-        //public static Phrase GetPhraseById(string idPhrase)
-        //{
-        //    try
-        //    {
-        //        Phrase phrase = new Phrase();
-
-        //        using (SqlConnection connection = new SqlConnection(ConnectionString))
-        //        {
-        //            connection.Open();
-        //            string query = @"SELECT p.idPhrase AS idPhrase, p.texte AS textePhrase, 
-        //                            ppm.idFonction AS idFonction, ppm.position AS position, 
-        //                            f.idFonction AS idFonction, f.libelle AS fonctionLibelle, 
-        //                            m.idMot AS idMot, m.texte AS texteMot, 
-        //                            c.idClasse AS idClasse, c.libelle AS classeLibelle, 
-        //                            t.idType AS idType, t.libelle AS typeLibelle
-        //                            FROM Phrase p
-        //                            INNER JOIN Phrase_Posseder_Mot ppm ON p.idPhrase = ppm.idPhrase
-        //                            INNER JOIN Mot m ON ppm.idMot = m.idMot
-        //                            INNER JOIN Fonction f ON ppm.idFonction = f.idFonction
-        //                            INNER JOIN Classe c ON m.idClasse = c.idClasse
-        //                            INNER JOIN Type t ON c.idType = t.idType
-        //                            WHERE p.idPhrase = @IdPhrase";
-
-        //            //string QueryFinal = @"SELECT ppm.idPhrase AS IDPHRASE, p.consigne AS CONSIGNE, p.texte AS PHRASE, 
-        //            //                    ppm.idMot AS IDMOT, m.texte AS MOT, ppm.position AS POSITION_MOT, 
-        //            //                    c.libelle AS CLASSE, t.libelle AS TYPE, 
-        //            //                    ppm.idFonction AS IDFONCTION, f.libelle AS FONCTION
-        //            //                    FROM Phrase_Posseder_Mot ppm
-        //            //                    INNER JOIN Phrase p ON ppm.idPhrase = p.idPhrase
-        //            //                    INNER JOIN Mot m ON ppm.idMot = m.idMot
-        //            //                    INNER JOIN Fonction f ON ppm.idFonction = f.idFonction
-        //            //                    INNER JOIN Classe c ON m.idClasse = c.idClasse
-        //            //                    INNER JOIN Type t ON c.idType = t.idType;";
-
-        //            using (SqlCommand command = new SqlCommand(query, connection))
-        //            {
-        //                command.Parameters.Add(new SqlParameter("@IdPhrase", Convert.ToInt32(idPhrase)));
-
-        //                using (SqlDataReader reader = command.ExecuteReader())
-        //                {
-        //                    if (reader.HasRows)
-        //                    {
-        //                        while (reader.Read())
-        //                        {
-        //                            phrase.IdPhrase = reader["idPhrase"].ToString();
-        //                            phrase.Texte = reader["textePhrase"].ToString();
-        //                            Fonction fonction = new Fonction
-        //                            {
-        //                                IdFonction = reader["idFonction"].ToString(),
-        //                                Libelle = reader["fonctionLibelle"].ToString()
-        //                            };
-        //                            Types types = new Types
-        //                            {
-        //                                IdTypes = reader["idType"].ToString(),
-        //                                Libelle = reader["typeLibelle"].ToString()
-        //                            };
-        //                            Classe classe = new Classe
-        //                            {
-        //                                IdClasse = reader["idClasse"].ToString(),
-        //                                Libelle = reader["classeLibelle"].ToString(),
-        //                                Types = types
-        //                            };
-        //                            Mot mot = new Mot
-        //                            {
-        //                                IdMot = reader["idMot"].ToString(),
-        //                                Texte = reader["texteMot"].ToString(),
-        //                                Classe = classe,
-        //                                Fonction = fonction,
-        //                                Position = reader["position"].ToString()
-        //                            };
-
-        //                            phrase.Mots.Add(mot);
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        return phrase;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Une erreur est survenue lors de la récupération de la phrase " + idPhrase + ". \n" +
-        //                        "Message : " + ex.Message + "\n" +
-        //                        "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        throw;
-        //    }
-        //}
 
         public static Phrase GetPhraseById(string idPhrase)
         {

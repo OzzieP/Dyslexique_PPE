@@ -27,10 +27,46 @@ namespace Dyslexique.UI.CustomControls
             this.Text = this.mot.Texte;
             this.Top = 0;
             this.Left = x;
+            this.Font = new Font("Century Gothic", 16, FontStyle.Regular);
 
             this.Click += new EventHandler(OnClick);
             this.MouseEnter += new EventHandler(OnMouseEnter);
             this.MouseLeave += new EventHandler(OnMouseLeave);
+
+            // Définition de la couleur du CustomLabel selon la classe du Mot
+            switch (this.mot.Classe.Libelle)
+            {
+                case Global.ADJECTIF:
+                    this.ForeColor = Color.Blue;
+                    break;
+                case Global.ADVERBE:
+                    this.ForeColor = Color.Maroon;
+                    break;
+                case Global.CONJONCTION:
+                    this.ForeColor = Color.DarkOrange;
+                    break;
+                case Global.DETERMINANT:
+                    this.ForeColor = Color.Green;
+                    break;
+                case Global.INTERJECTION:
+                    this.ForeColor = Color.DarkViolet;
+                    break;
+                case Global.NOM:
+                    this.ForeColor = Color.Black;
+                    break;
+                case Global.PREPOSITION:
+                    this.ForeColor = Color.DarkRed;
+                    break;
+                case Global.PRONOM:
+                    this.ForeColor = Color.DarkGreen;
+                    break;
+                case Global.VERBE:
+                    this.ForeColor = Color.Red;
+                    break;
+                default:
+                    this.ForeColor = Color.Black;
+                    break;
+            }
         }
 
 
@@ -43,9 +79,9 @@ namespace Dyslexique.UI.CustomControls
 
             if (utilisateurAGagne)
             {
-                result = MessageBox.Show("Bravo ! Le mot à trouver était : " + phrase.MotATrouver.Texte, 
-                    "OK", 
-                    MessageBoxButtons.OK, 
+                result = MessageBox.Show("Bravo ! Le mot à trouver était : " + phrase.MotATrouver.Texte,
+                    "OK",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
                 Global.phrasesNonReussies.Remove(this.phrase);
@@ -57,9 +93,9 @@ namespace Dyslexique.UI.CustomControls
             }
             else
             {
-                result = MessageBox.Show("Dommage ! Rééssayez une prochaine fois !", 
-                    "OK", 
-                    MessageBoxButtons.OK, 
+                result = MessageBox.Show("Dommage ! Rééssayez une prochaine fois !",
+                    "OK",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
                 this.phrase.Tentative++;

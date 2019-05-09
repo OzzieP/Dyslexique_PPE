@@ -75,18 +75,8 @@ namespace Dyslexique.Classes
             this.motATrouver = new Mot();
         }
 
-        public Phrase(List<Mot> listMots)
-        {
-            this.Mots = listMots;
 
-            foreach (Mot mot in listMots)
-            {
-                this.Texte += mot.Texte + " ";
-            }
-        }
-
-
-        public void Afficher(Jeu jeu, Phrase phrase)
+        public void DisplayMots(Jeu jeu, Phrase phrase)
         {
             int x = 0;
 
@@ -97,9 +87,10 @@ namespace Dyslexique.Classes
                 SizeF stringSize = new SizeF();
                 Graphics g = jeu.CreateGraphics();
                 stringSize = g.MeasureString(mot.Texte, customLabel.Font);
-                customLabel.Width = Convert.ToInt32(stringSize.Width) + 5;
+                customLabel.Width = Convert.ToInt32(stringSize.Width) + 10;
+                customLabel.Height = Convert.ToInt32(stringSize.Height) + 10;
                 jeu.Controls["panel_Phrase"].Controls.Add(customLabel);
-                x = x + Convert.ToInt32(stringSize.Width) + 5;
+                x = x + Convert.ToInt32(stringSize.Width) + 20;
             }
         }
     }
