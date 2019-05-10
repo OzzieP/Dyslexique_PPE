@@ -30,13 +30,18 @@ namespace Dyslexique.Classes
         // Persistance dans toute l'application des phrases non réussies par l'utilisateur connecté
         public static List<Phrase> phrasesNonReussies = new List<Phrase>();
         // Persistance dans toute l'application de toutes les phrases stockées dans la DB
-        public static List<Phrase> allPhrases = Queries.GetAllPhrases();
+        public static List<Phrase> allPhrases = new List<Phrase>();
 
 
         // Fonction utilisée pour mettre à jour la liste des phrases non réussies par l'utilisateur
         public static void RefreshListPhrasesNonReussies()
         {
-            phrasesNonReussies = Queries.GetAllPhrasesNonReussies();
+            phrasesNonReussies = Queries.GetAllPhrasesNonReussiesByIdUtilisateur();
+        }
+
+        public static void RefreshListAllPhrases()
+        {
+            allPhrases = Queries.GetAllPhrases();
         }
 
         public static string Hash256(string mdp)

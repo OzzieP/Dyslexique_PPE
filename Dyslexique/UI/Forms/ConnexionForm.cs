@@ -93,7 +93,7 @@ namespace Dyslexique.UI.Forms
                     if (tempUtilisateur.Pseudo == pseudo && tempUtilisateur.MotDePasse == mdp)
                     {
                         Global.Utilisateur = tempUtilisateur;
-                        Global.phrasesNonReussies = Queries.GetAllPhrasesNonReussies();
+                        Global.phrasesNonReussies = Queries.GetAllPhrasesNonReussiesByIdUtilisateur();
                         MainForm mainForm = new MainForm();
                         this.Hide();
                         mainForm.Show();
@@ -148,7 +148,7 @@ namespace Dyslexique.UI.Forms
 
                         Queries.InsertUtilisateur(pseudo, nom, prenom, email, mdp, Global.ROLE_UTILISATEUR);
                         Global.Utilisateur = tempUtilisateur;
-                        Global.phrasesNonReussies = Queries.GetAllPhrasesNonReussies();
+                        Global.phrasesNonReussies = Queries.GetAllPhrasesNonReussiesByIdUtilisateur();
                         MessageBox.Show("Inscription terminée.\nBienvenue sur Dyslexique !", "Bienvenue !", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         MainForm mainForm = new MainForm();
                         this.Hide();

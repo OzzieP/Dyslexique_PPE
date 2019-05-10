@@ -56,6 +56,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.radioButton_UpdateAdministrateur = new System.Windows.Forms.RadioButton();
             this.groupBox_InsertUtilisateur = new System.Windows.Forms.GroupBox();
+            this.button_Ajout_ShowConfMdp = new System.Windows.Forms.Button();
+            this.button_Ajout_ShowMdp = new System.Windows.Forms.Button();
             this.textBox_InsertConfMdp = new System.Windows.Forms.TextBox();
             this.textBox_InsertMdp = new System.Windows.Forms.TextBox();
             this.textBox_InsertNom = new System.Windows.Forms.TextBox();
@@ -75,17 +77,15 @@
             this.radioButton_InsertAdministrateur = new System.Windows.Forms.RadioButton();
             this.groupBox_DataGridView = new System.Windows.Forms.GroupBox();
             this.dataGridView_AllUtilisateurs = new System.Windows.Forms.DataGridView();
-            this.errorProvider_TextBox = new System.Windows.Forms.ErrorProvider(this.components);
-            this.button_Ajout_ShowMdp = new System.Windows.Forms.Button();
-            this.button_Ajout_ShowConfMdp = new System.Windows.Forms.Button();
-            this.utilisateurBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idUtilisateurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pseudoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorProvider_TextBox = new System.Windows.Forms.ErrorProvider(this.components);
+            this.idUtilisateurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pseudoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idRoleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.utilisateurBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox_DeleteUtilisateur.SuspendLayout();
             this.groupBox_UpdateUtilisateur.SuspendLayout();
             this.groupBox_InsertUtilisateur.SuspendLayout();
@@ -97,7 +97,6 @@
             // 
             // groupBox_DeleteUtilisateur
             // 
-            this.groupBox_DeleteUtilisateur.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox_DeleteUtilisateur.Controls.Add(this.textBox_DeleteRole);
             this.groupBox_DeleteUtilisateur.Controls.Add(this.label19);
             this.groupBox_DeleteUtilisateur.Controls.Add(this.textBox_DeletePrenom);
@@ -110,7 +109,7 @@
             this.groupBox_DeleteUtilisateur.Controls.Add(this.label10);
             this.groupBox_DeleteUtilisateur.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_DeleteUtilisateur.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.groupBox_DeleteUtilisateur.Location = new System.Drawing.Point(1528, 1138);
+            this.groupBox_DeleteUtilisateur.Location = new System.Drawing.Point(1644, 1112);
             this.groupBox_DeleteUtilisateur.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_DeleteUtilisateur.Name = "groupBox_DeleteUtilisateur";
             this.groupBox_DeleteUtilisateur.Padding = new System.Windows.Forms.Padding(2);
@@ -236,7 +235,6 @@
             // 
             // groupBox_UpdateUtilisateur
             // 
-            this.groupBox_UpdateUtilisateur.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox_UpdateUtilisateur.Controls.Add(this.textBox_UpdateEmail);
             this.groupBox_UpdateUtilisateur.Controls.Add(this.label18);
             this.groupBox_UpdateUtilisateur.Controls.Add(this.textBox_UpdatePrenom);
@@ -252,7 +250,7 @@
             this.groupBox_UpdateUtilisateur.Controls.Add(this.radioButton_UpdateAdministrateur);
             this.groupBox_UpdateUtilisateur.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_UpdateUtilisateur.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.groupBox_UpdateUtilisateur.Location = new System.Drawing.Point(1528, 646);
+            this.groupBox_UpdateUtilisateur.Location = new System.Drawing.Point(1644, 605);
             this.groupBox_UpdateUtilisateur.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_UpdateUtilisateur.Name = "groupBox_UpdateUtilisateur";
             this.groupBox_UpdateUtilisateur.Padding = new System.Windows.Forms.Padding(2);
@@ -421,7 +419,6 @@
             // 
             // groupBox_InsertUtilisateur
             // 
-            this.groupBox_InsertUtilisateur.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox_InsertUtilisateur.Controls.Add(this.button_Ajout_ShowConfMdp);
             this.groupBox_InsertUtilisateur.Controls.Add(this.button_Ajout_ShowMdp);
             this.groupBox_InsertUtilisateur.Controls.Add(this.textBox_InsertConfMdp);
@@ -443,7 +440,7 @@
             this.groupBox_InsertUtilisateur.Controls.Add(this.radioButton_InsertAdministrateur);
             this.groupBox_InsertUtilisateur.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_InsertUtilisateur.ForeColor = System.Drawing.Color.DarkGreen;
-            this.groupBox_InsertUtilisateur.Location = new System.Drawing.Point(1528, 88);
+            this.groupBox_InsertUtilisateur.Location = new System.Drawing.Point(1644, 28);
             this.groupBox_InsertUtilisateur.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_InsertUtilisateur.Name = "groupBox_InsertUtilisateur";
             this.groupBox_InsertUtilisateur.Padding = new System.Windows.Forms.Padding(2);
@@ -451,6 +448,34 @@
             this.groupBox_InsertUtilisateur.TabIndex = 12;
             this.groupBox_InsertUtilisateur.TabStop = false;
             this.groupBox_InsertUtilisateur.Text = "Ajout d\'un utilisateur";
+            // 
+            // button_Ajout_ShowConfMdp
+            // 
+            this.button_Ajout_ShowConfMdp.FlatAppearance.BorderSize = 0;
+            this.button_Ajout_ShowConfMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Ajout_ShowConfMdp.Image = ((System.Drawing.Image)(resources.GetObject("button_Ajout_ShowConfMdp.Image")));
+            this.button_Ajout_ShowConfMdp.Location = new System.Drawing.Point(1157, 311);
+            this.button_Ajout_ShowConfMdp.Margin = new System.Windows.Forms.Padding(7);
+            this.button_Ajout_ShowConfMdp.Name = "button_Ajout_ShowConfMdp";
+            this.button_Ajout_ShowConfMdp.Size = new System.Drawing.Size(44, 37);
+            this.button_Ajout_ShowConfMdp.TabIndex = 23;
+            this.button_Ajout_ShowConfMdp.UseVisualStyleBackColor = true;
+            this.button_Ajout_ShowConfMdp.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave_HideMdp);
+            this.button_Ajout_ShowConfMdp.MouseHover += new System.EventHandler(this.Buttons_MouseHover_ShowMdp);
+            // 
+            // button_Ajout_ShowMdp
+            // 
+            this.button_Ajout_ShowMdp.FlatAppearance.BorderSize = 0;
+            this.button_Ajout_ShowMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Ajout_ShowMdp.Image = ((System.Drawing.Image)(resources.GetObject("button_Ajout_ShowMdp.Image")));
+            this.button_Ajout_ShowMdp.Location = new System.Drawing.Point(1157, 219);
+            this.button_Ajout_ShowMdp.Margin = new System.Windows.Forms.Padding(7);
+            this.button_Ajout_ShowMdp.Name = "button_Ajout_ShowMdp";
+            this.button_Ajout_ShowMdp.Size = new System.Drawing.Size(44, 37);
+            this.button_Ajout_ShowMdp.TabIndex = 22;
+            this.button_Ajout_ShowMdp.UseVisualStyleBackColor = true;
+            this.button_Ajout_ShowMdp.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave_HideMdp);
+            this.button_Ajout_ShowMdp.MouseHover += new System.EventHandler(this.Buttons_MouseHover_ShowMdp);
             // 
             // textBox_InsertConfMdp
             // 
@@ -646,10 +671,9 @@
             // 
             // groupBox_DataGridView
             // 
-            this.groupBox_DataGridView.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox_DataGridView.Controls.Add(this.dataGridView_AllUtilisateurs);
             this.groupBox_DataGridView.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_DataGridView.Location = new System.Drawing.Point(63, 52);
+            this.groupBox_DataGridView.Location = new System.Drawing.Point(178, 28);
             this.groupBox_DataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_DataGridView.Name = "groupBox_DataGridView";
             this.groupBox_DataGridView.Padding = new System.Windows.Forms.Padding(2);
@@ -687,57 +711,6 @@
             this.dataGridView_AllUtilisateurs.TabIndex = 0;
             this.dataGridView_AllUtilisateurs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_AllUtilisateurs_CellClick);
             // 
-            // errorProvider_TextBox
-            // 
-            this.errorProvider_TextBox.ContainerControl = this;
-            // 
-            // button_Ajout_ShowMdp
-            // 
-            this.button_Ajout_ShowMdp.FlatAppearance.BorderSize = 0;
-            this.button_Ajout_ShowMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Ajout_ShowMdp.Image = ((System.Drawing.Image)(resources.GetObject("button_Ajout_ShowMdp.Image")));
-            this.button_Ajout_ShowMdp.Location = new System.Drawing.Point(1157, 219);
-            this.button_Ajout_ShowMdp.Margin = new System.Windows.Forms.Padding(7);
-            this.button_Ajout_ShowMdp.Name = "button_Ajout_ShowMdp";
-            this.button_Ajout_ShowMdp.Size = new System.Drawing.Size(44, 37);
-            this.button_Ajout_ShowMdp.TabIndex = 22;
-            this.button_Ajout_ShowMdp.UseVisualStyleBackColor = true;
-            this.button_Ajout_ShowMdp.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave_HideMdp);
-            this.button_Ajout_ShowMdp.MouseHover += new System.EventHandler(this.Buttons_MouseHover_ShowMdp);
-            // 
-            // button_Ajout_ShowConfMdp
-            // 
-            this.button_Ajout_ShowConfMdp.FlatAppearance.BorderSize = 0;
-            this.button_Ajout_ShowConfMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Ajout_ShowConfMdp.Image = ((System.Drawing.Image)(resources.GetObject("button_Ajout_ShowConfMdp.Image")));
-            this.button_Ajout_ShowConfMdp.Location = new System.Drawing.Point(1157, 311);
-            this.button_Ajout_ShowConfMdp.Margin = new System.Windows.Forms.Padding(7);
-            this.button_Ajout_ShowConfMdp.Name = "button_Ajout_ShowConfMdp";
-            this.button_Ajout_ShowConfMdp.Size = new System.Drawing.Size(44, 37);
-            this.button_Ajout_ShowConfMdp.TabIndex = 23;
-            this.button_Ajout_ShowConfMdp.UseVisualStyleBackColor = true;
-            this.button_Ajout_ShowConfMdp.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave_HideMdp);
-            this.button_Ajout_ShowConfMdp.MouseHover += new System.EventHandler(this.Buttons_MouseHover_ShowMdp);
-            // 
-            // utilisateurBindingSource
-            // 
-            this.utilisateurBindingSource.DataSource = typeof(Dyslexique.Classes.Utilisateur);
-            // 
-            // idUtilisateurDataGridViewTextBoxColumn
-            // 
-            this.idUtilisateurDataGridViewTextBoxColumn.DataPropertyName = "IdUtilisateur";
-            this.idUtilisateurDataGridViewTextBoxColumn.HeaderText = "IdUtilisateur";
-            this.idUtilisateurDataGridViewTextBoxColumn.Name = "idUtilisateurDataGridViewTextBoxColumn";
-            this.idUtilisateurDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idUtilisateurDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // pseudoDataGridViewTextBoxColumn
-            // 
-            this.pseudoDataGridViewTextBoxColumn.DataPropertyName = "Pseudo";
-            this.pseudoDataGridViewTextBoxColumn.HeaderText = "Pseudo";
-            this.pseudoDataGridViewTextBoxColumn.Name = "pseudoDataGridViewTextBoxColumn";
-            this.pseudoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // Nom
             // 
             this.Nom.DataPropertyName = "Nom";
@@ -761,6 +734,25 @@
             this.Email.ReadOnly = true;
             this.Email.Width = 144;
             // 
+            // errorProvider_TextBox
+            // 
+            this.errorProvider_TextBox.ContainerControl = this;
+            // 
+            // idUtilisateurDataGridViewTextBoxColumn
+            // 
+            this.idUtilisateurDataGridViewTextBoxColumn.DataPropertyName = "IdUtilisateur";
+            this.idUtilisateurDataGridViewTextBoxColumn.HeaderText = "IdUtilisateur";
+            this.idUtilisateurDataGridViewTextBoxColumn.Name = "idUtilisateurDataGridViewTextBoxColumn";
+            this.idUtilisateurDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idUtilisateurDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pseudoDataGridViewTextBoxColumn
+            // 
+            this.pseudoDataGridViewTextBoxColumn.DataPropertyName = "Pseudo";
+            this.pseudoDataGridViewTextBoxColumn.HeaderText = "Pseudo";
+            this.pseudoDataGridViewTextBoxColumn.Name = "pseudoDataGridViewTextBoxColumn";
+            this.pseudoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // idRoleDataGridViewTextBoxColumn
             // 
             this.idRoleDataGridViewTextBoxColumn.DataPropertyName = "IdRole";
@@ -776,6 +768,10 @@
             this.roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
             this.roleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // utilisateurBindingSource
+            // 
+            this.utilisateurBindingSource.DataSource = typeof(Dyslexique.Classes.Utilisateur);
+            // 
             // GestionUtilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -785,8 +781,10 @@
             this.Controls.Add(this.groupBox_UpdateUtilisateur);
             this.Controls.Add(this.groupBox_InsertUtilisateur);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(3050, 1530);
+            this.MinimumSize = new System.Drawing.Size(3050, 1530);
             this.Name = "GestionUtilisateur";
-            this.Size = new System.Drawing.Size(3554, 1727);
+            this.Size = new System.Drawing.Size(3050, 1530);
             this.Load += new System.EventHandler(this.GestionUtilisateur_Load);
             this.groupBox_DeleteUtilisateur.ResumeLayout(false);
             this.groupBox_DeleteUtilisateur.PerformLayout();

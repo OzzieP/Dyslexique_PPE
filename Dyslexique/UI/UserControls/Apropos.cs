@@ -12,9 +12,15 @@ namespace Dyslexique.UI.UserControls
 {
     public partial class Apropos : UserControl
     {
+        public string Title = "À propos de nous";
+
+
         public Apropos()
         {
             InitializeComponent();
+
+            this.Dock = DockStyle.Fill;
+            this.Name = "aPropos";
         }
     }
 }

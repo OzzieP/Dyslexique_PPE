@@ -66,10 +66,7 @@ namespace Dyslexique.Classes
         }
 
 
-        public Utilisateur()
-        {
-
-        }
+        public Utilisateur() { }
 
         /* TEMP : A supprimer */
         public Utilisateur(string pseudo, string nom, string prenom, string email, string mdp, string idRole)
@@ -82,5 +79,30 @@ namespace Dyslexique.Classes
             this.idRole = idRole;
         }
         /* ------------------------------------------------------------ */
+
+        public void SignOut()
+        {
+            Global.Utilisateur.ClearUtilisateurAndGlobalLists();
+        }
+
+        private void ClearUtilisateurAndGlobalLists()
+        {
+            this.idUtilisateur = null;
+            this.pseudo = null;
+            this.nom = null;
+            this.prenom = null;
+            this.email = null;
+            this.idRole = null;
+            this.role = null;
+
+            Global.allPhrases.Clear();
+            Global.phrasesNonReussies.Clear();
+        }
+
+        public void ResetProgression()
+        {
+            DAL.Queries.ResetProgressionByIdUtilisateur(this.IdUtilisateur);
+            Global.RefreshListPhrasesNonReussies();
+        }
     }
 }

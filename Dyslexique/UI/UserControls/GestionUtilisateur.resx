@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button_Ajout_ShowConfMdp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAANJJREFUOE/NkksOAUEYBsfKwtaexEE4Bhdg65FwBxIrN+AyOIELEBuPvaBq9CRj
+        IgiJqKQmf3/dPZP5u6O/pIgDXOA+aG3m3FNquMUdTrAZtDZzzjUP6eEJp1gwyGDmnGu6BmkaeMY25gyg
+        guOgtTjnmgvWDaSMRxzGoxtuMFsFrZOXyAgP6N5oiWvMOwj4VTf6RbU2S3DtBm1u/HDw8Qu++YVSPAKb
+        aGPeaWIH75qY4NG8OsYZPjzGhOxFagXTF6mKT/G69nGOblJrs5dX+ddE0RVNWkJHgDcgmgAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
+  <data name="button_Ajout_ShowMdp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAANJJREFUOE/NkksOAUEYBsfKwtaexEE4Bhdg65FwBxIrN+AyOIELEBuPvaBq9CRj
+        IgiJqKQmf3/dPZP5u6O/pIgDXOA+aG3m3FNquMUdTrAZtDZzzjUP6eEJp1gwyGDmnGu6BmkaeMY25gyg
+        guOgtTjnmgvWDaSMRxzGoxtuMFsFrZOXyAgP6N5oiWvMOwj4VTf6RbU2S3DtBm1u/HDw8Qu++YVSPAKb
+        aGPeaWIH75qY4NG8OsYZPjzGhOxFagXTF6mKT/G69nGOblJrs5dX+ddE0RVNWkJHgDcgmgAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
   <metadata name="Nom.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -132,25 +153,4 @@
   <metadata name="errorProvider_TextBox.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>392, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button_Ajout_ShowMdp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAANJJREFUOE/NkksOAUEYBsfKwtaexEE4Bhdg65FwBxIrN+AyOIELEBuPvaBq9CRj
-        IgiJqKQmf3/dPZP5u6O/pIgDXOA+aG3m3FNquMUdTrAZtDZzzjUP6eEJp1gwyGDmnGu6BmkaeMY25gyg
-        guOgtTjnmgvWDaSMRxzGoxtuMFsFrZOXyAgP6N5oiWvMOwj4VTf6RbU2S3DtBm1u/HDw8Qu++YVSPAKb
-        aGPeaWIH75qY4NG8OsYZPjzGhOxFagXTF6mKT/G69nGOblJrs5dX+ddE0RVNWkJHgDcgmgAAAABJRU5E
-        rkJggg==
-</value>
-  </data>
-  <data name="button_Ajout_ShowConfMdp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAANJJREFUOE/NkksOAUEYBsfKwtaexEE4Bhdg65FwBxIrN+AyOIELEBuPvaBq9CRj
-        IgiJqKQmf3/dPZP5u6O/pIgDXOA+aG3m3FNquMUdTrAZtDZzzjUP6eEJp1gwyGDmnGu6BmkaeMY25gyg
-        guOgtTjnmgvWDaSMRxzGoxtuMFsFrZOXyAgP6N5oiWvMOwj4VTf6RbU2S3DtBm1u/HDw8Qu++YVSPAKb
-        aGPeaWIH75qY4NG8OsYZPjzGhOxFagXTF6mKT/G69nGOblJrs5dX+ddE0RVNWkJHgDcgmgAAAABJRU5E
-        rkJggg==
-</value>
-  </data>
 </root>

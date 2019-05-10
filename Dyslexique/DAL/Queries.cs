@@ -13,7 +13,7 @@ namespace Dyslexique.DAL
 {
     public static class Queries
     {
-        public static string ConnectionString = ConfigurationManager.ConnectionStrings["DyslexiqueConnectionString"].ConnectionString;
+        private static string ConnectionString = ConfigurationManager.ConnectionStrings["DyslexiqueConnectionString"].ConnectionString;
 
         #region Utilisateur
         public static List<Utilisateur> GetAllUtilisateurs()
@@ -400,6 +400,38 @@ namespace Dyslexique.DAL
                 }
             }
         }
+
+        public static void ResetProgressionByIdUtilisateur(string idUtilisateur)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = @"UPDATE Utilisateur_Essayer_Phrase
+                                    SET tentative = 0, dateDerniereTentative = NULL, reussie = 0
+                                    WHERE idUtilisateur = @IdUtilisateur";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(idUtilisateur)));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de la suppression de la progression de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Progression remise à zéro.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de la suppression de la progression de l'utilisateur.\n" +
+                                "Message : " + ex.Message + "\n" +
+                                "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
+                }
+            }
+        }
         #endregion
 
         #region Mot
@@ -516,7 +548,7 @@ namespace Dyslexique.DAL
             }
         }
 
-        public static List<Phrase> GetAllPhrasesNonReussies()
+        public static List<Phrase> GetAllPhrasesNonReussiesByIdUtilisateur()
         {
             try
             {

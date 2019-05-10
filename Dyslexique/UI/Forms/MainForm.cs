@@ -27,9 +27,6 @@ namespace Dyslexique.UI.Forms
         public MainForm()
         {
             InitializeComponent();
-
-            // A SUPPRIMER --> TEST
-            //Global.Utilisateur = DAL.Queries.GetUtilisateurById("2");
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -73,31 +70,32 @@ namespace Dyslexique.UI.Forms
             if (logoutOrExit == DialogResult.Yes)
                 Application.Exit();
             else if (logoutOrExit == DialogResult.No)
+            {
+                Global.Utilisateur.SignOut();
                 DisplayFormConnexion();
+                this.Close();
+            }
         }
 
         private void DisplayFormConnexion()
         {
-            FormConnexion formConnexion = new FormConnexion();
-            formConnexion.Show();
-            this.Hide();
+            ConnexionForm connexionForm = new ConnexionForm();
+            connexionForm.Show();
         }
 
         // Fonction pour afficher la page d'accueil
         private void Button_Menu_Accueil_Click(object sender, EventArgs e)
         {
-
+            Accueil accueil = new Accueil();
+            this.Controls.Add(accueil);
+            accueil.BringToFront();
+            label_Title.Text = accueil.Title;
         }
 
         // Fonction pour afficher la page de jeu/tests
         private void Button_Menu_Tests_Click(object sender, EventArgs e)
         {
-            Jeu jeu = new Jeu()
-            {
-                Dock = DockStyle.Fill,
-                Name = "jeu"
-            };
-
+            Jeu jeu = new Jeu();
             this.Controls.Add(jeu);
             jeu.BringToFront();
             label_Title.Text = jeu.Title;
@@ -106,12 +104,7 @@ namespace Dyslexique.UI.Forms
         // Fonction pour afficher la page de gestion des Utilisateurs
         private void Button_Menu_Utilisateurs_Click(object sender, EventArgs e)
         {
-            GestionUtilisateur gestionUtilisateur = new GestionUtilisateur()
-            {
-                Dock = DockStyle.Fill,
-                Name = "gestionUtilisateur"
-            };
-
+            GestionUtilisateur gestionUtilisateur = new GestionUtilisateur();
             this.Controls.Add(gestionUtilisateur);
             gestionUtilisateur.BringToFront();
             label_Title.Text = gestionUtilisateur.Title;
@@ -147,7 +140,10 @@ namespace Dyslexique.UI.Forms
 
         private void Button_Menu_Apropos_Click(object sender, EventArgs e)
         {
-
+            Apropos aPropos = new Apropos();
+            this.Controls.Add(aPropos);
+            aPropos.BringToFront();
+            label_Title.Text = aPropos.Title;
         }
     }
 }

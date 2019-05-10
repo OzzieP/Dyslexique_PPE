@@ -196,7 +196,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 149);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(420, 1516);
+            this.panel2.Size = new System.Drawing.Size(420, 1551);
             this.panel2.TabIndex = 1;
             // 
             // panel_Administration
@@ -326,7 +326,7 @@
             this.button_Menu_Apropos.ForeColor = System.Drawing.Color.White;
             this.button_Menu_Apropos.Image = ((System.Drawing.Image)(resources.GetObject("button_Menu_Apropos.Image")));
             this.button_Menu_Apropos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Menu_Apropos.Location = new System.Drawing.Point(2, 1339);
+            this.button_Menu_Apropos.Location = new System.Drawing.Point(2, 1374);
             this.button_Menu_Apropos.Margin = new System.Windows.Forms.Padding(2);
             this.button_Menu_Apropos.Name = "button_Menu_Apropos";
             this.button_Menu_Apropos.Size = new System.Drawing.Size(420, 112);
@@ -378,13 +378,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(3500, 1665);
+            this.ClientSize = new System.Drawing.Size(3500, 1700);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel_Header);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(3500, 1700);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dyslexique";
