@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionUtilisateur));
             this.groupBox_DeleteUtilisateur = new System.Windows.Forms.GroupBox();
             this.textBox_DeleteRole = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -453,7 +452,7 @@
             // 
             this.button_Ajout_ShowConfMdp.FlatAppearance.BorderSize = 0;
             this.button_Ajout_ShowConfMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Ajout_ShowConfMdp.Image = ((System.Drawing.Image)(resources.GetObject("button_Ajout_ShowConfMdp.Image")));
+            this.button_Ajout_ShowConfMdp.Image = global::Dyslexique.Properties.Resources.Eye_16;
             this.button_Ajout_ShowConfMdp.Location = new System.Drawing.Point(1157, 311);
             this.button_Ajout_ShowConfMdp.Margin = new System.Windows.Forms.Padding(7);
             this.button_Ajout_ShowConfMdp.Name = "button_Ajout_ShowConfMdp";
@@ -467,7 +466,7 @@
             // 
             this.button_Ajout_ShowMdp.FlatAppearance.BorderSize = 0;
             this.button_Ajout_ShowMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Ajout_ShowMdp.Image = ((System.Drawing.Image)(resources.GetObject("button_Ajout_ShowMdp.Image")));
+            this.button_Ajout_ShowMdp.Image = global::Dyslexique.Properties.Resources.Eye_16;
             this.button_Ajout_ShowMdp.Location = new System.Drawing.Point(1157, 219);
             this.button_Ajout_ShowMdp.Margin = new System.Windows.Forms.Padding(7);
             this.button_Ajout_ShowMdp.Name = "button_Ajout_ShowMdp";

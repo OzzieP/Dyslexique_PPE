@@ -155,7 +155,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::Dyslexique.Properties.Resources.Simpleduc_Logo_Large_PNG;
             this.pictureBox1.Location = new System.Drawing.Point(14, 975);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(7);
             this.pictureBox1.Name = "pictureBox1";
@@ -200,7 +200,7 @@
             // 
             this.button_Connexion_ShowMdp.FlatAppearance.BorderSize = 0;
             this.button_Connexion_ShowMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Connexion_ShowMdp.Image = ((System.Drawing.Image)(resources.GetObject("button_Connexion_ShowMdp.Image")));
+            this.button_Connexion_ShowMdp.Image = global::Dyslexique.Properties.Resources.Eye_16;
             this.button_Connexion_ShowMdp.Location = new System.Drawing.Point(875, 625);
             this.button_Connexion_ShowMdp.Margin = new System.Windows.Forms.Padding(7);
             this.button_Connexion_ShowMdp.Name = "button_Connexion_ShowMdp";
@@ -289,7 +289,7 @@
             // 
             this.button_Inscription_ShowConfMdp.FlatAppearance.BorderSize = 0;
             this.button_Inscription_ShowConfMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Inscription_ShowConfMdp.Image = ((System.Drawing.Image)(resources.GetObject("button_Inscription_ShowConfMdp.Image")));
+            this.button_Inscription_ShowConfMdp.Image = global::Dyslexique.Properties.Resources.Eye_16;
             this.button_Inscription_ShowConfMdp.Location = new System.Drawing.Point(870, 879);
             this.button_Inscription_ShowConfMdp.Margin = new System.Windows.Forms.Padding(7);
             this.button_Inscription_ShowConfMdp.Name = "button_Inscription_ShowConfMdp";
@@ -303,7 +303,7 @@
             // 
             this.button_Inscription_ShowMdp.FlatAppearance.BorderSize = 0;
             this.button_Inscription_ShowMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Inscription_ShowMdp.Image = ((System.Drawing.Image)(resources.GetObject("button_Inscription_ShowMdp.Image")));
+            this.button_Inscription_ShowMdp.Image = global::Dyslexique.Properties.Resources.Eye_16;
             this.button_Inscription_ShowMdp.Location = new System.Drawing.Point(870, 752);
             this.button_Inscription_ShowMdp.Margin = new System.Windows.Forms.Padding(7);
             this.button_Inscription_ShowMdp.Name = "button_Inscription_ShowMdp";

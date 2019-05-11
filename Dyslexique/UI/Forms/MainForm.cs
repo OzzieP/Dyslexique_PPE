@@ -35,12 +35,10 @@ namespace Dyslexique.UI.Forms
             label_Pseudo.Text = Global.Utilisateur.Pseudo;
 
             if (Global.Utilisateur.IdRole == Global.ROLE_UTILISATEUR)
-            {
-                pictureBox_Utilisateur.Visible = true;
-            }
+                pictureBox_Role_Utilisateur.Image = Properties.Resources.Utilisateur_64;
             else if (Global.Utilisateur.IdRole == Global.ROLE_ADMINISTRATEUR)
             {
-                pictureBox_Administrateur.Visible = true;
+                pictureBox_Role_Utilisateur.Image = Dyslexique.Properties.Resources.Administrateur_64;
                 panel_Administration.Visible = true;
             }
         }

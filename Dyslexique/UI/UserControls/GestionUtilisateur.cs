@@ -23,7 +23,6 @@ namespace Dyslexique.UI.UserControls
             InitializeComponent();
 
             this.Dock = DockStyle.Fill;
-            this.Name = "gestionUtilisateur";
             listUtilisateurs = Queries.GetAllUtilisateurs();
         }
 

@@ -63,6 +63,56 @@ namespace Dyslexique.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Accueil_32 {
+            get {
+                object obj = ResourceManager.GetObject("Accueil_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Administrateur_64 {
+            get {
+                object obj = ResourceManager.GetObject("Administrateur_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Apropos_32 {
+            get {
+                object obj = ResourceManager.GetObject("Apropos_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Close_48 {
+            get {
+                object obj = ResourceManager.GetObject("Close_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Exit_64 {
+            get {
+                object obj = ResourceManager.GetObject("Exit_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Eye_16 {
             get {
                 object obj = ResourceManager.GetObject("Eye_16", resourceCulture);
@@ -76,6 +126,76 @@ namespace Dyslexique.Properties {
         internal static System.Drawing.Bitmap EyeOff_16 {
             get {
                 object obj = ResourceManager.GetObject("EyeOff_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gestion_Mots_32 {
+            get {
+                object obj = ResourceManager.GetObject("Gestion_Mots_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gestion_Phrases_32 {
+            get {
+                object obj = ResourceManager.GetObject("Gestion_Phrases_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gestion_Utilisateurs_32 {
+            get {
+                object obj = ResourceManager.GetObject("Gestion_Utilisateurs_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Simpleduc_Logo_Large_PNG {
+            get {
+                object obj = ResourceManager.GetObject("Simpleduc_Logo_Large_PNG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap simpleduc_logo_small {
+            get {
+                object obj = ResourceManager.GetObject("simpleduc_logo_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tests_32 {
+            get {
+                object obj = ResourceManager.GetObject("Tests_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Utilisateur_64 {
+            get {
+                object obj = ResourceManager.GetObject("Utilisateur_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

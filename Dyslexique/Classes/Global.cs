@@ -33,6 +33,20 @@ namespace Dyslexique.Classes
         public static List<Phrase> allPhrases = new List<Phrase>();
 
 
+        public static List<string> allClasses = new List<string>
+        {
+            ADJECTIF,
+            ADVERBE,
+            CONJONCTION,
+            DETERMINANT,
+            INTERJECTION,
+            NOM,
+            PREPOSITION,
+            PRONOM,
+            VERBE
+        };
+
+
         // Fonction utilisée pour mettre à jour la liste des phrases non réussies par l'utilisateur
         public static void RefreshListPhrasesNonReussies()
         {

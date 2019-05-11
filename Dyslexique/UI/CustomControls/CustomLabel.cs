@@ -75,11 +75,11 @@ namespace Dyslexique.UI.CustomControls
             bool utilisateurAGagne = EstLeMotATrouver();
             DateTime date = DateTime.Now;
             date.ToUniversalTime();
-            DialogResult result;
+            //DialogResult result;
 
             if (utilisateurAGagne)
             {
-                result = MessageBox.Show("Bravo ! Le mot à trouver était : " + phrase.MotATrouver.Texte,
+                /*result = */MessageBox.Show("Bravo ! Le mot à trouver était : " + phrase.MotATrouver.Texte,
                     "OK",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -93,7 +93,7 @@ namespace Dyslexique.UI.CustomControls
             }
             else
             {
-                result = MessageBox.Show("Dommage ! Rééssayez une prochaine fois !",
+                /*result = */MessageBox.Show("Dommage ! Rééssayez une prochaine fois !",
                     "OK",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -106,8 +106,9 @@ namespace Dyslexique.UI.CustomControls
                 Global.RefreshListPhrasesNonReussies();
             }
 
-            if (result == DialogResult.OK)
-                jeu.DisplayPhrase();
+            //if (result == DialogResult.OK)
+            //    jeu.DisplayPhrase();
+            jeu.DisplayPhrase();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)

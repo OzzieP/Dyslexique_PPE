@@ -22,7 +22,6 @@ namespace Dyslexique.UI.UserControls
             InitializeComponent();
 
             this.Dock = DockStyle.Fill;
-            this.Name = "jeu";
         }
 
         private void Jeu_Load(object sender, EventArgs e)
@@ -35,7 +34,9 @@ namespace Dyslexique.UI.UserControls
         public void DisplayPhrase()
         {
             ClearJeu();
+            Global.RefreshListAllPhrases();
             Global.RefreshListPhrasesNonReussies();
+            SetProgressBar();
 
             Random random = new Random();
             int randomIndex = random.Next(Global.phrasesNonReussies.Count), indexOne = 0, indexTwo = 0;
@@ -69,8 +70,13 @@ namespace Dyslexique.UI.UserControls
             }
             else
             {
-                if (randomIndex == indexOne || randomIndex == indexTwo)
+                do
+                {
                     randomIndex = random.Next(Global.phrasesNonReussies.Count);
+                } while (randomIndex == indexOne || randomIndex == indexTwo);
+
+                //if (randomIndex == indexOne || randomIndex == indexTwo)
+                //    randomIndex = random.Next(Global.phrasesNonReussies.Count);
 
                 this.phraseSelectionnee = Global.phrasesNonReussies.ElementAt(randomIndex);
                 label_Consigne.Text += phraseSelectionnee.Consigne;
@@ -95,9 +101,16 @@ namespace Dyslexique.UI.UserControls
             this.phraseSelectionnee = null;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void SetProgressBar()
         {
-            progressBar.Increment(10);
+            int phrases = Global.allPhrases.Count;
+            int phrasesReussies = Global.allPhrases.Count - Global.phrasesNonReussies.Count;
+
+            if (phrasesReussies != 0)
+                this.progressBar.Step = phrases % phrasesReussies;
+
+            this.progressBar.Value = phrasesReussies;
+            this.progressBar.Maximum = phrases;
         }
     }
 }
