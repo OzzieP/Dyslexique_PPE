@@ -11,19 +11,43 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// <summary>
+/// Espace de nom contenant toutes les Windows Forms.
+/// </summary>
 namespace Dyslexique.UI.Forms
 {
+    /// <summary>
+    /// Form affichant la page de connexion/inscription.
+    /// </summary>
     public partial class ConnexionForm : Form
     {
         /* Attributs/fonctions permettant le déplacement de la Form */
+        /// <summary>
+        /// Attribut permettant le déplacement de la Form.
+        /// </summary>
         public const int WM_NCLBUTTONDOWN = 0xA1;
+
+        /// <summary>
+        /// Attribut permettant le déplacement de la Form.
+        /// </summary>
         public const int HT_CAPTION = 0x2;
+
+        /// <summary>
+        /// Fonction importée permettant le déplacement de la Form.
+        /// </summary>
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        /// <summary>
+        /// Fonction importée permettant le déplacement de la Form.
+        /// </summary>
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
         /* --------------------------------------------------------- */
 
+        /// <summary>
+        /// Constructeur par défaut de la Form de connexion/inscription.
+        /// </summary>
         public ConnexionForm()
         {
             InitializeComponent();

@@ -178,6 +178,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label_Tentatives;
+        /// <summary>
+        /// Montre à l'<c>Utilisateur</c> sa progression.
+        /// </summary>
         public System.Windows.Forms.ProgressBar progressBar;
     }
 }

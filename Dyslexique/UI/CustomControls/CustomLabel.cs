@@ -10,8 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// <summary>
+/// Espace de nom contenant les éléments graphiques personnalisés.
+/// </summary>
 namespace Dyslexique.UI.CustomControls
 {
+    /// <summary>
+    /// Classe héritant de la classe <c>Label</c>. Le <c>CustomLabel</c> est utilisé dans la page <c>Jeu</c>. Il affiche un mot d'une phrase et est clickable.
+    /// </summary>
     public class CustomLabel : Label
     {
         private Mot mot = new Mot();
@@ -19,6 +25,13 @@ namespace Dyslexique.UI.CustomControls
         private Jeu jeu;
 
 
+        /// <summary>
+        /// Constructeur du <c>CustomLabel</c>. Définit le <c>Mot</c>, la <c>Phrase</c>, la page de <c>Jeu</c>, ainsi que les éléments graphiques et les méthodes événementielles auxquels il est associé.
+        /// </summary>
+        /// <param name="mot"></param>
+        /// <param name="phrase"></param>
+        /// <param name="jeu"></param>
+        /// <param name="x"></param>
         public CustomLabel(Mot mot, Phrase phrase, Jeu jeu, int x)
         {
             this.mot = mot;
@@ -70,16 +83,21 @@ namespace Dyslexique.UI.CustomControls
         }
 
 
+        /// <summary>
+        /// Détermine si l'<c>Utilisateur</c> a réussi la <c>Phrase</c> ou non.
+        /// <para>S'il a réussi la Phrase, alors on le précise dans la BDD. Dans le cas contraire, on passe à une Phrase suivante.</para>
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="e"></param>
         private void OnClick(object s, EventArgs e)
         {
             bool utilisateurAGagne = EstLeMotATrouver();
             DateTime date = DateTime.Now;
             date.ToUniversalTime();
-            //DialogResult result;
 
             if (utilisateurAGagne)
             {
-                /*result = */MessageBox.Show("Bravo ! Le mot à trouver était : " + phrase.MotATrouver.Texte,
+                MessageBox.Show("Bravo ! Le mot à trouver était : " + phrase.MotATrouver.Texte,
                     "OK",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -93,7 +111,7 @@ namespace Dyslexique.UI.CustomControls
             }
             else
             {
-                /*result = */MessageBox.Show("Dommage ! Rééssayez une prochaine fois !",
+                MessageBox.Show("Dommage ! Rééssayez une prochaine fois !",
                     "OK",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -106,16 +124,25 @@ namespace Dyslexique.UI.CustomControls
                 Global.RefreshListPhrasesNonReussies();
             }
 
-            //if (result == DialogResult.OK)
-            //    jeu.DisplayPhrase();
             jeu.DisplayPhrase();
         }
 
+        /// <summary>
+        /// Transforme le curseur en main et souligne le <c>Mot</c> lorsque la souris passe dessus.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnMouseEnter(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Hand;
             this.Font = new Font(this.Font, FontStyle.Underline);
         }
+
+        /// <summary>
+        /// Rétablit les valeurs par défaut des propriétés Cursor du curseur et Font du <c>CustomLabel</c> lorsque la souris ne pointe plus dessus.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
@@ -123,6 +150,9 @@ namespace Dyslexique.UI.CustomControls
             this.Font = new Font(this.Font, FontStyle.Regular);
         }
 
+        /// <summary>
+        /// Détermine si le <c>Mot</c> qui a été cliqué est celui à trouver pour réussir la <c>Phrase</c>.
+        /// </summary>
         private bool EstLeMotATrouver()
         {
             if (this.phrase.MotATrouver.Equals(this.mot))
@@ -130,53 +160,5 @@ namespace Dyslexique.UI.CustomControls
             else
                 return false;
         }
-
-
-
-
-
-
-        //private void CheckType(Mot mot)
-        //{
-        //    string type = mot.Classe.Types.Libelle;
-        //}
-
-        //private void CheckClasse(Mot mot)
-        //{
-        //    Classe classeToFind = new Classe();
-        //    Classe classeabc = mot.Classe;
-        //    Classe classe = mot.Classe;
-
-        //    if (classe.Equals(classeabc))
-        //        MessageBox.Show("Le click marche ! Classe : " + classe.Libelle, "OK", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        //    else
-        //        MessageBox.Show("Le click marche ! La Classe : " + classeabc.Libelle + " n'est pas pareil !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        //}
-
-        //private void CheckFonction(Mot mot)
-        //{
-        //    string Fonction = mot.Fonction.Libelle;
-
-        //    //Utilisateur utilisateur1 = new Utilisateur
-        //    //{
-        //    //    IdUtilisateur = "2",
-        //    //};
-        //    //Phrase phrase = new Phrase
-        //    //{
-        //    //    IdPhrase = "1004",
-        //    //    Tentative = "204"
-        //    //};
-        //    //DateTime aDate = DateTime.Now;
-        //    //string date = aDate.ToString("dddd-dd-MMMM-yyyy HH:mm:ss");
-
-        //    //CultureInfo MyCultureInfo = new CultureInfo("fr-FR");
-        //    //string MyString = DateTime.Now.ToString();
-        //    //DateTime MyDateTime = DateTime.Parse(MyString, MyCultureInfo);
-
-        //    //label2.Text = MyDateTime.ToString();
-
-        //    //Queries.InsertOrUpdateTentative(utilisateur1, phrase, MyDateTime.ToString(), true);
-
-        //}
     }
 }

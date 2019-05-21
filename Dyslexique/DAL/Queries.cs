@@ -9,13 +9,31 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Globalization;
 
+/// <summary>
+/// Espace de nom contenant la classe <c>DAL</c> donnant accès à un ensemble de méthodes permettant la manipulation des données dans la BDD SQL Server.
+/// </summary>
 namespace Dyslexique.DAL
 {
+    /// <summary>
+    /// Fournit des méthodes <c>static</c> permettant la manipulation des données dans la BDD SQL Server.
+    /// </summary>
+    /// <remarks>
+    /// Cette classe ainsi que toutes ses méthodes sont <c>static</c>.
+    /// </remarks>
     public static class Queries
     {
+        /// <summary>
+        /// Obtient la chaîne de connexion pour la connexion à la BDD.
+        /// </summary>
         private static string ConnectionString = ConfigurationManager.ConnectionStrings["DyslexiqueConnectionString"].ConnectionString;
 
         #region Utilisateur
+        /// <summary>
+        /// Récupère tous les utilisateurs stockés dans la BDD.
+        /// </summary>
+        /// <returns>
+        /// La liste de tous les utilisateurs dans la BDD.
+        /// </returns>
         public static List<Utilisateur> GetAllUtilisateurs()
         {
             try
@@ -69,6 +87,13 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Récupère un <c>Utilisateur</c> dans la BDD par le biais de son pseudo.
+        /// </summary>
+        /// <param name="pseudo"></param>
+        /// <returns>
+        /// Un <c>Utilisateur</c>.
+        /// </returns>
         public static Utilisateur GetUtilisateurByPseudo(string pseudo)
         {
             try
@@ -116,6 +141,13 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Récupère un <c>Utilisateur</c> dans la BDD par le biais de son Id.
+        /// </summary>
+        /// <param name="idUtilisateur"></param>
+        /// <returns>
+        /// Un <c>Utilisateur</c>.
+        /// </returns>
         public static Utilisateur GetUtilisateurById(string idUtilisateur)
         {
             try
@@ -163,6 +195,15 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Effectue un INSERT SQL d'un nouvel <c>Utilisateur</c> dans la BDD.
+        /// </summary>
+        /// <param name="pseudo"></param>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <param name="email"></param>
+        /// <param name="mdp"></param>
+        /// <param name="idRole"></param>
         public static void InsertUtilisateur(string pseudo, string nom, string prenom, string email, string mdp, string idRole)
         {
             try
@@ -197,6 +238,15 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Effectue un UPDATE SQL d'un <c>Utilisateur</c> dans la BDD.
+        /// </summary>
+        /// <param name="idUtilisateur"></param>
+        /// <param name="pseudo"></param>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <param name="email"></param>
+        /// <param name="idRole"></param>
         public static void UpdateUtilisateur(string idUtilisateur, string pseudo, string nom, string prenom, string email, string idRole)
         {
             try
@@ -234,6 +284,10 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Effectue un DELETE SQL d'un <c>Utilisateur</c> dans la BDD.
+        /// </summary>
+        /// <param name="idUtilisateur"></param>
         public static void DeleteUtilisateur(string idUtilisateur)
         {
             try
@@ -287,7 +341,13 @@ namespace Dyslexique.DAL
         #endregion
 
         #region Utilisateur_Essayer_Phrase
-        private static bool CheckIfTentativeExists(string idUtilisateur, string idPhrase)
+        /// <summary>
+        /// Vérifie si un <c>Utilisateur</c> donné possède déjà au moins une tentative pour une <c>Phrase</c> donnée.
+        /// </summary>
+        /// <param name="idUtilisateur"></param>
+        /// <param name="idPhrase"></param>
+        /// <returns></returns>
+        private static bool CheckIfTentativeForPhraseExists(string idUtilisateur, string idPhrase)
         {
             bool exists;
 
@@ -326,9 +386,18 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Effectue un INSERT ou un UPDATE SQL de la tentative d'un <c>Utilisateur</c> sur une <c>Phrase</c>.
+        /// </summary>
+        /// <param name="utilisateur"></param>
+        /// <param name="phrase"></param>
         public static void InsertOrUpdateTentative(Utilisateur utilisateur, Phrase phrase)
         {
-            bool exists = CheckIfTentativeExists(utilisateur.IdUtilisateur, phrase.IdPhrase);
+            /* On vérifie si l'Utilisateur passé en premier paramètre possède au moins une tentative pour la Phrase passée en second paramètre.
+             * S'il a au moins une tentative sur la Phrase, alors on effectue un UPDATE.
+             * S'il n'a pas de tentative sur la Phrase, alors on effectue un INSERT.
+            */
+            bool exists = CheckIfTentativeForPhraseExists(utilisateur.IdUtilisateur, phrase.IdPhrase);
 
             if (exists)
             {
@@ -401,6 +470,10 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Remet à zéro les statistiques (nombre de tentatives, date de dernière tentative, phrases réussies) d'un <c>Utilisateur</c>.
+        /// </summary>
+        /// <param name="idUtilisateur"></param>
         public static void ResetProgressionByIdUtilisateur(string idUtilisateur)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -435,6 +508,12 @@ namespace Dyslexique.DAL
         #endregion
 
         #region Mot
+        /// <summary>
+        /// Récupère tous les mots stockés dans la BDD.
+        /// </summary>
+        /// <returns>
+        /// La liste de tous les mots dans la BDD.
+        /// </returns>
         public static List<Mot> GetAllMots()
         {
             try
@@ -457,9 +536,7 @@ namespace Dyslexique.DAL
                                     Mot mot = new Mot
                                     {
                                         IdMot = reader["idMot"].ToString(),
-                                        Texte = reader["texte"].ToString(),
-                                        IdClasse = reader["idClasse"].ToString()
-                                        //mot.IdGenre = reader["idGenre"].ToString());
+                                        Texte = reader["texte"].ToString()
                                     };
 
                                     listMots.Add(mot);
@@ -482,6 +559,10 @@ namespace Dyslexique.DAL
         #endregion
 
         #region Phrase
+        /// <summary>
+        /// Effectue un INSERT SQL d'une nouvelle <c>Phrase</c> dans la BDD.
+        /// </summary>
+        /// <param name="phrase"></param>
         public static void InsertPhrase(Phrase phrase)
         {
             string output = string.Empty;
@@ -548,6 +629,12 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Récupère toutes les Phrases non réussies par l'<c>Utilisateur</c>.
+        /// </summary>
+        /// <returns>
+        /// La liste de toutes les phrases non réussies par l'utilisateur.
+        /// </returns>
         public static List<Phrase> GetAllPhrasesNonReussiesByIdUtilisateur()
         {
             try
@@ -580,7 +667,6 @@ namespace Dyslexique.DAL
                     using (SqlCommand command = new SqlCommand(queryPhrasesNonReussies, connection))
                     {
                         command.Parameters.Add(new SqlParameter("@IdUtilisateur", Convert.ToInt32(Global.Utilisateur.IdUtilisateur)));
-                        //command.Parameters.Add(new SqlParameter("@IdUtilisateur", 1));
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -665,6 +751,12 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Récupère toutes les phrases stockées dans la BDD.
+        /// </summary>
+        /// <returns>
+        /// La liste de toutes les phrases dans la BDD.
+        /// </returns>
         public static List<Phrase> GetAllPhrases()
         {
             try
@@ -769,6 +861,13 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Récupère une <c>Phrase</c> dans la BDD par le biais de son Id.
+        /// </summary>
+        /// <param name="idPhrase"></param>
+        /// <returns>
+        /// Une <c>Phrase</c>.
+        /// </returns>
         public static Phrase GetPhraseById(string idPhrase)
         {
             try

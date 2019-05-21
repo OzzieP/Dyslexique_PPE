@@ -12,12 +12,21 @@ using Dyslexique.DAL;
 
 namespace Dyslexique.UI.UserControls
 {
+    /// <summary>
+    /// Contrôle utilisateur affichant la page "Gestion des utilisateurs".
+    /// </summary>
     public partial class GestionUtilisateur : UserControl
     {
+        /// <summary>
+        /// Obtient ou définit le titre de la page "Gestion des utilisateurs".
+        /// </summary>
         public string Title = "Gestion des utilisateurs";
         private List<Utilisateur> listUtilisateurs;
         private Utilisateur utilisateur;
 
+        /// <summary>
+        /// Constructeur par défaut de la page "Gestion des utilisateurs".
+        /// </summary>
         public GestionUtilisateur()
         {
             InitializeComponent();

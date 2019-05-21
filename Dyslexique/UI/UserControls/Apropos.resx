@@ -124,4 +124,11 @@ classe primaire ayant une altération spécifique et significative de la lecture
 d’écrit et de l’orthographe. Des outils tels que des applications web et mobiles existent déjà, mais
 elle souhaite créer sa propre méthode qui s’appuie sur une expérience de 15 ans dans ce domaine.</value>
   </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>● Mise en place de la gestion des utilisateurs
+● Mise en place de la partie jeu/test
+● Création de la page de gestion des utilisateurs
+● Création de la page de connexion/inscription
+● Création de la page de jeu/test</value>
+  </data>
 </root>

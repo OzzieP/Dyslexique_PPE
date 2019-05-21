@@ -12,11 +12,20 @@ using Dyslexique.DAL;
 
 namespace Dyslexique.UI.UserControls
 {
+    /// <summary>
+    /// Contrôle utilisateur affichant la page "Jeu".
+    /// </summary>
     public partial class Jeu : UserControl
     {
+        /// <summary>
+        /// Obtient ou définit le titre de la page "Jeu".
+        /// </summary>
         public string Title = "Passer les tests";
         private Phrase phraseSelectionnee;
 
+        /// <summary>
+        /// Constructeur par défaut de la page "Jeu".
+        /// </summary>
         public Jeu()
         {
             InitializeComponent();
@@ -30,7 +39,9 @@ namespace Dyslexique.UI.UserControls
             DisplayPhrase();
         }
 
-
+        /// <summary>
+        /// Affiche à l'<c>Utilisateur</c> la <c>Phrase</c> sélectionnée de manière aléatoire sur laquelle il va passser le test.
+        /// </summary>
         public void DisplayPhrase()
         {
             ClearJeu();
