@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dyslexique.Classes.Classe">
+    <Position X="2" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAARCAAAAAgAA=</HashCode>
+      <FileName>Classes\Classe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dyslexique.Classes.Mot">
+    <Position X="6" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAIAQAAAAEAAAAAAABAAAAAQAAA=</HashCode>
+      <FileName>Classes\Mot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dyslexique.Classes.Types">
+    <Position X="4" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAACAAAAAgAA=</HashCode>
+      <FileName>Classes\Types.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dyslexique.DAL.Queries">
+    <Position X="8" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIEAAQAAAAAAAAAAAAAAQAAAAgAAAQAACAAAAABACA=</HashCode>
+      <FileName>DAL\Queries.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
