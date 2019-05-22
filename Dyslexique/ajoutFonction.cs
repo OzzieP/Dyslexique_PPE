@@ -14,15 +14,28 @@ namespace Dyslexique
 {
     public partial class ajoutFonction : Form
     {
+        List<Fonction> listFonction = new List<Fonction>();
         public ajoutFonction()
         {
             InitializeComponent();
         }
+
+        public bool existe(string libelle)
+        {
+            foreach (Fonction fonction in listFonction)
+            {
+                if (fonction.Libelle == libelle)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void refreshDataGridView()
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-            List<Fonction> listFonction = new List<Fonction>();
             listFonction = Queries.GetAllFonction();
             foreach (Fonction fonction in listFonction)
             {
@@ -43,7 +56,14 @@ namespace Dyslexique
             }
             else
             {
-                Queries.InsertFonction(libelle.ToString());
+                if (!existe(libelle))
+                {
+                    Queries.InsertFonction(libelle.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("La fonction existe deja.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             this.refreshDataGridView();
         }

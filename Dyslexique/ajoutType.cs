@@ -14,15 +14,28 @@ namespace Dyslexique
 {
     public partial class ajoutType : Form
     {
+        List<Types> listTypes = new List<Types>();
         public ajoutType()
         {
             InitializeComponent();
         }
+
+        public bool existe(string libelle)
+        {
+            foreach (Types type in listTypes )
+            {
+                if (type.Libelle == libelle)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void refreshDataGridView()
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-            List<Types> listTypes = new List<Types>();
             listTypes = Queries.GetAllType();
             foreach (Types type in listTypes)
             {
@@ -42,7 +55,14 @@ namespace Dyslexique
             }
             else
             {
-                Queries.InsertType(libelle.ToString());
+                if (!existe(libelle))
+                {
+                    Queries.InsertType(libelle.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("Le type existe deja.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             this.refreshDataGridView();
         }

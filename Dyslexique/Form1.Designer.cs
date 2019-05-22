@@ -87,11 +87,11 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(433, 276);
+            this.button4.Location = new System.Drawing.Point(344, 12);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(110, 23);
             this.button4.TabIndex = 3;
-            this.button4.Text = "test";
+            this.button4.Text = "créer une phrase";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 

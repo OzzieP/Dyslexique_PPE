@@ -14,15 +14,28 @@ namespace Dyslexique
 {
     public partial class ajoutClasse : Form
     {
+        List<Classe> listClasse = new List<Classe>();
         public ajoutClasse()
         {
             InitializeComponent();
         }
+
+        public bool existe(string libelle)
+        {
+            foreach (Classe classe in listClasse)
+            {
+                if (classe.Libelle == libelle)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void refreshDataGridView()
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-            List<Classe> listClasse = new List<Classe>();
             listClasse = Queries.GetAllClasse();
             foreach (Classe classe in listClasse)
             {
@@ -58,7 +71,14 @@ namespace Dyslexique
                 }
                 else
                 {
-                    Queries.InsertClasse(libelle.ToString(), idType);
+                    if (!existe(libelle))
+                    {
+                        Queries.InsertClasse(libelle.ToString(), idType);
+                    }
+                    else
+                    {
+                        MessageBox.Show("La classe existe deja.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
             catch (Exception)

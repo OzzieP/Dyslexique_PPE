@@ -14,17 +14,29 @@ namespace Dyslexique
 {
     public partial class ajoutMot : Form
     {
+        List<Mot> listMot = new List<Mot>();
 
         public ajoutMot()
         {
             InitializeComponent();
         }
 
+        public bool existe(string libelle)
+        {
+            foreach (Mot mot in listMot)
+            {
+                if (mot.Texte == libelle)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void refreshDataGridView()
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-            List<Mot> listMot = new List<Mot>();
             listMot = Queries.GetAllMotOrderByClasse();
             foreach (Mot mot in listMot)
             {
@@ -68,7 +80,14 @@ namespace Dyslexique
                 }
                 else
                 {
-                    Queries.InsertMot(texte.ToString(), idClasse);
+                    if (!existe(texte))
+                    {
+                        Queries.InsertMot(texte.ToString(), idClasse);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Le mot existe.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
             catch (Exception)

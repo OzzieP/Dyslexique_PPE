@@ -27,6 +27,7 @@ namespace Dyslexique
         int yr = 100;
         int nbComBox = 0;
         int nbFonctionBox = 0;
+        int phraseSuccess = 1;
         private void AfficherLaList()
         {
             x = 100;
@@ -112,9 +113,15 @@ namespace Dyslexique
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Les champs ne peuvent pas être vide.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    phraseSuccess = 0;
+                    //MessageBox.Show("Les champs ne peuvent pas être vide.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     //throw;
                 }
+            }
+            if (phraseSuccess != 1)
+            {
+                MessageBox.Show("Les champs ne peuvent pas être vide. Quitter la page pour recommencer", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                button3.Enabled = false;
             }
         }
 
