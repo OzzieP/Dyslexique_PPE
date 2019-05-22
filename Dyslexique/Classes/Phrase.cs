@@ -60,34 +60,5 @@ namespace Dyslexique.Classes
                 this.Texte += mot.Texte + " ";
             }
         }
-
-        public void Afficher(FormJeu formJeu)
-        {
-            int x = 0;
-
-            foreach (Mot mot in mots)
-            {
-                //CustomLabel customLabel = new CustomLabel
-                //{
-                //    Text = mot.Texte,
-                //    Top = 0,
-                //    Left = x
-                //};
-
-                //CustomLabel customLabel = new CustomLabel(mot);
-                CustomLabel customLabel = new CustomLabel(mot, x);
-
-
-                // Measure string.
-                SizeF stringSize = new SizeF();
-                Graphics g = formJeu.CreateGraphics();
-                stringSize = g.MeasureString(mot.Texte, customLabel.Font);
-                customLabel.Width = Convert.ToInt32(stringSize.Width) + 5;
-                formJeu.Controls["panel_Phrase"].Controls.Add(customLabel);
-
-                x = x + Convert.ToInt32(stringSize.Width) + 5;
-                //x = x + 100;
-            }
-        }
     }
 }
