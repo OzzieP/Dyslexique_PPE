@@ -6,79 +6,90 @@ using System.Threading.Tasks;
 
 namespace Dyslexique.Classes
 {
-    public class Mot // Texte, Genre, Classe
+    /// <summary>
+    /// Classe <c>Mot</c> utilisée comme modèle pour la représentation d'une entité de la table Mot dans la BDD.
+    /// </summary>
+    public class Mot
     {
-        #region Cours
-        // Attributs
-        private String texte;
-        private String type;
-
-        // Accesseurs de l'attribut Texte
-        public String getTexte()
-        {
-            return this.texte;
-        }
-        public void setTexte(String texte)
-        {
-            this.texte = texte;
-        }
-
-        public String getType()
-        {
-            return this.type;
-        }
-        public void setType(String type)
-        {
-            this.type = type;
-        }
-
-        // Constructeurs
-        public Mot()
-        {
-
-        }
-
-        public Mot(String texte)
-        {
-            this.texte = texte;
-        }
-
-        public Mot(String texte, String type)
-        {
-            this.texte = texte;
-            this.type = type;
-        }
-        #endregion
-
-        #region Nouveau
-        private int idMot;
-        public int IdMot
+        private string idMot;
+        /// <summary>
+        /// Obtient ou définit l'Id du <c>Mot</c>.
+        /// </summary>
+        public string IdMot
         {
             get { return idMot; }
             set { idMot = value; }
         }
 
-        private string text;
+        private string texte;
+        /// <summary>
+        /// Obtient ou définit le texte du <c>Mot</c>.
+        /// </summary>
         public string Texte
         {
-            get { return text; }
-            set { text = value; }
+            get { return texte; }
+            set { texte = value; }
         }
 
-        private int idClasse;
-        public int IdClasse
+        private Classe classe;
+        /// <summary>
+        /// Obtient ou définit l'objet <c>Classe</c> du <c>Mot</c>.
+        /// </summary>
+        public Classe Classe
         {
-            get { return idClasse; }
-            set { idClasse = value; }
+            get { return classe; }
+            set { classe = value; }
         }
 
-        private int idGenre;
-        public int IdGenre
+        private Fonction fonction;
+        /// <summary>
+        /// Obtient ou définit l'objet <c>Fonction</c> du <c>Mot</c>.
+        /// </summary>
+        public Fonction Fonction
         {
-            get { return idGenre; }
-            set { idGenre = value; }
+            get { return fonction; }
+            set { fonction = value; }
         }
-        #endregion
 
+        private string position;
+        /// <summary>
+        /// Obtient ou définit la position du <c>Mot</c> dans la <c>Phrase</c>.
+        /// </summary>
+        public string Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
+
+        private bool estATrouver;
+        /// <summary>
+        /// Obtient ou définit si le <c>Mot</c> est celui qui doit être trouvé dans la <c>Phrase</c>.
+        /// </summary>
+        public bool EstATrouver
+        {
+            get { return estATrouver; }
+            set { estATrouver = value; }
+        }
+
+        /// <summary>
+        /// Constructeur par défaut d'un <c>Mot</c>.
+        /// </summary>
+        public Mot()
+        {
+
+        }
+
+        /// <summary>
+        /// Constructeur spécialisé d'un <c>Mot</c>.
+        /// </summary>
+        /// <param name="texte"></param>
+        /// <param name="position"></param>
+        public Mot(string texte, string position)
+        {
+            this.Texte = texte;
+            this.Position = position;
+            this.classe = new Classe();
+            this.fonction = new Fonction();
+        }
     }
 }
