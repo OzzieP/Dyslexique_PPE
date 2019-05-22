@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dyslexique", "Dyslexique\Dy
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentation\Documentation.shfbproj", "{433CF725-D6F1-42DA-B165-FD3BA31643D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dyslexique_UnitTestProject", "Dyslexique_UnitTestProject\Dyslexique_UnitTestProject.csproj", "{94E72D41-7657-4E3C-A0A8-EFA988D94692}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{433CF725-D6F1-42DA-B165-FD3BA31643D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{433CF725-D6F1-42DA-B165-FD3BA31643D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{433CF725-D6F1-42DA-B165-FD3BA31643D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94E72D41-7657-4E3C-A0A8-EFA988D94692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94E72D41-7657-4E3C-A0A8-EFA988D94692}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94E72D41-7657-4E3C-A0A8-EFA988D94692}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94E72D41-7657-4E3C-A0A8-EFA988D94692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

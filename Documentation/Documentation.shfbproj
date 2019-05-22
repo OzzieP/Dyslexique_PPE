@@ -27,8 +27,8 @@
       <Argument Key="maxVersionParts" Value="" xmlns="" />
     </TransformComponentArguments>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\Dyslexique\bin\Debug\Dyslexique.xml" xmlns="" />
-      <DocumentationSource sourceFile="..\Dyslexique\bin\Debug\Dyslexique.exe" xmlns="" />
+      <DocumentationSource sourceFile="..\Dyslexique\bin\Debug\Dyslexique.exe" />
+      <DocumentationSource sourceFile="..\Dyslexique\bin\Debug\Dyslexique.xml" />
     </DocumentationSources>
     <HelpTitle>Documentation technique de l&amp;#39%3bapplication Dyslexique</HelpTitle>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
