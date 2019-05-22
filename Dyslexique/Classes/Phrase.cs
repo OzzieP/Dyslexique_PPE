@@ -61,7 +61,7 @@ namespace Dyslexique.Classes
             }
         }
 
-        public void Afficher(FormJeu formJeu)
+        /*public void Afficher(FormJeu formJeu)
         {
             int x = 0;
 
@@ -89,5 +89,6 @@ namespace Dyslexique.Classes
                 //x = x + 100;
             }
         }
+    }*/
     }
 }
