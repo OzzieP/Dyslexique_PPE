@@ -32,7 +32,7 @@ namespace Dyslexique
             return false;
         }
 
-        public void refreshDataGridView()
+        public void RefreshDataGridView()
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
@@ -41,7 +41,7 @@ namespace Dyslexique
             {
                 String[] row = new string[]
            {
-                type.IdType.ToString(), type.Libelle
+                type.IdTypes.ToString(), type.Libelle
            };
                 dataGridView1.Rows.Add(row);
             }
@@ -64,12 +64,12 @@ namespace Dyslexique
                     MessageBox.Show("Le type existe deja.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            this.refreshDataGridView();
+            this.RefreshDataGridView();
         }
 
         private void ajoutType_Load(object sender, EventArgs e)
         {
-            this.refreshDataGridView();
+            this.RefreshDataGridView();
         }
     }
 }

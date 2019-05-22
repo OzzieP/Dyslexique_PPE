@@ -1,19 +1,20 @@
-﻿using Dyslexique.Classes;
-using Dyslexique.DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dyslexique.Classes;
+using Dyslexique.DAL;
 
-namespace Dyslexique
+namespace Dyslexique.UI.UserControls
 {
-    public partial class PhrasePossederMot : Form
+    public partial class GestionPhrases : UserControl
     {
+        public string Title = "Créer une phrase";
         List<ComboBox> ComboBoxes = new List<ComboBox>();
         List<ComboBox> ComboFonction = new List<ComboBox>();
         List<Mot> listMot = new List<Mot>();
@@ -38,11 +39,11 @@ namespace Dyslexique
             nbFonctionBox = 0;
             foreach (ComboBox combo in ComboBoxes)
             {
-                            
+
                 combo.Location = new System.Drawing.Point(x, y);
                 x += 130;
                 nbComBox++;
-                if (nbComBox / 8.0 == nbComBox / 8)
+                if (nbComBox / 5.0 == nbComBox / 5)
                 {
                     y += 150;
                     x = 100;
@@ -52,18 +53,14 @@ namespace Dyslexique
             {
 
                 comboF.Location = new System.Drawing.Point(xf, yf);
-                xf+= 130;
+                xf += 130;
                 nbFonctionBox++;
-                if (nbFonctionBox / 8.0 == nbFonctionBox / 8)
+                if (nbFonctionBox / 5.0 == nbFonctionBox / 5)
                 {
                     yf += 150;
                     xf = 100;
                 }
             }
-        }
-        public PhrasePossederMot()
-        {
-            InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -103,7 +100,7 @@ namespace Dyslexique
             {
                 try
                 {
-                    label.Text +=(combo.SelectedItem as dynamic).Texte + " ";
+                    label.Text += (combo.SelectedItem as dynamic).Texte + " ";
                     RadioButton radio = new RadioButton();
                     radio.Text = (combo.SelectedItem as dynamic).Texte;
                     this.radioList.Add(radio);
@@ -139,9 +136,9 @@ namespace Dyslexique
             Queries.InsertPhrase(label.Text, consigne.Text);
             List<int> idPhrase = new List<int>();
             idPhrase = Queries.GetLastIdPhrase();
-            for (int i=0; i<nbComBox; i++)
+            for (int i = 0; i < nbComBox; i++)
             {
-                Queries.fonctionTest(idPhrase[0], (ComboBoxes[i].SelectedItem as dynamic).idMot, (ComboFonction[i].SelectedItem as dynamic).idFonction, i, radioList[i].Checked);
+                //Queries.InsertPhrasePossederMot(idPhrase[0], (ComboBoxes[i].SelectedItem as dynamic).idMot, (ComboFonction[i].SelectedItem as dynamic).idFonction, i, radioList[i].Checked);
             }
         }
 
@@ -161,6 +158,16 @@ namespace Dyslexique
         }
 
         private void labelTrouver_Click(object sender, EventArgs e)
+        {
+
+        }
+        public GestionPhrases()
+        {
+            InitializeComponent();
+            this.Dock = DockStyle.Fill;
+        }
+
+        private void GestionPhrases_Load(object sender, EventArgs e)
         {
 
         }

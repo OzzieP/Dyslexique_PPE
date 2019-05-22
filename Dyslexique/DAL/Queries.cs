@@ -508,7 +508,9 @@ namespace Dyslexique.DAL
         #endregion
 
         #region Mot
+#pragma warning disable CS1591 // Commentaire XML manquant pour le type ou le membre visible publiquement
         public static void InsertMot(string texte, int idClasse)
+#pragma warning restore CS1591 // Commentaire XML manquant pour le type ou le membre visible publiquement
         {
             try
             {
@@ -564,18 +566,18 @@ namespace Dyslexique.DAL
                                 {
                                     Types type = new Types
                                     {
-                                        IdType = Convert.ToInt32(reader["idType"].ToString()),
+                                        IdTypes = reader["idType"].ToString(),
                                         Libelle = reader["libelleType"].ToString()
                                     };
                                     Classe classe = new Classe
                                     {
-                                        IdClasse = Convert.ToInt32(reader["idClasse"].ToString()),
+                                        IdClasse = reader["idClasse"].ToString(),
                                         Libelle = reader["libelleClasse"].ToString(),
-                                        Type = type
+                                        Types = type
                                     };
                                     Mot mot = new Mot
                                     {
-                                        IdMot = Convert.ToInt32(reader["idMot"].ToString()),
+                                        IdMot =reader["idMot"].ToString(),
                                         Texte = reader["texte"].ToString(),
                                         Classe = classe
                                     };
@@ -622,18 +624,18 @@ namespace Dyslexique.DAL
                                 {
                                     Types type = new Types
                                     {
-                                        IdType = Convert.ToInt32(reader["idType"].ToString()),
+                                        IdTypes = reader["idType"].ToString(),
                                         Libelle = reader["libelleType"].ToString()
                                     };
                                     Classe classe = new Classe
                                     {
-                                        IdClasse = Convert.ToInt32(reader["idClasse"].ToString()),
+                                        IdClasse = reader["idClasse"].ToString(),
                                         Libelle = reader["libelleClasse"].ToString(),
-                                        Type = type
+                                        Types = type
                                     };
                                     Mot mot = new Mot
                                     {
-                                        IdMot = Convert.ToInt32(reader["idMot"].ToString()),
+                                        IdMot = reader["idMot"].ToString(),
                                         Texte = reader["texte"].ToString(),
                                         Classe = classe
                                     };
@@ -705,7 +707,7 @@ namespace Dyslexique.DAL
                                 {
                                     Types type = new Types
                                     {
-                                        IdType = Convert.ToInt32(reader["idType"].ToString()),
+                                        IdTypes = reader["idType"].ToString(),
                                         Libelle = reader["libelle"].ToString(),
                                     };
                                     listTypes.Add(type);
@@ -780,14 +782,14 @@ namespace Dyslexique.DAL
                                 {
                                     Types type = new Types
                                     {
-                                        IdType = Convert.ToInt32(reader["idType"].ToString()),
+                                        IdTypes = reader["idType"].ToString(),
                                         Libelle = reader["libelleType"].ToString()
                                     };
                                     Classe classe = new Classe
                                     {
-                                        IdClasse = Convert.ToInt32(reader["idClasse"].ToString()),
+                                        IdClasse = reader["idClasse"].ToString(),
                                         Libelle = reader["libelleClasse"].ToString(),
-                                        Type = type
+                                        Types = type
                                     };
                                     listClasse.Add(classe);
                                 }
@@ -866,14 +868,14 @@ namespace Dyslexique.DAL
                                 {
                                     Types type = new Types
                                     {
-                                        IdType = Convert.ToInt32(reader["idType"].ToString()),
+                                        IdTypes = reader["idType"].ToString(),
                                         Libelle = reader["libelleType"].ToString()
                                     };
                                     Classe classes = new Classe
                                     {
-                                        IdClasse = Convert.ToInt32(reader["idClasse"].ToString()),
+                                        IdClasse = reader["idClasse"].ToString(),
                                         Libelle = reader["libelleClasse"].ToString(),
-                                        Type = type
+                                        Types = type
                                     };
                                     listClasse.Add(classes);
                                 }
@@ -899,7 +901,7 @@ namespace Dyslexique.DAL
         /// Effectue un INSERT SQL d'une nouvelle <c>Phrase</c> dans la BDD.
         /// </summary>
         /// <param name="phrase"></param>
-        public static void InsertPhrase(Phrase phrase)
+        /*public static void InsertPhrase(Phrase phrase)
         {
             string output = string.Empty;
 
@@ -963,7 +965,7 @@ namespace Dyslexique.DAL
                                 "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
-        }
+        }*/
 
         /// <summary>
         /// Récupère toutes les Phrases non réussies par l'<c>Utilisateur</c>.
@@ -1345,7 +1347,7 @@ namespace Dyslexique.DAL
                                 {
                                     Fonction fonction = new Fonction
                                     {
-                                        IdFonction = Convert.ToInt32(reader["idFonction"].ToString()),
+                                        IdFonction = reader["idFonction"].ToString(),
                                         Libelle = reader["libelle"].ToString(),
                                     };
                                     listTypes.Add(fonction);
@@ -1428,7 +1430,39 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
+
         public static void InsertPhrasePossederMot(int idPhrase, int idMot, int idFonction, int position, bool motATrouver)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, Position, motATrouver) VALUES (@idPhrase, @idMot, @idFonction, @Position, @motATrouver)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@idPhrase", idPhrase));
+                        command.Parameters.Add(new SqlParameter("@idMot", idMot));
+                        command.Parameters.Add(new SqlParameter("@idFonction", idFonction));
+                        command.Parameters.Add(new SqlParameter("@Position", position));
+                        command.Parameters.Add(new SqlParameter("@motATrouver", motATrouver));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        public static void fonctionTest(int idPhrase, int idMot, int idFonction, int position, bool motATrouver)
         {
             try
             {

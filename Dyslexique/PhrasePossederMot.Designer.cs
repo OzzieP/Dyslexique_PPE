@@ -64,6 +64,7 @@
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(0, 13);
             this.label.TabIndex = 4;
+            this.label.Click += new System.EventHandler(this.label_Click);
             // 
             // consigne
             // 
@@ -71,6 +72,7 @@
             this.consigne.Name = "consigne";
             this.consigne.Size = new System.Drawing.Size(369, 20);
             this.consigne.TabIndex = 5;
+            this.consigne.TextChanged += new System.EventHandler(this.consigne_TextChanged);
             // 
             // label1
             // 
@@ -80,6 +82,7 @@
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "consigne :";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button3
             // 
@@ -99,6 +102,7 @@
             this.labelTrouver.Size = new System.Drawing.Size(69, 13);
             this.labelTrouver.TabIndex = 8;
             this.labelTrouver.Text = "mot à trouver";
+            this.labelTrouver.Click += new System.EventHandler(this.labelTrouver_Click);
             // 
             // PhrasePossederMot
             // 

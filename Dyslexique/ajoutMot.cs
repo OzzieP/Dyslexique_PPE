@@ -42,7 +42,7 @@ namespace Dyslexique
             {
                 String[] row = new string[]
            {
-                mot.IdMot.ToString(), mot.Texte, mot.Classe.Libelle, mot.Classe.Type.Libelle
+                mot.IdMot.ToString(), mot.Texte, mot.Classe.Libelle, mot.Classe.Types.Libelle
            };
                 dataGridView1.Rows.Add(row);
             }
@@ -58,7 +58,7 @@ namespace Dyslexique
             comboBoxClasse.ValueMember = "idClasse";
             foreach (Classe classe in listClasse)
             {
-                comboBoxClasse.Items.Add(new { Libelle = classe.Libelle + " " + classe.Type.Libelle, idClasse = classe.IdClasse });
+                comboBoxClasse.Items.Add(new { Libelle = classe.Libelle + " " + classe.Types.Libelle, idClasse = classe.IdClasse });
             }
             this.refreshDataGridView();
             List<String> listDistinctLibelle;
@@ -108,7 +108,7 @@ namespace Dyslexique
             comboBoxClasse.ValueMember = "idClasse";
             foreach (Classe classe in listClasse)
             {
-                comboBoxClasse.Items.Add(new { Libelle = classe.Libelle + " " + classe.Type.Libelle, idClasse = classe.IdClasse });
+                comboBoxClasse.Items.Add(new { Libelle = classe.Libelle + " " + classe.Types.Libelle, idClasse = classe.IdClasse });
             }
         }
     }

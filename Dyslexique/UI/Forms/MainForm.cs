@@ -132,15 +132,17 @@ namespace Dyslexique.UI.Forms
         // Fonction pour afficher la page de gestion des Phrases
         private void Button_Menu_Phrases_Click(object sender, EventArgs e)
         {
-            //GestionPhrases gestionPhrases = new GestionPhrases()
-            //{
-            //    Dock = DockStyle.Fill,
-            //    Name = "gestionPhrases"
-            //};
+            PhrasePossederMot btnPhrasePossederMot = new PhrasePossederMot();
+            btnPhrasePossederMot.ShowDialog();
+            /* GestionPhrases gestionPhrases = new GestionPhrases()
+             {
+                 Dock = DockStyle.Fill,
+                 Name = "gestionPhrases"
+             };
 
-            //this.Controls.Add(gestionPhrases);
-            //gestionPhrases.BringToFront();
-            //label_Title.Text = gestionPhrases.Title;
+             this.Controls.Add(gestionPhrases);
+             gestionPhrases.BringToFront();
+             label_Title.Text = gestionPhrases.Title;*/
         }
 
         // Fonction pour afficher la page de gestion des Mots

@@ -18,6 +18,11 @@ namespace Dyslexique
             InitializeComponent();
         }
 
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             ajoutType btnAjoutType = new ajoutType();

@@ -77,8 +77,6 @@
       <DependentUpon>ajoutType.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Classe.cs" />
-    <Compile Include="Classes\Fonction.cs" />
-    <Compile Include="Classes\Classe.cs" />
     <Compile Include="UI\Forms\ConnexionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,8 +90,6 @@
     <Compile Include="Classes\Fonction.cs" />
     <Compile Include="Classes\Types.cs" />
     <Compile Include="Classes\Mot.cs" />
-    <Compile Include="Classes\Phrase.cs" />
-    <Compile Include="Classes\Types.cs" />
     <Compile Include="Classes\Phrase.cs" />
     <Compile Include="Classes\Utilisateur.cs" />
     <Compile Include="DAL\Queries.cs" />
@@ -111,6 +107,12 @@
     <Compile Include="UI\UserControls\Apropos.Designer.cs">
       <DependentUpon>Apropos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserControls\GestionPhrases.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\GestionPhrases.Designer.cs">
+      <DependentUpon>GestionPhrases.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserControls\GestionUtilisateur.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -123,7 +125,9 @@
     <Compile Include="UI\UserControls\Jeu.Designer.cs">
       <DependentUpon>Jeu.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\MainForm.cs"></Compile>
+    <Compile Include="UI\Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DyslexiqueDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,8 +148,6 @@
     <Compile Include="PhrasePossederMot.Designer.cs">
       <DependentUpon>PhrasePossederMot.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ajoutClasse.resx">
       <DependentUpon>ajoutClasse.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\Apropos.resx">
       <DependentUpon>Apropos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\GestionPhrases.resx">
+      <DependentUpon>GestionPhrases.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\GestionUtilisateur.resx">
       <DependentUpon>GestionUtilisateur.cs</DependentUpon>

@@ -66,6 +66,8 @@ namespace Dyslexique.UI.Forms
 
         private void Button_QuitterApplication_Click(object sender, EventArgs e)
         {
+            //Utilisateur vfiquet = new Utilisateur("vfiquet", "Fiquet", "Valentin", "valentin.fiquet@epsi.fr", Global.Hash256("vfiquet123"), "1");
+            //Queries.InsertUtilisateur(vfiquet.Pseudo, vfiquet.Nom, vfiquet.Prenom, vfiquet.Email, vfiquet.MotDePasse, vfiquet.IdRole);
             Application.Exit();
 
             /* TEMP : A supprimer --> POUR INSERER DES USERS DE BASE */

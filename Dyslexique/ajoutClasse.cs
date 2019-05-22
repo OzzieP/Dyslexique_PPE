@@ -41,7 +41,7 @@ namespace Dyslexique
             {
                 String[] row = new string[]
            {
-                classe.IdClasse.ToString(), classe.Libelle, classe.Type.Libelle
+                classe.IdClasse.ToString(), classe.Libelle, classe.Types.Libelle
            };
                 dataGridView1.Rows.Add(row);
             }
@@ -54,7 +54,7 @@ namespace Dyslexique
             comboBox.ValueMember = "idType";
             foreach (Types type in listTypes)
             {
-                comboBox.Items.Add(new { Libelle = type.Libelle, idType = type.IdType });
+                comboBox.Items.Add(new { Libelle = type.Libelle, idType = type.IdTypes });
             }
             this.refreshDataGridView();
         }
