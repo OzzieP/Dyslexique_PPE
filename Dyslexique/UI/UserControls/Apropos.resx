@@ -117,47 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Accueil_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Accueil_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label8.Text" xml:space="preserve">
+    <value>L’association AsDyx, basée sur Toulouse, est spécialisée dans le domaine des troubles dyslexiques.
+Elle fait appel à Simpléduc afin de réaliser un logiciel éducatif pour les jeunes enfants scolarisés en
+classe primaire ayant une altération spécifique et significative de la lecture et/ou de la production
+d’écrit et de l’orthographe. Des outils tels que des applications web et mobiles existent déjà, mais
+elle souhaite créer sa propre méthode qui s’appuie sur une expérience de 15 ans dans ce domaine.</value>
   </data>
-  <data name="Administrateur_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Administrateur_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Apropos_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Apropos_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Close_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Close_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Exit_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Exit_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EyeOff_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\EyeOff_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Eye_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Eye_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gestion_Mots_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Gestion_Mots_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gestion_Phrases_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Gestion_Phrases_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gestion_Utilisateurs_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Gestion_Utilisateurs_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Simpleduc_Logo_Large_PNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Simpleduc_Logo_Large.PNG.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="simpleduc_logo_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\simpleduc-logo-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tests_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Tests_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Utilisateur_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\UI\Ressources\Utilisateur_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>● Mise en place de la gestion des utilisateurs
+● Mise en place de la partie jeu/test
+● Création de la page de gestion des utilisateurs
+● Création de la page de connexion/inscription
+● Création de la page de jeu/test</value>
   </data>
 </root>
