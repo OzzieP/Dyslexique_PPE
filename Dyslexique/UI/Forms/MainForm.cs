@@ -52,7 +52,11 @@ namespace Dyslexique.UI.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            label_Title.Text = "Accueil";
+            Accueil accueil = new Accueil();
+            this.Controls.Add(accueil);
+            accueil.BringToFront();
+            label_Title.Text = accueil.Title;
+
             label_Pseudo.Text = Global.Utilisateur.Pseudo;
 
             if (Global.Utilisateur.IdRole == Global.ROLE_UTILISATEUR)

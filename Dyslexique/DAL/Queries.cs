@@ -572,7 +572,7 @@ namespace Dyslexique.DAL
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO Phrase (texte) OUTPUT inserted.idPhrase VALUES (@Texte)";
+                    string query = @"INSERT INTO Phrase (texte, consigne) OUTPUT inserted.idPhrase VALUES (@Texte, @Consigne)";
                     string query2 = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, position) VALUES (@IdPhrase, @IdMot, @IdFonction, @Position)";
 
                     using (SqlTransaction transaction = connection.BeginTransaction())

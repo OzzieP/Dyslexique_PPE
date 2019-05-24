@@ -67,31 +67,6 @@ namespace Dyslexique.UI.Forms
         private void Button_QuitterApplication_Click(object sender, EventArgs e)
         {
             Application.Exit();
-
-            /* TEMP : A supprimer --> POUR INSERER DES USERS DE BASE */
-            //Utilisateur vfiquet = new Utilisateur("vfiquet", "Fiquet", "Valentin", "valentin.fiquet@epsi.fr", "vfiquet123", "1");
-            //Utilisateur blegendre = new Utilisateur("blegendre", "Legendre", "Brendan", "brendan.legendre@epsi.fr", "blegendre123", "1");
-            //Utilisateur mdubois = new Utilisateur("mdubois", "Dubois", "Matthieu", "matthieu.dubois@epsi.fr", "mdubois123", "1");
-            //Utilisateur fcahier = new Utilisateur("fcahier", "Cahier", "François", "francois.cahier@epsi.fr", "fcahier123", "2");
-            //Utilisateur ncazin = new Utilisateur("ncazin", "Cazin", "Nicolas", "nicolas.cazin@epsi.fr", "ncazin123", "2");
-            //Utilisateur cboistel = new Utilisateur("cboistel", "Boistel", "Camille", "camille.boistel@epsi.fr", "cboistel123", "2");
-            //Utilisateur gcharlet = new Utilisateur("gcharlet", "Charlet", "Guillaume", "guillaume.charlet@epsi.fr", "gcharlet123", "2");
-            //Utilisateur psoin = new Utilisateur("psoin", "Soin", "Philippe", "philippe.soin@epsi.fr", "psoin123", "2");
-            //Utilisateur fbrassart = new Utilisateur("fbrassart", "Brassart", "Florian", "florian.brassart@epsi.fr", "fbrassart123", "2");
-            //Utilisateur qlegrand = new Utilisateur("qlegrand", "Legrand", "Quentin", "quentin.legrand@epsi.fr", "qlegrand123", "2");
-            //Utilisateur rlorente = new Utilisateur("rlorente", "Lorente", "Romain", "romain.lorente@epsi.fr", "rlorente123", "2");
-            //Utilisateur rwillerval = new Utilisateur("rwillerval", "Willerval", "Romain", "romain.willerval@epsi.fr", "rwillerwal123", "2");
-            //Utilisateur jdezerable = new Utilisateur("jdezerable", "Dezerable", "Julien", "julien.dezerable@epsi.fr", "jdezerable123", "2");
-            //Utilisateur sturbiez = new Utilisateur("sturbiez", "Turbiez", "Simon", "simon.turbiez@epsi.fr", "sturbiez123", "2");
-
-            //List<Utilisateur> utilisateurs = new List<Utilisateur>
-            //{ vfiquet, blegendre, mdubois, fcahier, ncazin, cboistel, gcharlet, psoin, fbrassart, qlegrand, rlorente, rwillerval, jdezerable, sturbiez };
-
-            //foreach (Utilisateur utilisateur in utilisateurs)
-            //{
-            //    Queries.InsertUtilisateur(utilisateur.Pseudo, utilisateur.Nom, utilisateur.Prenom, utilisateur.Email, utilisateur.MotDePasse, utilisateur.IdRole);
-            //}
-            /* ------------------------------------------------------------- */
         }
 
         private void Button_Connexion_Click(object sender, EventArgs e)
