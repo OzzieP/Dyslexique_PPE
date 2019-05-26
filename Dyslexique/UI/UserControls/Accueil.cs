@@ -16,13 +16,8 @@ namespace Dyslexique.UI.UserControls
     /// <summary>
     /// Contrôle utilisateur affichant la page "Accueil".
     /// </summary>
-    public partial class Accueil : UserControl
+    public partial class Accueil : CustomUserControl
     {
-        /// <summary>
-        /// Obtient ou définit le titre de la page "Accueil".
-        /// </summary>
-        public string Title = "Accueil";
-
         /// <summary>
         /// Constructeur par défaut de la page "Accueil".
         /// </summary>
@@ -30,7 +25,7 @@ namespace Dyslexique.UI.UserControls
         {
             InitializeComponent();
 
-            this.Dock = DockStyle.Fill;
+            this.Title = "Accueil";
         }
     }
 }

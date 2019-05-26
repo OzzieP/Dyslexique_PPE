@@ -226,6 +226,8 @@ namespace Dyslexique.DAL
 
                         if (result <= 0)
                             MessageBox.Show("Erreur lors de l'insertion de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Utilisateur créé avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -310,8 +312,6 @@ namespace Dyslexique.DAL
                                 transaction.Rollback();
                                 MessageBox.Show("Erreur lors de la suppression de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                            else
-                                MessageBox.Show("Utilisateur supprimé avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
                         using (SqlCommand command = new SqlCommand(query2, connection, transaction))
@@ -325,7 +325,10 @@ namespace Dyslexique.DAL
                                 MessageBox.Show("Erreur lors de la suppression de l'utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             else
+                            {
+                                transaction.Commit();
                                 MessageBox.Show("Utilisateur supprimé avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
                 }
@@ -508,9 +511,7 @@ namespace Dyslexique.DAL
         #endregion
 
         #region Mot
-#pragma warning disable CS1591 // Commentaire XML manquant pour le type ou le membre visible publiquement
-        public static void InsertMot(string texte, int idClasse)
-#pragma warning restore CS1591 // Commentaire XML manquant pour le type ou le membre visible publiquement
+        public static void InsertMot(string texte, string idClasse)
         {
             try
             {
@@ -522,7 +523,7 @@ namespace Dyslexique.DAL
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.Add(new SqlParameter("@Texte", texte));
-                        command.Parameters.Add(new SqlParameter("@idClasse", idClasse));
+                        command.Parameters.Add(new SqlParameter("@idClasse", Convert.ToInt32(idClasse)));
                         int result = command.ExecuteNonQuery();
 
                         if (result <= 0)
@@ -538,6 +539,7 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
+
         public static List<Mot> GetAllMotOrderByClasse()
         {
             try
@@ -573,11 +575,11 @@ namespace Dyslexique.DAL
                                     {
                                         IdClasse = reader["idClasse"].ToString(),
                                         Libelle = reader["libelleClasse"].ToString(),
-                                        Types = type
+                                        Type = type
                                     };
                                     Mot mot = new Mot
                                     {
-                                        IdMot =reader["idMot"].ToString(),
+                                        IdMot = reader["idMot"].ToString(),
                                         Texte = reader["texte"].ToString(),
                                         Classe = classe
                                     };
@@ -596,6 +598,7 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
+
         public static List<Mot> GetAllMotOrderByTexte()
         {
             try
@@ -631,7 +634,7 @@ namespace Dyslexique.DAL
                                     {
                                         IdClasse = reader["idClasse"].ToString(),
                                         Libelle = reader["libelleClasse"].ToString(),
-                                        Types = type
+                                        Type = type
                                     };
                                     Mot mot = new Mot
                                     {
@@ -655,7 +658,54 @@ namespace Dyslexique.DAL
             }
         }
 
+        /// <summary>
+        /// Récupère tous les mots stockés dans la BDD.
+        /// </summary>
+        /// <returns>
+        /// La liste de tous les mots dans la BDD.
+        /// </returns>
+        public static List<Mot> GetAllMots()
+        {
+            try
+            {
+                List<Mot> listMots = new List<Mot>();
 
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * FROM Mot";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Mot mot = new Mot
+                                    {
+                                        IdMot = reader["idMot"].ToString(),
+                                        Texte = reader["texte"].ToString()
+                                    };
+
+                                    listMots.Add(mot);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return listMots;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la récupération de tous les mots. \n" +
+                                "Message : " + ex.Message + "\n" +
+                                "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
         #endregion
 
         #region Type
@@ -686,6 +736,7 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
+
         public static List<Types> GetAllType()
         {
             try
@@ -708,7 +759,7 @@ namespace Dyslexique.DAL
                                     Types type = new Types
                                     {
                                         IdTypes = reader["idType"].ToString(),
-                                        Libelle = reader["libelle"].ToString(),
+                                        Libelle = reader["libelle"].ToString()
                                     };
                                     listTypes.Add(type);
                                 }
@@ -728,7 +779,7 @@ namespace Dyslexique.DAL
         #endregion
 
         #region Classe
-        public static void InsertClasse(string libelle, int idType)
+        public static void InsertClasse(string libelle, string idType)
         {
             try
             {
@@ -740,7 +791,7 @@ namespace Dyslexique.DAL
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.Add(new SqlParameter("@Libelle", libelle));
-                        command.Parameters.Add(new SqlParameter("@idType", idType));
+                        command.Parameters.Add(new SqlParameter("@idType", Convert.ToInt32(idType)));
                         int result = command.ExecuteNonQuery();
 
                         if (result <= 0)
@@ -756,6 +807,7 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
+
         public static List<Classe> GetAllClasse()
         {
             try
@@ -789,7 +841,7 @@ namespace Dyslexique.DAL
                                     {
                                         IdClasse = reader["idClasse"].ToString(),
                                         Libelle = reader["libelleClasse"].ToString(),
-                                        Types = type
+                                        Type = type
                                     };
                                     listClasse.Add(classe);
                                 }
@@ -806,6 +858,7 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
+
         public static List<String> GetDistinctClasse()
         {
             try
@@ -841,6 +894,7 @@ namespace Dyslexique.DAL
                 throw;
             }
         }
+
         public static List<Classe> GetClasseByLibelleClasse(string classe)
         {
             try
@@ -875,7 +929,7 @@ namespace Dyslexique.DAL
                                     {
                                         IdClasse = reader["idClasse"].ToString(),
                                         Libelle = reader["libelleClasse"].ToString(),
-                                        Types = type
+                                        Type = type
                                     };
                                     listClasse.Add(classes);
                                 }
@@ -886,11 +940,78 @@ namespace Dyslexique.DAL
 
                 return listClasse;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Erreur lors de la récupération de tous les mots. \n" +
-                                "Message : " + ex.Message + "\n" +
-                                "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        #endregion
+
+        #region Fonction
+        public static void InsertFonction(string libelle)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Fonction (libelle) VALUES (@Libelle)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@Libelle", libelle));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de l'insertion de la fonction.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Fonction créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de l'insertion de la fonction.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+        public static List<Fonction> GetAllFonction()
+        {
+            try
+            {
+                List<Fonction> listTypes = new List<Fonction>();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * FROM Fonction";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Fonction fonction = new Fonction
+                                    {
+                                        IdFonction = reader["idFonction"].ToString(),
+                                        Libelle = reader["libelle"].ToString()
+                                    };
+                                    listTypes.Add(fonction);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return listTypes;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -901,71 +1022,168 @@ namespace Dyslexique.DAL
         /// Effectue un INSERT SQL d'une nouvelle <c>Phrase</c> dans la BDD.
         /// </summary>
         /// <param name="phrase"></param>
-        /*public static void InsertPhrase(Phrase phrase)
-        {
-            string output = string.Empty;
+        //public static void InsertPhrase(Phrase phrase)
+        //{
+        //    string output = string.Empty;
 
+        //    try
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(ConnectionString))
+        //        {
+        //            connection.Open();
+        //            string query = @"INSERT INTO Phrase (texte, consigne) OUTPUT inserted.idPhrase VALUES (@Texte, @Consigne)";
+        //            string query2 = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, position) VALUES (@IdPhrase, @IdMot, @IdFonction, @Position)";
+
+        //            using (SqlTransaction transaction = connection.BeginTransaction())
+        //            {
+        //                using (SqlCommand command = new SqlCommand(query, connection, transaction))
+        //                {
+        //                    command.Parameters.Add(new SqlParameter("@Texte", phrase.Texte));
+        //                    output = command.ExecuteScalar().ToString();
+
+        //                    if (string.IsNullOrEmpty(output) || string.IsNullOrWhiteSpace(output))
+        //                    {
+        //                        transaction.Rollback();
+        //                        MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                    }
+        //                    else
+        //                    {
+        //                        MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                    }
+        //                }
+
+        //                foreach (Mot mot in phrase.Mots)
+        //                {
+        //                    using (SqlCommand command = new SqlCommand(query2, connection, transaction))
+        //                    {
+        //                        command.Parameters.Add(new SqlParameter("@IdPhrase", Convert.ToInt32(output)));
+        //                        command.Parameters.Add(new SqlParameter("@IdMot", Convert.ToInt32(mot.IdMot)));
+        //                        command.Parameters.Add(new SqlParameter("@IdFonction", Convert.ToInt32(mot.Fonction.IdFonction)));
+        //                        command.Parameters.Add(new SqlParameter("@Position", Convert.ToInt32(mot.Position)));
+        //                        int result = command.ExecuteNonQuery();
+
+        //                        if (result <= 0)
+        //                        {
+        //                            transaction.Rollback();
+        //                            MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                        }
+        //                        else
+        //                        {
+        //                            MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                        }
+        //                    }
+
+        //                }
+
+        //                transaction.Commit();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Erreur lors de l'insertion de la phrase. \n" +
+        //                        "Message : " + ex.Message + "\n" +
+        //                        "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        throw;
+        //    }
+        //}
+
+        public static void InsertPhrase(string phrase, string consigne)
+        {
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO Phrase (texte) OUTPUT inserted.idPhrase VALUES (@Texte)";
-                    string query2 = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, position) VALUES (@IdPhrase, @IdMot, @IdFonction, @Position)";
+                    string query = @"INSERT INTO Phrase (texte, consigne) VALUES (@Texte, @Consigne)";
 
-                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        using (SqlCommand command = new SqlCommand(query, connection, transaction))
-                        {
-                            command.Parameters.Add(new SqlParameter("@Texte", phrase.Texte));
-                            output = command.ExecuteScalar().ToString();
+                        command.Parameters.Add(new SqlParameter("@Texte", phrase));
+                        command.Parameters.Add(new SqlParameter("@Consigne", consigne));
+                        int result = command.ExecuteNonQuery();
 
-                            if (string.IsNullOrEmpty(output) || string.IsNullOrWhiteSpace(output))
-                            {
-                                transaction.Rollback();
-                                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
-                        foreach (Mot mot in phrase.Mots)
-                        {
-                            using (SqlCommand command = new SqlCommand(query2, connection, transaction))
-                            {
-                                command.Parameters.Add(new SqlParameter("@IdPhrase", Convert.ToInt32(output)));
-                                command.Parameters.Add(new SqlParameter("@IdMot", Convert.ToInt32(mot.IdMot)));
-                                command.Parameters.Add(new SqlParameter("@IdFonction", Convert.ToInt32(mot.Fonction.IdFonction)));
-                                command.Parameters.Add(new SqlParameter("@Position", Convert.ToInt32(mot.Position)));
-                                int result = command.ExecuteNonQuery();
-
-                                if (result <= 0)
-                                {
-                                    transaction.Rollback();
-                                    MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-
-                        }
-
-                        transaction.Commit();
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Erreur lors de l'insertion de la phrase. \n" +
-                                "Message : " + ex.Message + "\n" +
-                                "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
-        }*/
+        }
+
+        public static List<int> GetLastIdPhrase()
+        {
+            try
+            {
+                List<int> id = new List<int>();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"select top 1 idPhrase from Phrase order by idPhrase desc";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    int idPhrase = Convert.ToInt32(reader["idPhrase"].ToString());
+                                    id.Add(idPhrase);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return id;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
+        public static void InsertPhrasePossederMot(int idPhrase, int idMot, int idFonction, int position, bool motATrouver)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, Position, motATrouver) VALUES (@idPhrase, @idMot, @idFonction, @Position, @motATrouver)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@idPhrase", idPhrase));
+                        command.Parameters.Add(new SqlParameter("@idMot", idMot));
+                        command.Parameters.Add(new SqlParameter("@idFonction", idFonction));
+                        command.Parameters.Add(new SqlParameter("@Position", position));
+                        command.Parameters.Add(new SqlParameter("@motATrouver", motATrouver));
+                        int result = command.ExecuteNonQuery();
+
+                        if (result <= 0)
+                            MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
 
         /// <summary>
         /// Récupère toutes les Phrases non réussies par l'<c>Utilisateur</c>.
@@ -1055,7 +1273,7 @@ namespace Dyslexique.DAL
                                         {
                                             IdClasse = reader["idClasse"].ToString(),
                                             Libelle = reader["classeLibelle"].ToString(),
-                                            Types = types
+                                            Type = types
                                         };
                                         Mot mot = new Mot
                                         {
@@ -1165,7 +1383,7 @@ namespace Dyslexique.DAL
                                         {
                                             IdClasse = reader["idClasse"].ToString(),
                                             Libelle = reader["classeLibelle"].ToString(),
-                                            Types = types
+                                            Type = types
                                         };
                                         Mot mot = new Mot
                                         {
@@ -1262,7 +1480,7 @@ namespace Dyslexique.DAL
                                     {
                                         IdClasse = reader["idClasse"].ToString(),
                                         Libelle = reader["classeLibelle"].ToString(),
-                                        Types = types
+                                        Type = types
                                     };
                                     Mot mot = new Mot
                                     {
@@ -1291,205 +1509,6 @@ namespace Dyslexique.DAL
                 MessageBox.Show("Une erreur est survenue lors de la récupération de la phrase " + idPhrase + ". \n" +
                                 "Message : " + ex.Message + "\n" +
                                 "InnerException : " + ex.InnerException, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
-            }
-        }
-
-
-
-        #endregion
-        #region Fonction
-        public static void InsertFonction(string libelle)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    connection.Open();
-                    string query = @"INSERT INTO Fonction (libelle) VALUES (@Libelle)";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.Add(new SqlParameter("@Libelle", libelle));
-                        int result = command.ExecuteNonQuery();
-
-                        if (result <= 0)
-                            MessageBox.Show("Erreur lors de l'insertion de la fonction.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        else
-                            MessageBox.Show("Fonction créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Erreur lors de l'insertion de la fonction.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
-            }
-        }
-        public static List<Fonction> GetAllFonction()
-        {
-            try
-            {
-                List<Fonction> listTypes = new List<Fonction>();
-
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    connection.Open();
-                    string query = @"SELECT * FROM Fonction";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                while (reader.Read())
-                                {
-                                    Fonction fonction = new Fonction
-                                    {
-                                        IdFonction = reader["idFonction"].ToString(),
-                                        Libelle = reader["libelle"].ToString(),
-                                    };
-                                    listTypes.Add(fonction);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                return listTypes;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
-            }
-        }
-        #endregion
-        #region Phrase
-        public static void InsertPhrase(string phrase, string consigne)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    connection.Open();
-                    string query = @"INSERT INTO Phrase (texte, consigne) VALUES (@Texte, @Consigne)";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.Add(new SqlParameter("@Texte", phrase));
-                        command.Parameters.Add(new SqlParameter("@Consigne", consigne));
-                        int result = command.ExecuteNonQuery();
-
-                        if (result <= 0)
-                            MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        else
-                            MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
-            }
-        }
-        public static List<int> GetLastIdPhrase()
-        {
-            try
-            {
-                List<int> id = new List<int>();
-
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    connection.Open();
-                    string query = @"select top 1 idPhrase from Phrase order by idPhrase desc";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                while (reader.Read())
-                                {
-                                        int idPhrase = Convert.ToInt32(reader["idPhrase"].ToString());
-                                        id.Add(idPhrase);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                return id;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Une erreur est survenue.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
-            }
-        }
-
-        public static void InsertPhrasePossederMot(int idPhrase, int idMot, int idFonction, int position, bool motATrouver)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    connection.Open();
-                    string query = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, Position, motATrouver) VALUES (@idPhrase, @idMot, @idFonction, @Position, @motATrouver)";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.Add(new SqlParameter("@idPhrase", idPhrase));
-                        command.Parameters.Add(new SqlParameter("@idMot", idMot));
-                        command.Parameters.Add(new SqlParameter("@idFonction", idFonction));
-                        command.Parameters.Add(new SqlParameter("@Position", position));
-                        command.Parameters.Add(new SqlParameter("@motATrouver", motATrouver));
-                        int result = command.ExecuteNonQuery();
-
-                        if (result <= 0)
-                            MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        else
-                            MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
-            }
-        }
-        public static void fonctionTest(int idPhrase, int idMot, int idFonction, int position, bool motATrouver)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    connection.Open();
-                    string query = @"INSERT INTO Phrase_Posseder_Mot (idPhrase, idMot, idFonction, Position, motATrouver) VALUES (@idPhrase, @idMot, @idFonction, @Position, @motATrouver)";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.Add(new SqlParameter("@idPhrase", idPhrase));
-                        command.Parameters.Add(new SqlParameter("@idMot", idMot));
-                        command.Parameters.Add(new SqlParameter("@idFonction", idFonction));
-                        command.Parameters.Add(new SqlParameter("@Position", position));
-                        command.Parameters.Add(new SqlParameter("@motATrouver", motATrouver));
-                        int result = command.ExecuteNonQuery();
-
-                        if (result <= 0)
-                            MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        else
-                            MessageBox.Show("Phrase créée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Erreur lors de l'insertion de la phrase.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }

@@ -117,4 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Cette application a pour but de vous entraîner à la grammaire française de manière ludique en passant des tests présentés sous forme de jeu.
+
+Pour progresser, vous allez vous entraîner sur différentes phrases dans lesquelles il faudra que vous trouviez le mot demandé dans la consigne.
+L'application enregistre votre progression, comme par exemple les tests que vous avez réussis, ainsi que le nombre de tentatives pour les réussir.
+
+Le but est de réussir à passer les tests en un minimum de tentatives.
+Lorsque vous aurez réussi à passer tous les tests, vous aurez la possibilité de réinitialiser entièrement votre progression pour repasser les tests,
+ou d'attendre que de nouveaux tests sortent.
+
+</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Le but du jeu est simple :
+
+● Une phrase sur laquelle vous devez passer le test va apparaître à l'écran
+● La consigne vous indique le mot que vous devez trouver dans cette phrase
+● Cliquez sur le bon mot pour passer à la phrase suivante
+● Si vous échouez, vous repasserez le test sur la phrase plus tard
+● Vous pouvez voir votre progression générale sur l'ensemble des tests grâce à la barre de progression affichée en-haut de l'écran</value>
+  </data>
 </root>

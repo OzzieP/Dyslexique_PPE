@@ -117,30 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label8.Text" xml:space="preserve">
-    <value>L’association AsDyx, basée sur Toulouse, est spécialisée dans le domaine des troubles dyslexiques.
-Elle fait appel à Simpléduc afin de réaliser un logiciel éducatif pour les jeunes enfants scolarisés en
-classe primaire ayant une altération spécifique et significative de la lecture et/ou de la production
-d’écrit et de l’orthographe. Des outils tels que des applications web et mobiles existent déjà, mais
-elle souhaite créer sa propre méthode qui s’appuie sur une expérience de 15 ans dans ce domaine.</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>● Mise en place de la gestion des utilisateurs
-● Mise en place de la partie jeu/test
-● Création de la page de gestion des utilisateurs
-● Création de la page de connexion/inscription
-● Création de la page de jeu/test</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>● Mise en place de la gestion des phrases
-● Mise en place de la gestion des mots
-● Mise en place de la gestion des classes
-● Mise en place de la gestion des types
-● Mise en place de la gestion des fonctions
-● Création de la page de gestion des phrases
-● Création de la page de gestion des mots
-● Création de la page de gestion des classes
-● Création de la page de gestion des types
-● Création de la page de gestion des fonctions</value>
-  </data>
+  <metadata name="idType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="libelle.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

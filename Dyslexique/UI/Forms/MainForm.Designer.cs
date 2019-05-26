@@ -31,29 +31,32 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel_Header = new System.Windows.Forms.Panel();
             this.label_Title = new System.Windows.Forms.Label();
-            this.pictureBox_Role_Utilisateur = new System.Windows.Forms.PictureBox();
             this.label_Pseudo = new System.Windows.Forms.Label();
-            this.button_QuitterApplication = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel_Administration = new System.Windows.Forms.Panel();
-            this.button_Menu_Mots = new System.Windows.Forms.Button();
-            this.button_Menu_Phrases = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.button_Menu_Utilisateurs = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.button_Menu_Types = new System.Windows.Forms.Button();
+            this.button_Menu_Fonctions = new System.Windows.Forms.Button();
+            this.button_Menu_Classes = new System.Windows.Forms.Button();
+            this.button_Menu_Mots = new System.Windows.Forms.Button();
+            this.button_Menu_Phrases = new System.Windows.Forms.Button();
+            this.button_Menu_Utilisateurs = new System.Windows.Forms.Button();
             this.button_Menu_Apropos = new System.Windows.Forms.Button();
             this.button_Menu_Tests = new System.Windows.Forms.Button();
             this.button_Menu_Accueil = new System.Windows.Forms.Button();
+            this.pictureBox_Role_Utilisateur = new System.Windows.Forms.PictureBox();
+            this.button_QuitterApplication = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_Header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Role_Utilisateur)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel_Administration.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Role_Utilisateur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_Header
@@ -89,17 +92,6 @@
             this.label_Title.Text = "Titre de la page";
             this.label_Title.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelHeader_MouseDown);
             // 
-            // pictureBox_Role_Utilisateur
-            // 
-            this.pictureBox_Role_Utilisateur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_Role_Utilisateur.Image = global::Dyslexique.Properties.Resources.Utilisateur_64;
-            this.pictureBox_Role_Utilisateur.Location = new System.Drawing.Point(2653, 0);
-            this.pictureBox_Role_Utilisateur.Margin = new System.Windows.Forms.Padding(7);
-            this.pictureBox_Role_Utilisateur.Name = "pictureBox_Role_Utilisateur";
-            this.pictureBox_Role_Utilisateur.Size = new System.Drawing.Size(161, 149);
-            this.pictureBox_Role_Utilisateur.TabIndex = 5;
-            this.pictureBox_Role_Utilisateur.TabStop = false;
-            // 
             // label_Pseudo
             // 
             this.label_Pseudo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -112,22 +104,6 @@
             this.label_Pseudo.Size = new System.Drawing.Size(176, 52);
             this.label_Pseudo.TabIndex = 4;
             this.label_Pseudo.Text = "Pseudo";
-            // 
-            // button_QuitterApplication
-            // 
-            this.button_QuitterApplication.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_QuitterApplication.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_QuitterApplication.FlatAppearance.BorderSize = 0;
-            this.button_QuitterApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_QuitterApplication.ForeColor = System.Drawing.SystemColors.Control;
-            this.button_QuitterApplication.Image = global::Dyslexique.Properties.Resources.Exit_64;
-            this.button_QuitterApplication.Location = new System.Drawing.Point(3355, 0);
-            this.button_QuitterApplication.Margin = new System.Windows.Forms.Padding(2);
-            this.button_QuitterApplication.Name = "button_QuitterApplication";
-            this.button_QuitterApplication.Size = new System.Drawing.Size(142, 147);
-            this.button_QuitterApplication.TabIndex = 3;
-            this.button_QuitterApplication.UseVisualStyleBackColor = true;
-            this.button_QuitterApplication.Click += new System.EventHandler(this.Button_QuitterApplication_Click);
             // 
             // label2
             // 
@@ -155,18 +131,6 @@
             this.label1.Text = "Dyslexique";
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelHeader_MouseDown);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Dyslexique.Properties.Resources.simpleduc_logo_small;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(191, 149);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelHeader_MouseDown);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Purple;
@@ -185,17 +149,123 @@
             // 
             // panel_Administration
             // 
+            this.panel_Administration.Controls.Add(this.button_Menu_Types);
+            this.panel_Administration.Controls.Add(this.button_Menu_Fonctions);
+            this.panel_Administration.Controls.Add(this.button_Menu_Classes);
             this.panel_Administration.Controls.Add(this.button_Menu_Mots);
             this.panel_Administration.Controls.Add(this.button_Menu_Phrases);
             this.panel_Administration.Controls.Add(this.panel4);
             this.panel_Administration.Controls.Add(this.label5);
             this.panel_Administration.Controls.Add(this.button_Menu_Utilisateurs);
-            this.panel_Administration.Location = new System.Drawing.Point(1, 575);
+            this.panel_Administration.Location = new System.Drawing.Point(1, 465);
             this.panel_Administration.Margin = new System.Windows.Forms.Padding(7);
             this.panel_Administration.Name = "panel_Administration";
-            this.panel_Administration.Size = new System.Drawing.Size(420, 518);
+            this.panel_Administration.Size = new System.Drawing.Size(420, 850);
             this.panel_Administration.TabIndex = 2;
             this.panel_Administration.Visible = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Location = new System.Drawing.Point(0, 76);
+            this.panel4.Margin = new System.Windows.Forms.Padding(7);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(420, 22);
+            this.panel4.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(40, 0);
+            this.label5.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(341, 55);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Administration";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(0, 116);
+            this.panel3.Margin = new System.Windows.Forms.Padding(7);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(420, 22);
+            this.panel3.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(70, 47);
+            this.label3.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(261, 55);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Navigation";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button_Menu_Types
+            // 
+            this.button_Menu_Types.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_Menu_Types.FlatAppearance.BorderSize = 0;
+            this.button_Menu_Types.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Menu_Types.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Menu_Types.ForeColor = System.Drawing.Color.White;
+            this.button_Menu_Types.Image = global::Dyslexique.Properties.Resources.Gestion_Types_32;
+            this.button_Menu_Types.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Menu_Types.Location = new System.Drawing.Point(2, 571);
+            this.button_Menu_Types.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Menu_Types.Name = "button_Menu_Types";
+            this.button_Menu_Types.Size = new System.Drawing.Size(420, 112);
+            this.button_Menu_Types.TabIndex = 11;
+            this.button_Menu_Types.Text = "    Types";
+            this.button_Menu_Types.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_Menu_Types.UseVisualStyleBackColor = true;
+            this.button_Menu_Types.Click += new System.EventHandler(this.Button_Menu_Types_Click);
+            // 
+            // button_Menu_Fonctions
+            // 
+            this.button_Menu_Fonctions.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_Menu_Fonctions.FlatAppearance.BorderSize = 0;
+            this.button_Menu_Fonctions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Menu_Fonctions.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Menu_Fonctions.ForeColor = System.Drawing.Color.White;
+            this.button_Menu_Fonctions.Image = global::Dyslexique.Properties.Resources.Gestion_Fonctions_32;
+            this.button_Menu_Fonctions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Menu_Fonctions.Location = new System.Drawing.Point(2, 687);
+            this.button_Menu_Fonctions.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Menu_Fonctions.Name = "button_Menu_Fonctions";
+            this.button_Menu_Fonctions.Size = new System.Drawing.Size(420, 112);
+            this.button_Menu_Fonctions.TabIndex = 10;
+            this.button_Menu_Fonctions.Text = "    Fonctions";
+            this.button_Menu_Fonctions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_Menu_Fonctions.UseVisualStyleBackColor = true;
+            this.button_Menu_Fonctions.Click += new System.EventHandler(this.Button_Menu_Fonctions_Click);
+            // 
+            // button_Menu_Classes
+            // 
+            this.button_Menu_Classes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_Menu_Classes.FlatAppearance.BorderSize = 0;
+            this.button_Menu_Classes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Menu_Classes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Menu_Classes.ForeColor = System.Drawing.Color.White;
+            this.button_Menu_Classes.Image = global::Dyslexique.Properties.Resources.Gestion_Classes_32;
+            this.button_Menu_Classes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Menu_Classes.Location = new System.Drawing.Point(2, 455);
+            this.button_Menu_Classes.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Menu_Classes.Name = "button_Menu_Classes";
+            this.button_Menu_Classes.Size = new System.Drawing.Size(420, 112);
+            this.button_Menu_Classes.TabIndex = 9;
+            this.button_Menu_Classes.Text = "    Classes";
+            this.button_Menu_Classes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_Menu_Classes.UseVisualStyleBackColor = true;
+            this.button_Menu_Classes.Click += new System.EventHandler(this.Button_Menu_Classes_Click);
             // 
             // button_Menu_Mots
             // 
@@ -235,29 +305,6 @@
             this.button_Menu_Phrases.UseVisualStyleBackColor = true;
             this.button_Menu_Phrases.Click += new System.EventHandler(this.Button_Menu_Phrases_Click);
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(0, 76);
-            this.panel4.Margin = new System.Windows.Forms.Padding(7);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(420, 22);
-            this.panel4.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(21, 0);
-            this.label5.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(341, 55);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Administration";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // button_Menu_Utilisateurs
             // 
             this.button_Menu_Utilisateurs.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -276,29 +323,6 @@
             this.button_Menu_Utilisateurs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_Menu_Utilisateurs.UseVisualStyleBackColor = true;
             this.button_Menu_Utilisateurs.Click += new System.EventHandler(this.Button_Menu_Utilisateurs_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(0, 116);
-            this.panel3.Margin = new System.Windows.Forms.Padding(7);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(420, 22);
-            this.panel3.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(70, 47);
-            this.label3.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(261, 55);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Navigation";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button_Menu_Apropos
             // 
@@ -358,6 +382,45 @@
             this.button_Menu_Accueil.UseVisualStyleBackColor = true;
             this.button_Menu_Accueil.Click += new System.EventHandler(this.Button_Menu_Accueil_Click);
             // 
+            // pictureBox_Role_Utilisateur
+            // 
+            this.pictureBox_Role_Utilisateur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_Role_Utilisateur.Image = global::Dyslexique.Properties.Resources.Utilisateur_64;
+            this.pictureBox_Role_Utilisateur.Location = new System.Drawing.Point(2653, 0);
+            this.pictureBox_Role_Utilisateur.Margin = new System.Windows.Forms.Padding(7);
+            this.pictureBox_Role_Utilisateur.Name = "pictureBox_Role_Utilisateur";
+            this.pictureBox_Role_Utilisateur.Size = new System.Drawing.Size(161, 149);
+            this.pictureBox_Role_Utilisateur.TabIndex = 5;
+            this.pictureBox_Role_Utilisateur.TabStop = false;
+            // 
+            // button_QuitterApplication
+            // 
+            this.button_QuitterApplication.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_QuitterApplication.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_QuitterApplication.FlatAppearance.BorderSize = 0;
+            this.button_QuitterApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_QuitterApplication.ForeColor = System.Drawing.SystemColors.Control;
+            this.button_QuitterApplication.Image = global::Dyslexique.Properties.Resources.Exit_64;
+            this.button_QuitterApplication.Location = new System.Drawing.Point(3355, 0);
+            this.button_QuitterApplication.Margin = new System.Windows.Forms.Padding(2);
+            this.button_QuitterApplication.Name = "button_QuitterApplication";
+            this.button_QuitterApplication.Size = new System.Drawing.Size(142, 147);
+            this.button_QuitterApplication.TabIndex = 3;
+            this.button_QuitterApplication.UseVisualStyleBackColor = true;
+            this.button_QuitterApplication.Click += new System.EventHandler(this.Button_QuitterApplication_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Dyslexique.Properties.Resources.simpleduc_logo_small;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(191, 149);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelHeader_MouseDown);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -377,12 +440,12 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel_Header.ResumeLayout(false);
             this.panel_Header.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Role_Utilisateur)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel_Administration.ResumeLayout(false);
             this.panel_Administration.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Role_Utilisateur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -409,5 +472,8 @@
         private System.Windows.Forms.Label label_Title;
         private System.Windows.Forms.Button button_Menu_Phrases;
         private System.Windows.Forms.Button button_Menu_Mots;
+        private System.Windows.Forms.Button button_Menu_Types;
+        private System.Windows.Forms.Button button_Menu_Fonctions;
+        private System.Windows.Forms.Button button_Menu_Classes;
     }
 }

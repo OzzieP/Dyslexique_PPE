@@ -133,6 +133,26 @@ namespace Dyslexique.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Gestion_Classes_32 {
+            get {
+                object obj = ResourceManager.GetObject("Gestion_Classes_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gestion_Fonctions_32 {
+            get {
+                object obj = ResourceManager.GetObject("Gestion_Fonctions_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gestion_Mots_32 {
             get {
                 object obj = ResourceManager.GetObject("Gestion_Mots_32", resourceCulture);
@@ -146,6 +166,16 @@ namespace Dyslexique.Properties {
         internal static System.Drawing.Bitmap Gestion_Phrases_32 {
             get {
                 object obj = ResourceManager.GetObject("Gestion_Phrases_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gestion_Types_32 {
+            get {
+                object obj = ResourceManager.GetObject("Gestion_Types_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

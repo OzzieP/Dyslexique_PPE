@@ -15,12 +15,8 @@ namespace Dyslexique.UI.UserControls
     /// <summary>
     /// Contrôle utilisateur affichant la page "Jeu".
     /// </summary>
-    public partial class Jeu : UserControl
+    public partial class Jeu : CustomUserControl
     {
-        /// <summary>
-        /// Obtient ou définit le titre de la page "Jeu".
-        /// </summary>
-        public string Title = "Passer les tests";
         private Phrase phraseSelectionnee;
 
         /// <summary>
@@ -30,7 +26,7 @@ namespace Dyslexique.UI.UserControls
         {
             InitializeComponent();
 
-            this.Dock = DockStyle.Fill;
+            this.Title = "Passer les tests";
         }
 
         private void Jeu_Load(object sender, EventArgs e)
@@ -50,7 +46,7 @@ namespace Dyslexique.UI.UserControls
             SetProgressBar();
 
             Random random = new Random();
-            int randomIndex = random.Next(Global.phrasesNonReussies.Count), indexOne = 0, indexTwo = 0;
+            int randomIndex = random.Next(Global.phrasesNonReussies.Count);
 
             if (Global.phrasesNonReussies.Count == 0)
             {
@@ -77,31 +73,21 @@ namespace Dyslexique.UI.UserControls
 
                 Accueil accueil = new Accueil();
                 this.Dispose();
+                this.Title = accueil.Title;
                 accueil.BringToFront();
             }
             else
             {
-                do
-                {
-                    randomIndex = random.Next(Global.phrasesNonReussies.Count);
-                } while (randomIndex == indexOne || randomIndex == indexTwo);
-
-                //if (randomIndex == indexOne || randomIndex == indexTwo)
-                //    randomIndex = random.Next(Global.phrasesNonReussies.Count);
-
                 this.phraseSelectionnee = Global.phrasesNonReussies.ElementAt(randomIndex);
-                label_Consigne.Text += phraseSelectionnee.Consigne;
+                RefreshLabels();
                 phraseSelectionnee.DisplayMots(this, phraseSelectionnee);
-                //label_Tentatives.Text += phraseSelectionnee.Tentative.ToString();
             }
         }
 
         private void ClearJeu()
         {
-            //progressBar.Style = ProgressBarStyle.
-            //label_ProgressCount.Text = Global.phrasesNonReussies.Count.ToString();
+            label_ProgressCount.Text = "Questions restantes : ";
             label_Consigne.Text = "Dans la phrase ci-dessous : ";
-            //label_Tentatives.Text = "Nombre de tentatives déjà effectuées pour cette phrase : ";
 
             foreach (Control control in panel_Phrase.Controls)
             {
@@ -122,6 +108,15 @@ namespace Dyslexique.UI.UserControls
 
             this.progressBar.Value = phrasesReussies;
             this.progressBar.Maximum = phrases;
+        }
+
+        private void RefreshLabels()
+        {
+            label_Consigne.Text += phraseSelectionnee.Consigne;
+            label_Tentatives.Text = "Nombre de tentatives déjà effectuées pour cette phrase : " + phraseSelectionnee.Tentative.ToString();
+            int phrasesReussies = Global.allPhrases.Count - Global.phrasesNonReussies.Count;
+            float pourcentage = phrasesReussies * 100 / Global.allPhrases.Count;
+            label_ProgressCount.Text += Global.phrasesNonReussies.Count.ToString() + " / " + Global.allPhrases.Count.ToString() + " - " + pourcentage.ToString() + "%";
         }
     }
 }

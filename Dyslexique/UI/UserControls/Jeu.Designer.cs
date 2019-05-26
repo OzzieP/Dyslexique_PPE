@@ -45,7 +45,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(79, 716);
+            this.label1.Location = new System.Drawing.Point(76, 712);
             this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(205, 58);
@@ -56,7 +56,7 @@
             // 
             this.panel_Phrase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Phrase.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel_Phrase.Location = new System.Drawing.Point(89, 772);
+            this.panel_Phrase.Location = new System.Drawing.Point(86, 772);
             this.panel_Phrase.Margin = new System.Windows.Forms.Padding(2);
             this.panel_Phrase.Name = "panel_Phrase";
             this.panel_Phrase.Size = new System.Drawing.Size(1986, 346);
@@ -66,7 +66,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline);
-            this.label2.Location = new System.Drawing.Point(82, 506);
+            this.label2.Location = new System.Drawing.Point(76, 509);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(270, 58);
@@ -76,7 +76,7 @@
             // label_Consigne
             // 
             this.label_Consigne.AutoSize = true;
-            this.label_Consigne.Location = new System.Drawing.Point(82, 582);
+            this.label_Consigne.Location = new System.Drawing.Point(91, 587);
             this.label_Consigne.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label_Consigne.Name = "label_Consigne";
             this.label_Consigne.Size = new System.Drawing.Size(314, 29);
@@ -86,7 +86,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.panel1.Location = new System.Drawing.Point(89, 663);
+            this.panel1.Location = new System.Drawing.Point(86, 666);
             this.panel1.Margin = new System.Windows.Forms.Padding(7);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1986, 11);
@@ -95,17 +95,16 @@
             // label_ProgressCount
             // 
             this.label_ProgressCount.AutoSize = true;
-            this.label_ProgressCount.Location = new System.Drawing.Point(588, 42);
+            this.label_ProgressCount.Location = new System.Drawing.Point(549, 42);
             this.label_ProgressCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_ProgressCount.Name = "label_ProgressCount";
-            this.label_ProgressCount.Size = new System.Drawing.Size(972, 29);
+            this.label_ProgressCount.Size = new System.Drawing.Size(244, 29);
             this.label_ProgressCount.TabIndex = 11;
-            this.label_ProgressCount.Text = "Progressbar à gauche / Nombre de questions répondues sur nombre de questions tota" +
-    "les";
+            this.label_ProgressCount.Text = "Questions restantes : ";
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(26, 42);
+            this.progressBar.Location = new System.Drawing.Point(10, 42);
             this.progressBar.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(490, 29);
@@ -116,7 +115,7 @@
             // 
             this.panel2.Controls.Add(this.progressBar);
             this.panel2.Controls.Add(this.label_ProgressCount);
-            this.panel2.Location = new System.Drawing.Point(89, 274);
+            this.panel2.Location = new System.Drawing.Point(86, 274);
             this.panel2.Margin = new System.Windows.Forms.Padding(7);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1724, 114);
@@ -126,7 +125,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Underline);
-            this.label4.Location = new System.Drawing.Point(79, 214);
+            this.label4.Location = new System.Drawing.Point(76, 209);
             this.label4.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(450, 58);
@@ -136,7 +135,7 @@
             // label_Tentatives
             // 
             this.label_Tentatives.AutoSize = true;
-            this.label_Tentatives.Location = new System.Drawing.Point(86, 446);
+            this.label_Tentatives.Location = new System.Drawing.Point(91, 411);
             this.label_Tentatives.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_Tentatives.Name = "label_Tentatives";
             this.label_Tentatives.Size = new System.Drawing.Size(623, 29);

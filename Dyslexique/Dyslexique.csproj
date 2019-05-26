@@ -52,30 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ajoutClasse.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ajoutClasse.Designer.cs">
-      <DependentUpon>ajoutClasse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ajoutFonction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ajoutFonction.Designer.cs">
-      <DependentUpon>ajoutFonction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ajoutMot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ajoutMot.Designer.cs">
-      <DependentUpon>ajoutMot.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ajoutType.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ajoutType.Designer.cs">
-      <DependentUpon>ajoutType.cs</DependentUpon>
-    </Compile>
     <Compile Include="Classes\Classe.cs" />
     <Compile Include="UI\Forms\ConnexionForm.cs">
       <SubType>Form</SubType>
@@ -101,17 +77,44 @@
     <Compile Include="UI\UserControls\Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserControls\AjoutClasse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutClasse.Designer.cs">
+      <DependentUpon>AjoutClasse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutFonction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutFonction.Designer.cs">
+      <DependentUpon>AjoutFonction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutMot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutMot.Designer.cs">
+      <DependentUpon>AjoutMot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutPhrase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutPhrase.Designer.cs">
+      <DependentUpon>AjoutPhrase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutType.Designer.cs">
+      <DependentUpon>AjoutType.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserControls\Apropos.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\UserControls\Apropos.Designer.cs">
       <DependentUpon>Apropos.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserControls\GestionPhrases.cs">
+    <Compile Include="UI\UserControls\CustomUserControl.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\UserControls\GestionPhrases.Designer.cs">
-      <DependentUpon>GestionPhrases.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserControls\GestionUtilisateur.cs">
       <SubType>UserControl</SubType>
@@ -128,51 +131,9 @@
     <Compile Include="UI\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DyslexiqueDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DyslexiqueDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="UI\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="PhrasePossederMot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PhrasePossederMot.Designer.cs">
-      <DependentUpon>PhrasePossederMot.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="ajoutClasse.resx">
-      <DependentUpon>ajoutClasse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ajoutFonction.resx">
-      <DependentUpon>ajoutFonction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ajoutMot.resx">
-      <DependentUpon>ajoutMot.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ajoutType.resx">
-      <DependentUpon>ajoutType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="obj\Debug\Dyslexique.ajoutClasse.resources" />
-    <EmbeddedResource Include="obj\Debug\Dyslexique.ajoutFonction.resources" />
-    <EmbeddedResource Include="obj\Debug\Dyslexique.ajoutMot.resources" />
-    <EmbeddedResource Include="obj\Debug\Dyslexique.ajoutType.resources" />
-    <EmbeddedResource Include="obj\Debug\Dyslexique.Form1.resources" />
-    <EmbeddedResource Include="obj\Debug\Dyslexique.PhrasePossederMot.resources" />
-    <EmbeddedResource Include="obj\Debug\Dyslexique.Properties.Resources.resources" />
-    <EmbeddedResource Include="PhrasePossederMot.resx">
-      <DependentUpon>PhrasePossederMot.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\ConnexionForm.resx">
       <DependentUpon>ConnexionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,32 +150,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="DyslexiqueDataSet.xsc">
-      <DependentUpon>DyslexiqueDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DyslexiqueDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DyslexiqueDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DyslexiqueDataSet.xss">
-      <DependentUpon>DyslexiqueDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\Dyslexique.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Debug\Dyslexique.csproj.GenerateResource.cache" />
-    <None Include="obj\Debug\Dyslexique.csprojAssemblyReference.cache" />
-    <None Include="obj\Release\Dyslexique.csproj.CoreCompileInputs.cache" />
     <EmbeddedResource Include="UI\UserControls\Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\AjoutClasse.resx">
+      <DependentUpon>AjoutClasse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\AjoutFonction.resx">
+      <DependentUpon>AjoutFonction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\AjoutMot.resx">
+      <DependentUpon>AjoutMot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\AjoutPhrase.resx">
+      <DependentUpon>AjoutPhrase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\AjoutType.resx">
+      <DependentUpon>AjoutType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\Apropos.resx">
       <DependentUpon>Apropos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserControls\GestionPhrases.resx">
-      <DependentUpon>GestionPhrases.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\GestionUtilisateur.resx">
       <DependentUpon>GestionUtilisateur.cs</DependentUpon>
@@ -241,12 +196,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="obj\Debug\Dyslexique.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\Dyslexique.exe" />
-    <Content Include="obj\Debug\Dyslexique.pdb" />
-    <Content Include="obj\Debug\TempPE\DyslexiqueDataSet.Designer.cs.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="UI\Ressources\Accueil_32.png" />
     <Content Include="UI\Ressources\Administrateur_64.png" />
     <Content Include="UI\Ressources\Apropos_32.png" />
@@ -254,8 +203,11 @@
     <Content Include="UI\Ressources\Exit_64.png" />
     <None Include="UI\Ressources\Eye_16.png" />
     <None Include="UI\Ressources\EyeOff_16.png" />
+    <Content Include="UI\Ressources\Gestion_Classes_32.png" />
+    <Content Include="UI\Ressources\Gestion_Fonctions_32.png" />
     <Content Include="UI\Ressources\Gestion_Mots_32.png" />
     <Content Include="UI\Ressources\Gestion_Phrases_32.png" />
+    <Content Include="UI\Ressources\Gestion_Types_32.png" />
     <Content Include="UI\Ressources\Gestion_Utilisateurs_32.png" />
     <Content Include="UI\Ressources\simpleduc-logo-icone.ico" />
     <Content Include="UI\Ressources\simpleduc-logo-small.png" />
