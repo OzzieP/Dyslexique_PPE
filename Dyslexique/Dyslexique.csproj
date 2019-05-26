@@ -181,6 +181,8 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram.cd" />
+    <None Include="Documents\Documentation_Technique.chm" />
+    <None Include="Documents\Documentation_Utilisation.docx" />
     <None Include="Properties\DataSources\Dyslexique.Classes.Utilisateur.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
