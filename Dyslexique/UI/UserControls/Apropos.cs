@@ -13,13 +13,8 @@ namespace Dyslexique.UI.UserControls
     /// <summary>
     /// Contrôle utilisateur affichant la page "À propos".
     /// </summary>
-    public partial class Apropos : UserControl
+    public partial class Apropos : CustomUserControl
     {
-        /// <summary>
-        /// Obtient ou définit le titre de la page "À propos".
-        /// </summary>
-        public string Title = "À propos de nous";
-
         /// <summary>
         /// Constructeur par défaut de la page "À propos".
         /// </summary>
@@ -27,7 +22,7 @@ namespace Dyslexique.UI.UserControls
         {
             InitializeComponent();
 
-            this.Dock = DockStyle.Fill;
+            this.Title = "À propos de nous";
         }
     }
 }

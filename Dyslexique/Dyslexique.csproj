@@ -113,6 +113,9 @@
     <Compile Include="UI\UserControls\Apropos.Designer.cs">
       <DependentUpon>Apropos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserControls\CustomUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UI\UserControls\GestionUtilisateur.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -200,8 +203,11 @@
     <Content Include="UI\Ressources\Exit_64.png" />
     <None Include="UI\Ressources\Eye_16.png" />
     <None Include="UI\Ressources\EyeOff_16.png" />
+    <Content Include="UI\Ressources\Gestion_Classes_32.png" />
+    <Content Include="UI\Ressources\Gestion_Fonctions_32.png" />
     <Content Include="UI\Ressources\Gestion_Mots_32.png" />
     <Content Include="UI\Ressources\Gestion_Phrases_32.png" />
+    <Content Include="UI\Ressources\Gestion_Types_32.png" />
     <Content Include="UI\Ressources\Gestion_Utilisateurs_32.png" />
     <Content Include="UI\Ressources\simpleduc-logo-icone.ico" />
     <Content Include="UI\Ressources\simpleduc-logo-small.png" />

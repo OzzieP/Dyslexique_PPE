@@ -100,6 +100,7 @@ namespace Dyslexique.UI.Forms
             }
         }
 
+        // Fonction pour afficher le formulaire de connexion/inscription
         private void DisplayFormConnexion()
         {
             ConnexionForm connexionForm = new ConnexionForm();
@@ -110,63 +111,70 @@ namespace Dyslexique.UI.Forms
         private void Button_Menu_Accueil_Click(object sender, EventArgs e)
         {
             Accueil accueil = new Accueil();
-            this.Controls.Add(accueil);
-            accueil.BringToFront();
-            label_Title.Text = accueil.Title;
+            DisplayPage(accueil);
         }
 
         // Fonction pour afficher la page de jeu/tests
         private void Button_Menu_Tests_Click(object sender, EventArgs e)
         {
             Jeu jeu = new Jeu();
-            this.Controls.Add(jeu);
-            jeu.BringToFront();
-            label_Title.Text = jeu.Title;
+            DisplayPage(jeu);
         }
 
         // Fonction pour afficher la page de gestion des Utilisateurs
         private void Button_Menu_Utilisateurs_Click(object sender, EventArgs e)
         {
             GestionUtilisateur gestionUtilisateur = new GestionUtilisateur();
-            this.Controls.Add(gestionUtilisateur);
-            gestionUtilisateur.BringToFront();
-            label_Title.Text = gestionUtilisateur.Title;
+            DisplayPage(gestionUtilisateur);
         }
 
         // Fonction pour afficher la page de gestion des Phrases
         private void Button_Menu_Phrases_Click(object sender, EventArgs e)
         {
-            //GestionPhrases gestionPhrases = new GestionPhrases()
-            //{
-            //    Dock = DockStyle.Fill,
-            //    Name = "gestionPhrases"
-            //};
-
-            //this.Controls.Add(gestionPhrases);
-            //gestionPhrases.BringToFront();
-            //label_Title.Text = gestionPhrases.Title;
+            AjoutPhrase ajoutPhrase = new AjoutPhrase();
+            DisplayPage(ajoutPhrase);
         }
 
         // Fonction pour afficher la page de gestion des Mots
         private void Button_Menu_Mots_Click(object sender, EventArgs e)
         {
-            //GestionMots gestionMots = new GestionMots()
-            //{
-            //    Dock = DockStyle.Fill,
-            //    Name = "gestionMots"
-            //};
-
-            //this.Controls.Add(gestionMots);
-            //gestionMots.BringToFront();
-            //label_Title.Text = gestionMots.Title;
+            AjoutMot ajoutMot = new AjoutMot();
+            DisplayPage(ajoutMot);
         }
 
+        // Fonction pour afficher la page d'ajout des Classes
+        private void Button_Menu_Classes_Click(object sender, EventArgs e)
+        {
+            AjoutClasse ajoutClasse = new AjoutClasse();
+            DisplayPage(ajoutClasse);
+        }
+
+        // Fonction pour afficher la page d'ajout des Types
+        private void Button_Menu_Types_Click(object sender, EventArgs e)
+        {
+            AjoutType ajoutType = new AjoutType();
+            DisplayPage(ajoutType);
+        }
+
+        // Fonction pour afficher la page d'ajout des Fonctions
+        private void Button_Menu_Fonctions_Click(object sender, EventArgs e)
+        {
+            AjoutFonction ajoutFonction = new AjoutFonction();
+            DisplayPage(ajoutFonction);
+        }
+
+        // Fonction pour afficher la page "A propos"
         private void Button_Menu_Apropos_Click(object sender, EventArgs e)
         {
             Apropos aPropos = new Apropos();
-            this.Controls.Add(aPropos);
-            aPropos.BringToFront();
-            label_Title.Text = aPropos.Title;
+            DisplayPage(aPropos);
+        }
+
+        private void DisplayPage(CustomUserControl customUserControl)
+        {
+            this.Controls.Add(customUserControl);
+            customUserControl.BringToFront();
+            label_Title.Text = customUserControl.Title;
         }
     }
 }

@@ -43,6 +43,5 @@ namespace Dyslexique.Classes
             get { return type; }
             set { type = value; }
         }
-
     }
 }

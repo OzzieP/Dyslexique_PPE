@@ -12,9 +12,8 @@ using Dyslexique.DAL;
 
 namespace Dyslexique.UI.UserControls
 {
-    public partial class AjoutPhrase : UserControl
+    public partial class AjoutPhrase : CustomUserControl
     {
-        public string Title = "Ajout d'une phrase";
         List<ComboBox> ComboBoxes = new List<ComboBox>();
         List<ComboBox> ComboFonction = new List<ComboBox>();
         List<Mot> listMot = new List<Mot>();
@@ -68,7 +67,7 @@ namespace Dyslexique.UI.UserControls
         {
             InitializeComponent();
 
-            this.Dock = DockStyle.Fill;
+            this.Title = "Ajout d'une phrase";
         }
 
         private void button1_Click(object sender, EventArgs e)

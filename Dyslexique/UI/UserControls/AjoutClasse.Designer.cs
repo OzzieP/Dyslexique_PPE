@@ -79,16 +79,18 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idClasse,
             this.libelle,
             this.type});
-            this.dataGridView1.Location = new System.Drawing.Point(1042, 48);
+            this.dataGridView1.Location = new System.Drawing.Point(1074, 48);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(7);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 92;
-            this.dataGridView1.Size = new System.Drawing.Size(803, 950);
+            this.dataGridView1.Size = new System.Drawing.Size(1370, 1434);
             this.dataGridView1.TabIndex = 5;
             // 
             // idClasse
@@ -96,21 +98,18 @@
             this.idClasse.HeaderText = "idClasse";
             this.idClasse.MinimumWidth = 11;
             this.idClasse.Name = "idClasse";
-            this.idClasse.Width = 225;
             // 
             // libelle
             // 
             this.libelle.HeaderText = "libelle";
             this.libelle.MinimumWidth = 11;
             this.libelle.Name = "libelle";
-            this.libelle.Width = 225;
             // 
             // type
             // 
             this.type.HeaderText = "type";
             this.type.MinimumWidth = 11;
             this.type.Name = "type";
-            this.type.Width = 225;
             // 
             // AjoutClasse
             // 

@@ -39,15 +39,17 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idFonction,
             this.libelle});
-            this.dataGridView1.Location = new System.Drawing.Point(1246, 44);
+            this.dataGridView1.Location = new System.Drawing.Point(997, 44);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(7);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 92;
-            this.dataGridView1.Size = new System.Drawing.Size(569, 335);
+            this.dataGridView1.Size = new System.Drawing.Size(1370, 1434);
             this.dataGridView1.TabIndex = 7;
             // 
             // idFonction
@@ -55,14 +57,12 @@
             this.idFonction.HeaderText = "idFonction";
             this.idFonction.MinimumWidth = 11;
             this.idFonction.Name = "idFonction";
-            this.idFonction.Width = 225;
             // 
             // libelle
             // 
             this.libelle.HeaderText = "libelle";
             this.libelle.MinimumWidth = 11;
             this.libelle.Name = "libelle";
-            this.libelle.Width = 225;
             // 
             // button1
             // 

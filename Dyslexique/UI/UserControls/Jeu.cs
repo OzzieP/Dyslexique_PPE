@@ -15,12 +15,8 @@ namespace Dyslexique.UI.UserControls
     /// <summary>
     /// Contrôle utilisateur affichant la page "Jeu".
     /// </summary>
-    public partial class Jeu : UserControl
+    public partial class Jeu : CustomUserControl
     {
-        /// <summary>
-        /// Obtient ou définit le titre de la page "Jeu".
-        /// </summary>
-        public string Title = "Passer les tests";
         private Phrase phraseSelectionnee;
 
         /// <summary>
@@ -30,7 +26,7 @@ namespace Dyslexique.UI.UserControls
         {
             InitializeComponent();
 
-            this.Dock = DockStyle.Fill;
+            this.Title = "Passer les tests";
         }
 
         private void Jeu_Load(object sender, EventArgs e)

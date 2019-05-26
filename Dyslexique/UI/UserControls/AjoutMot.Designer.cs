@@ -64,17 +64,19 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idMot,
             this.texte,
             this.Classe,
             this.Type});
-            this.dataGridView1.Location = new System.Drawing.Point(1318, 35);
+            this.dataGridView1.Location = new System.Drawing.Point(1069, 37);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(7);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 92;
-            this.dataGridView1.Size = new System.Drawing.Size(1034, 950);
+            this.dataGridView1.Size = new System.Drawing.Size(1370, 1434);
             this.dataGridView1.TabIndex = 11;
             // 
             // idMot
@@ -82,28 +84,24 @@
             this.idMot.HeaderText = "idMot";
             this.idMot.MinimumWidth = 11;
             this.idMot.Name = "idMot";
-            this.idMot.Width = 225;
             // 
             // texte
             // 
             this.texte.HeaderText = "texte";
             this.texte.MinimumWidth = 11;
             this.texte.Name = "texte";
-            this.texte.Width = 225;
             // 
             // Classe
             // 
             this.Classe.HeaderText = "Classe";
             this.Classe.MinimumWidth = 11;
             this.Classe.Name = "Classe";
-            this.Classe.Width = 225;
             // 
             // Type
             // 
             this.Type.HeaderText = "Type";
             this.Type.MinimumWidth = 11;
             this.Type.Name = "Type";
-            this.Type.Width = 225;
             // 
             // button1
             // 

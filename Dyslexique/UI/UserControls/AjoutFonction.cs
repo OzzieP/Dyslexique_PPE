@@ -12,16 +12,15 @@ using Dyslexique.DAL;
 
 namespace Dyslexique.UI.UserControls
 {
-    public partial class AjoutFonction : UserControl
+    public partial class AjoutFonction : CustomUserControl
     {
-        public string Title = "Ajout d'une fonction";
         List<Fonction> listFonction = new List<Fonction>();
 
         public AjoutFonction()
         {
             InitializeComponent();
 
-            this.Dock = DockStyle.Fill;
+            this.Title = "Ajout d'une fonction";
         }
 
         public bool existe(string libelle)

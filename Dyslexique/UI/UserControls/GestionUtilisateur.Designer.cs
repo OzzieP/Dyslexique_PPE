@@ -76,22 +76,22 @@
             this.radioButton_InsertAdministrateur = new System.Windows.Forms.RadioButton();
             this.groupBox_DataGridView = new System.Windows.Forms.GroupBox();
             this.dataGridView_AllUtilisateurs = new System.Windows.Forms.DataGridView();
+            this.idUtilisateurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pseudoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.errorProvider_TextBox = new System.Windows.Forms.ErrorProvider(this.components);
-            this.idUtilisateurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pseudoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idRoleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.utilisateurBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProvider_TextBox = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox_DeleteUtilisateur.SuspendLayout();
             this.groupBox_UpdateUtilisateur.SuspendLayout();
             this.groupBox_InsertUtilisateur.SuspendLayout();
             this.groupBox_DataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AllUtilisateurs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_TextBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utilisateurBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_TextBox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox_DeleteUtilisateur
@@ -705,42 +705,17 @@
             this.dataGridView_AllUtilisateurs.MultiSelect = false;
             this.dataGridView_AllUtilisateurs.Name = "dataGridView_AllUtilisateurs";
             this.dataGridView_AllUtilisateurs.ReadOnly = true;
+            this.dataGridView_AllUtilisateurs.RowHeadersWidth = 92;
             this.dataGridView_AllUtilisateurs.RowTemplate.Height = 37;
             this.dataGridView_AllUtilisateurs.Size = new System.Drawing.Size(1370, 1434);
             this.dataGridView_AllUtilisateurs.TabIndex = 0;
             this.dataGridView_AllUtilisateurs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_AllUtilisateurs_CellClick);
             // 
-            // Nom
-            // 
-            this.Nom.DataPropertyName = "Nom";
-            this.Nom.HeaderText = "Nom";
-            this.Nom.Name = "Nom";
-            this.Nom.ReadOnly = true;
-            // 
-            // Prenom
-            // 
-            this.Prenom.DataPropertyName = "Prenom";
-            this.Prenom.HeaderText = "Prénom";
-            this.Prenom.Name = "Prenom";
-            this.Prenom.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 144;
-            // 
-            // errorProvider_TextBox
-            // 
-            this.errorProvider_TextBox.ContainerControl = this;
-            // 
             // idUtilisateurDataGridViewTextBoxColumn
             // 
             this.idUtilisateurDataGridViewTextBoxColumn.DataPropertyName = "IdUtilisateur";
             this.idUtilisateurDataGridViewTextBoxColumn.HeaderText = "IdUtilisateur";
+            this.idUtilisateurDataGridViewTextBoxColumn.MinimumWidth = 11;
             this.idUtilisateurDataGridViewTextBoxColumn.Name = "idUtilisateurDataGridViewTextBoxColumn";
             this.idUtilisateurDataGridViewTextBoxColumn.ReadOnly = true;
             this.idUtilisateurDataGridViewTextBoxColumn.Visible = false;
@@ -749,13 +724,41 @@
             // 
             this.pseudoDataGridViewTextBoxColumn.DataPropertyName = "Pseudo";
             this.pseudoDataGridViewTextBoxColumn.HeaderText = "Pseudo";
+            this.pseudoDataGridViewTextBoxColumn.MinimumWidth = 11;
             this.pseudoDataGridViewTextBoxColumn.Name = "pseudoDataGridViewTextBoxColumn";
             this.pseudoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Nom
+            // 
+            this.Nom.DataPropertyName = "Nom";
+            this.Nom.HeaderText = "Nom";
+            this.Nom.MinimumWidth = 11;
+            this.Nom.Name = "Nom";
+            this.Nom.ReadOnly = true;
+            // 
+            // Prenom
+            // 
+            this.Prenom.DataPropertyName = "Prenom";
+            this.Prenom.HeaderText = "Prénom";
+            this.Prenom.MinimumWidth = 11;
+            this.Prenom.Name = "Prenom";
+            this.Prenom.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 11;
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 144;
             // 
             // idRoleDataGridViewTextBoxColumn
             // 
             this.idRoleDataGridViewTextBoxColumn.DataPropertyName = "IdRole";
             this.idRoleDataGridViewTextBoxColumn.HeaderText = "IdRole";
+            this.idRoleDataGridViewTextBoxColumn.MinimumWidth = 11;
             this.idRoleDataGridViewTextBoxColumn.Name = "idRoleDataGridViewTextBoxColumn";
             this.idRoleDataGridViewTextBoxColumn.ReadOnly = true;
             this.idRoleDataGridViewTextBoxColumn.Visible = false;
@@ -764,12 +767,17 @@
             // 
             this.roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
             this.roleDataGridViewTextBoxColumn.HeaderText = "Rôle";
+            this.roleDataGridViewTextBoxColumn.MinimumWidth = 11;
             this.roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
             this.roleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // utilisateurBindingSource
             // 
             this.utilisateurBindingSource.DataSource = typeof(Dyslexique.Classes.Utilisateur);
+            // 
+            // errorProvider_TextBox
+            // 
+            this.errorProvider_TextBox.ContainerControl = this;
             // 
             // GestionUtilisateur
             // 
@@ -793,8 +801,8 @@
             this.groupBox_InsertUtilisateur.PerformLayout();
             this.groupBox_DataGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AllUtilisateurs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_TextBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utilisateurBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_TextBox)).EndInit();
             this.ResumeLayout(false);
 
         }

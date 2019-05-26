@@ -15,12 +15,8 @@ namespace Dyslexique.UI.UserControls
     /// <summary>
     /// Contrôle utilisateur affichant la page "Gestion des utilisateurs".
     /// </summary>
-    public partial class GestionUtilisateur : UserControl
+    public partial class GestionUtilisateur : CustomUserControl
     {
-        /// <summary>
-        /// Obtient ou définit le titre de la page "Gestion des utilisateurs".
-        /// </summary>
-        public string Title = "Gestion des utilisateurs";
         private List<Utilisateur> listUtilisateurs;
         private Utilisateur utilisateur;
 
@@ -31,7 +27,7 @@ namespace Dyslexique.UI.UserControls
         {
             InitializeComponent();
 
-            this.Dock = DockStyle.Fill;
+            this.Title = "Gestion des utilisateurs";
             listUtilisateurs = Queries.GetAllUtilisateurs();
         }
 
