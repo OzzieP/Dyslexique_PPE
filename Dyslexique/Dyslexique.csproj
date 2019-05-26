@@ -77,6 +77,36 @@
     <Compile Include="UI\UserControls\Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserControls\AjoutClasse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutClasse.Designer.cs">
+      <DependentUpon>AjoutClasse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutFonction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutFonction.Designer.cs">
+      <DependentUpon>AjoutFonction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutMot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutMot.Designer.cs">
+      <DependentUpon>AjoutMot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutPhrase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutPhrase.Designer.cs">
+      <DependentUpon>AjoutPhrase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\AjoutType.Designer.cs">
+      <DependentUpon>AjoutType.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserControls\Apropos.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -119,6 +149,21 @@
     </Compile>
     <EmbeddedResource Include="UI\UserControls\Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\AjoutClasse.resx">
+      <DependentUpon>AjoutClasse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\AjoutFonction.resx">
+      <DependentUpon>AjoutFonction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\AjoutMot.resx">
+      <DependentUpon>AjoutMot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\AjoutPhrase.resx">
+      <DependentUpon>AjoutPhrase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\AjoutType.resx">
+      <DependentUpon>AjoutType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\Apropos.resx">
       <DependentUpon>Apropos.cs</DependentUpon>

@@ -34,14 +34,14 @@ namespace Dyslexique.Classes
             set { libelle = value; }
         }
 
-        private Types types;
+        private Types type;
         /// <summary>
         /// Obtient ou définit l'objet <c>Types</c> de la <c>Classe</c>.
         /// </summary>
-        public Types Types
+        public Types Type
         {
-            get { return types; }
-            set { types = value; }
+            get { return type; }
+            set { type = value; }
         }
 
     }
